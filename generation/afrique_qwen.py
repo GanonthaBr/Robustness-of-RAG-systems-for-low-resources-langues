@@ -1,5 +1,6 @@
 """AfriqueQwen generator implementation"""
 
+import os
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from typing import Dict, Optional
@@ -18,8 +19,14 @@ class AfriqueQwenGenerator(BaseGenerator):
         """
         self.model_name = model_name
         
-        print(f"🤖 Loading {model_name}...")
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        # Authenticate with HF Hub if token is available
+        hf_token = os.environ.get("HF_TOKEN")
+        if hf_token and hf_token != "your_token_here":
+            from huggingface_hub import login
+            login(token=hf_token, add_to_git_credential=False)
+        
+        print(f"Loading {model_name}...")
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)
         
         # Set padding token
         if self.tokenizer.pad_token is None:
@@ -30,11 +37,12 @@ class AfriqueQwenGenerator(BaseGenerator):
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name,
             torch_dtype=torch_dtype,
-            device_map="auto" if torch.cuda.is_available() else None
+            device_map="auto" if torch.cuda.is_available() else None,
+            token=hf_token
         )
         
         self.device = next(self.model.parameters()).device
-        print(f"   ✅ Model loaded on {self.device}")
+        print(f"   Model loaded on {self.device}")
     
     def generate(self, prompt: str, max_new_tokens: int = 100, 
                  temperature: float = 0.7, return_confidence: bool = True) -> Dict:

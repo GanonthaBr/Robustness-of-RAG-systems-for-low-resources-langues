@@ -3,19 +3,33 @@
 
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from data.dataset import AfriQALoader
 from pipeline.rag_pipeline import RAGPipeline
 from evaluation.metrics import Evaluator, contains_gold
+from dotenv import load_dotenv
+
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# Load environment variables (HF_TOKEN, etc.) from .env
+
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env'))
+
+# Authenticate with HF Hub
+from huggingface_hub import login
+hf_token = os.environ.get("HF_TOKEN")
+if hf_token:
+    login(token=hf_token, add_to_git_credential=False)
+
+
 
 
 def main():
     """Run minimal test of RAG pipeline"""
     
     # Configuration
-    language = 'swa'  # Start with Swahili
-    num_examples = 3  # Start small
+    language = 'swa'  
+    num_examples = 3 
     
    
     

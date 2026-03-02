@@ -1,14 +1,16 @@
 """Dataset loaders for AfriQA and IrokoBench"""
 
-from datasets import load_dataset
+import pandas as pd
+from datasets import Dataset
 from typing import List, Dict, Optional
+import random
 
 
 class AfriQALoader:
     """Loader for AfriQA dataset"""
     
     def __init__(self):
-        self.supported_languages = ['swa', 'yor', 'kin', 'hau', 'ibo', 'bem', 'fon', 'twi', 'wol', 'zul']
+        self.supported_languages = ['swa', 'yor', 'kin']
     
     def load(self, language: str, split: str = 'test', num_samples: Optional[int] = None) -> List[Dict]:
         """
@@ -26,21 +28,24 @@ class AfriQALoader:
         if language not in self.supported_languages:
             raise ValueError(f"Language {language} not supported. Supported: {self.supported_languages}")
         
-        dataset = load_dataset("masakhane/afriqa", language, split=split)
+        # Load via HF Hub auto-converted Parquet files (dataset scripts no longer supported)
+        url = f"https://huggingface.co/datasets/masakhane/afriqa/resolve/refs%2Fconvert%2Fparquet/{language}/{split}/0000.parquet"
+        dataset = Dataset.from_pandas(pd.read_parquet(url))
         
+        print(f"Loaded {len(dataset)} examples for {language} ({split} split)")
         examples = []
-        for item in dataset:
+        for idx, item in enumerate(dataset):
             examples.append({
-                'id': item['id'],
+                'id': idx,
                 'question': item['question'],
                 'translated_question': item['translated_question'],
                 'answers': item['answers'],
                 'translated_answer': item['translated_answer'],
-                'language': language
+                'language': item.get('lang', language),
+                'translation_type': item.get('translation_type', ''),
             })
         
         if num_samples and num_samples < len(examples):
-            import random
             examples = random.sample(examples, num_samples)
         
         return examples

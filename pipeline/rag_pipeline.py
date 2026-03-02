@@ -17,12 +17,12 @@ class RAGPipeline:
         """
         Args:
             language: Target language
-            use_retrieval: Whether to use retrieval (for ablation)
+            use_retrieval: Whether to use retrieval
         """
         self.language = language
         self.use_retrieval = use_retrieval
         
-        print(f"\n🚀 Initializing RAG pipeline for {language}")
+        print(f"\nInitializing RAG pipeline for {language}")
         
         # Initialize components
         self.prompt_manager = PromptManager(language)
