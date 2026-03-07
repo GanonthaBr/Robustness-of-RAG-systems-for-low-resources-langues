@@ -2,7 +2,7 @@
 
 import os
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from typing import Dict, Optional
 import numpy as np
 
@@ -12,10 +12,11 @@ from .generator import BaseGenerator
 class AfriqueQwenGenerator(BaseGenerator):
     """Generator using AfriqueQwen models"""
     
-    def __init__(self, model_name: str = "McGill-NLP/AfriqueQwen-8B"):
+    def __init__(self, model_name: str = "McGill-NLP/AfriqueQwen-8B", quantize: bool = True):
         """
         Args:
             model_name: HuggingFace model name
+            quantize: Use 4-bit quantization (required for low VRAM GPUs)
         """
         self.model_name = model_name
         
@@ -32,14 +33,25 @@ class AfriqueQwenGenerator(BaseGenerator):
         if self.tokenizer.pad_token is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
         
-        # Load model with appropriate precision
-        torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_name,
-            torch_dtype=torch_dtype,
-            device_map="auto" if torch.cuda.is_available() else None,
-            token=hf_token
-        )
+        # Build model loading kwargs
+        load_kwargs = {"token": hf_token}
+        
+        if torch.cuda.is_available():
+            if quantize:
+                # 4-bit quantization for low VRAM GPUs (e.g. 4GB)
+                print("  Using 4-bit quantization (NF4)")
+                load_kwargs["quantization_config"] = BitsAndBytesConfig(
+                    load_in_4bit=True,
+                    bnb_4bit_compute_dtype=torch.float16,
+                    bnb_4bit_quant_type="nf4",
+                )
+            else:
+                load_kwargs["torch_dtype"] = torch.float16
+            load_kwargs["device_map"] = "auto"
+        else:
+            load_kwargs["torch_dtype"] = torch.float32
+        
+        self.model = AutoModelForCausalLM.from_pretrained(model_name, **load_kwargs)
         
         self.device = next(self.model.parameters()).device
         print(f"   Model loaded on {self.device}")

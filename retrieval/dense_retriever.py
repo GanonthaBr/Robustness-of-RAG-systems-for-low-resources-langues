@@ -49,7 +49,7 @@ class DenseRetriever(BaseRetriever):
                 batch_embeddings = self.model.encode(batch, show_progress_bar=False)
             embeddings.append(batch_embeddings)
         
-        embeddings = np.vstack(embeddings)
+        embeddings = np.vstack(embeddings).astype(np.float32)
         
         # Normalize for cosine similarity
         faiss.normalize_L2(embeddings)

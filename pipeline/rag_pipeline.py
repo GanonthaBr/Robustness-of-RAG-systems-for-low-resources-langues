@@ -13,11 +13,12 @@ from config.settings import RETRIEVAL_K, MAX_NEW_TOKENS, TEMPERATURE
 class RAGPipeline:
     """Orchestrates the entire RAG pipeline"""
     
-    def __init__(self, language: str, use_retrieval: bool = True):
+    def __init__(self, language: str, use_retrieval: bool = True, retriever=None):
         """
         Args:
             language: Target language
             use_retrieval: Whether to use retrieval
+            retriever: Optional pre-built DenseRetriever (skips corpus load + indexing)
         """
         self.language = language
         self.use_retrieval = use_retrieval
@@ -29,12 +30,15 @@ class RAGPipeline:
         self.generator = AfriqueQwenGenerator()
         
         if use_retrieval:
-            # Load Wikipedia corpus
-            self.corpus = WikipediaCorpus(language)
-            
-            # Initialize and index retriever
-            self.retriever = DenseRetriever()
-            self.retriever.index_corpus(self.corpus.get_passages())
+            if retriever is not None:
+                # Reuse the already-indexed retriever — skip corpus reload
+                self.retriever = retriever
+                print("  Retriever: using pre-built index")
+            else:
+                # Build from scratch
+                self.corpus = WikipediaCorpus(language)
+                self.retriever = DenseRetriever()
+                self.retriever.index_corpus(self.corpus.get_passages())
     
     def run(self, question: str, k: int = RETRIEVAL_K, 
             return_docs: bool = False) -> Dict:
