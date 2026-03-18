@@ -3,18 +3,22 @@
 
 import sys
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+# Ensure all relative file operations (cache/results) are rooted in the repo.
+os.chdir(PROJECT_ROOT)
 
 from data.dataset import AfriQALoader
 from pipeline.rag_pipeline import RAGPipeline
 from evaluation.metrics import Evaluator
 from utils.helpers import save_json
 
-
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-load_dotenv(os.path.join(PROJECT_ROOT, '.env'))
+load_dotenv(PROJECT_ROOT / '.env')
 
 
 def main():
@@ -76,7 +80,7 @@ def main():
             'num_abstained': results['num_abstained'],
         }
 
-        save_json(results, os.path.join(PROJECT_ROOT, f"results/{language}_enhanced_results.json"))
+        save_json(results, str(PROJECT_ROOT / f"results/{language}_enhanced_results.json"))
 
     print("\n")
     print("Final summary by language")
@@ -88,7 +92,7 @@ def main():
             f"abstain={metrics['abstention_rate']:.1%}"
         )
 
-    save_json(all_results, os.path.join(PROJECT_ROOT, "results/all_languages_enhanced_summary.json"))
+    save_json(all_results, str(PROJECT_ROOT / "results/all_languages_enhanced_summary.json"))
 
 
 if __name__ == "__main__":
