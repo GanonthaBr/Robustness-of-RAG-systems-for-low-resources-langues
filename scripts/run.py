@@ -23,7 +23,7 @@ load_dotenv(PROJECT_ROOT / '.env')
 
 def main():
     """Run minimal test with enhanced evaluation"""
-    languages = ['swa', 'yor', 'kin']
+    languages = ['en', 'swa', 'yor', 'kin']
     num_examples = 50
     all_results = {}
 

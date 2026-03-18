@@ -10,14 +10,14 @@ class AfriQALoader:
     """Loader for AfriQA dataset"""
     
     def __init__(self):
-        self.supported_languages = ['swa', 'yor', 'kin']
+        self.supported_languages = ['en', 'swa', 'yor', 'kin']
     
     def load(self, language: str, split: str = 'test', num_samples: Optional[int] = None) -> List[Dict]:
         """
         Load AfriQA examples for a specific language
         
         Args:
-            language: Language code (e.g., 'swa', 'yor', 'kin')
+            language: Language code (e.g., 'en', 'swa', 'yor', 'kin')
             split: 'train', 'validation', or 'test'
             num_samples: Number of samples to return (None for all)
             
@@ -35,15 +35,27 @@ class AfriQALoader:
         print(f"Loaded {len(dataset)} examples for {language} ({split} split)")
         examples = []
         for idx, item in enumerate(dataset):
-            examples.append({
-                'id': idx,
-                'question': item['question'],
-                'translated_question': item['translated_question'],
-                'answers': item['answers'],
-                'translated_answer': item['translated_answer'],
-                'language': item.get('lang', language),
-                'translation_type': item.get('translation_type', ''),
-            })
+            # For English, duplicate question/answers as translated fields (no separate translation)
+            if language == 'en':
+                examples.append({
+                    'id': idx,
+                    'question': item['question'],
+                    'translated_question': item['question'],  # Same as original for English
+                    'answers': item['answers'],
+                    'translated_answer': item['answers'],  # Same as original for English
+                    'language': 'en',
+                    'translation_type': 'native',
+                })
+            else:
+                examples.append({
+                    'id': idx,
+                    'question': item['question'],
+                    'translated_question': item['translated_question'],
+                    'answers': item['answers'],
+                    'translated_answer': item['translated_answer'],
+                    'language': item.get('lang', language),
+                    'translation_type': item.get('translation_type', ''),
+                })
         
         if num_samples and num_samples < len(examples):
             examples = random.sample(examples, num_samples)
