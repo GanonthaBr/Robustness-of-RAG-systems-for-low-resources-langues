@@ -3,17 +3,19 @@
 
 import sys
 import os
+
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
 from data.dataset import AfriQALoader
 from pipeline.rag_pipeline import RAGPipeline
 from evaluation.metrics import Evaluator, contains_gold
 from dotenv import load_dotenv
 
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 # Load environment variables (HF_TOKEN, etc.) from .env
 
-load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env'))
+load_dotenv(os.path.join(PROJECT_ROOT, '.env'))
 
 # Authenticate with HF Hub
 from huggingface_hub import login
