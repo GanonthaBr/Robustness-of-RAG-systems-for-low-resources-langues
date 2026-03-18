@@ -7,46 +7,56 @@ import random
 
 
 class AfriQALoader:
-    """Loader for AfriQA dataset"""
+    """Loader for AfriQA dataset with support for English translations"""
     
     def __init__(self):
         self.supported_languages = ['en', 'swa', 'yor', 'kin']
     
     def load(self, language: str, split: str = 'test', num_samples: Optional[int] = None) -> List[Dict]:
         """
-        Load AfriQA examples for a specific language
+        Load AfriQA examples for a specific language or English translation baseline.
+        
+        For African languages: uses native question/answers.
+        For English ('en'): uses translated_question/translated_answer from Swahili AfriQA.
+        This ensures fair comparison using the same dataset and questions.
         
         Args:
-            language: Language code (e.g., 'en', 'swa', 'yor', 'kin')
+            language: Language code ('en', 'swa', 'yor', 'kin')
+                     For 'en', loads from 'swa' but evaluates on English translations
             split: 'train', 'validation', or 'test'
             num_samples: Number of samples to return (None for all)
             
         Returns:
             List of dictionaries with keys: 
-            id, question, translated_question, answers, translated_answer, lang
+            id, question, translated_question, answers, translated_answer, language
         """
         if language not in self.supported_languages:
             raise ValueError(f"Language {language} not supported. Supported: {self.supported_languages}")
         
-        # Load via HF Hub auto-converted Parquet files (dataset scripts no longer supported)
-        url = f"https://huggingface.co/datasets/masakhane/afriqa/resolve/refs%2Fconvert%2Fparquet/{language}/{split}/0000.parquet"
+        # For English, load from Swahili but use translated versions
+        source_language = 'swa' if language == 'en' else language
+        
+        # Load via HF Hub auto-converted Parquet files
+        url = f"https://huggingface.co/datasets/masakhane/afriqa/resolve/refs%2Fconvert%2Fparquet/{source_language}/{split}/0000.parquet"
         dataset = Dataset.from_pandas(pd.read_parquet(url))
         
         print(f"Loaded {len(dataset)} examples for {language} ({split} split)")
         examples = []
         for idx, item in enumerate(dataset):
-            # For English, duplicate question/answers as translated fields (no separate translation)
             if language == 'en':
+                # For English baseline: use translated versions from AfriQA
                 examples.append({
                     'id': idx,
-                    'question': item['question'],
-                    'translated_question': item['question'],  # Same as original for English
-                    'answers': item['answers'],
-                    'translated_answer': item['answers'],  # Same as original for English
+                    'question': item['translated_question'],  # English translation as question
+                    'translated_question': item['translated_question'],
+                    'answers': item['translated_answer'],  # English translation as gold answers
+                    'translated_answer': item['translated_answer'],
                     'language': 'en',
-                    'translation_type': 'native',
+                    'translation_type': 'english_baseline_from_swahili',
+                    'source_language': source_language,
                 })
             else:
+                # For African languages: use native language versions
                 examples.append({
                     'id': idx,
                     'question': item['question'],
