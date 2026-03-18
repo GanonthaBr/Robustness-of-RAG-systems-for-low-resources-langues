@@ -28,7 +28,11 @@ class AfriqueQwenGenerator(BaseGenerator):
             login(token=hf_token, add_to_git_credential=False)
         
         print(f"Loading {model_name}...")
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            model_name,
+            token=hf_token,
+            trust_remote_code=True,
+        )
         
         # Set padding token
         if self.tokenizer.pad_token is None:
@@ -56,7 +60,16 @@ class AfriqueQwenGenerator(BaseGenerator):
         else:
             load_kwargs["torch_dtype"] = torch.float32
         
-        self.model = AutoModelForCausalLM.from_pretrained(model_name, **load_kwargs)
+        load_kwargs["trust_remote_code"] = True
+        try:
+            self.model = AutoModelForCausalLM.from_pretrained(model_name, **load_kwargs)
+        except ValueError as exc:
+            if "model type `qwen3`" in str(exc):
+                raise RuntimeError(
+                    "Your transformers version does not support Qwen3. "
+                    "Upgrade dependencies with: pip install -U 'transformers>=4.51.0' 'accelerate>=0.30.0'"
+                ) from exc
+            raise
         
         self.device = next(self.model.parameters()).device
         print(f"   Model loaded on {self.device}")
