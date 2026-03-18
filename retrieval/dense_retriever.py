@@ -49,7 +49,7 @@ class DenseRetriever(BaseRetriever):
                 batch_embeddings = self.model.encode(batch, show_progress_bar=False)
             embeddings.append(batch_embeddings)
         
-        embeddings = np.vstack(embeddings).astype(np.float32)
+        embeddings = np.ascontiguousarray(np.vstack(embeddings).astype(np.float32))
         
         # Normalize for cosine similarity
         faiss.normalize_L2(embeddings)
@@ -57,7 +57,7 @@ class DenseRetriever(BaseRetriever):
         # Build FAISS index
         dimension = embeddings.shape[1]
         self.index = faiss.IndexFlatIP(dimension)  # Inner product = cosine similarity
-        self.index.add(embeddings.astype(np.float32))
+        self.index.add(embeddings)
         
         print(f"  Indexed {len(passages)} passages")
     
@@ -70,11 +70,13 @@ class DenseRetriever(BaseRetriever):
         
         # Prepare query with prefix
         query_text = f"{self.query_prefix}{query}"
-        query_embedding = self.model.encode([query_text])
+        query_embedding = np.ascontiguousarray(
+            self.model.encode([query_text]).astype(np.float32)
+        )
         faiss.normalize_L2(query_embedding)
         
         # Search
-        scores, indices = self.index.search(query_embedding.astype(np.float32), k)
+        scores, indices = self.index.search(query_embedding, k)
         
         # Return documents with scores
         results = []
