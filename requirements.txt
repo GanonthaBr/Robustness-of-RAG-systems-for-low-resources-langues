@@ -2,6 +2,7 @@
 torch>=2.1.0
 transformers>=4.35.0
 accelerate>=0.24.0
+bitsandbytes>=0.43.0
 sentence-transformers>=2.2.2
 datasets>=2.14.0
 

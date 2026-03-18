@@ -1,6 +1,7 @@
 """AfriqueQwen generator implementation"""
 
 import os
+import importlib.util
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from typing import Dict, Optional
@@ -38,13 +39,17 @@ class AfriqueQwenGenerator(BaseGenerator):
         
         if torch.cuda.is_available():
             if quantize:
-                # 4-bit quantization for low VRAM GPUs (e.g. 4GB)
-                print("  Using 4-bit quantization (NF4)")
-                load_kwargs["quantization_config"] = BitsAndBytesConfig(
-                    load_in_4bit=True,
-                    bnb_4bit_compute_dtype=torch.float16,
-                    bnb_4bit_quant_type="nf4",
-                )
+                # 4-bit quantization needs bitsandbytes on CUDA systems.
+                if importlib.util.find_spec("bitsandbytes") is not None:
+                    print("  Using 4-bit quantization (NF4)")
+                    load_kwargs["quantization_config"] = BitsAndBytesConfig(
+                        load_in_4bit=True,
+                        bnb_4bit_compute_dtype=torch.float16,
+                        bnb_4bit_quant_type="nf4",
+                    )
+                else:
+                    print("  bitsandbytes not found; falling back to float16 loading")
+                    load_kwargs["torch_dtype"] = torch.float16
             else:
                 load_kwargs["torch_dtype"] = torch.float16
             load_kwargs["device_map"] = "auto"
