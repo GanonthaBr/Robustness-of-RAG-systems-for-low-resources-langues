@@ -66,8 +66,9 @@ class AfriqueQwenGenerator(BaseGenerator):
         except ValueError as exc:
             if "model type `qwen3`" in str(exc):
                 raise RuntimeError(
-                    "Your transformers version does not support Qwen3. "
-                    "Upgrade dependencies with: pip install -U 'transformers>=4.51.0' 'accelerate>=0.30.0'"
+                    "Your current Python/Transformers stack does not support Qwen3. "
+                    "Use Python 3.10+ and upgrade dependencies with: "
+                    "pip install -U 'transformers>=4.51.0' 'accelerate>=0.30.0'"
                 ) from exc
             raise
         
