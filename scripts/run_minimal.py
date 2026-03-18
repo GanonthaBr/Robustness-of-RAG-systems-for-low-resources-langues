@@ -10,7 +10,7 @@ if PROJECT_ROOT not in sys.path:
 
 from data.dataset import AfriQALoader
 from pipeline.rag_pipeline import RAGPipeline
-from evaluation.metrics import Evaluator, contains_gold
+from evaluation.metrics import Evaluator, contains_gold, normalize_answer_text
 from dotenv import load_dotenv
 
 # Load environment variables (HF_TOKEN, etc.) from .env
@@ -46,12 +46,18 @@ def main():
     # 3. Run on examples
    
     predictions = []
-    golds = []
+    golds_local = []
+    golds_translated = []
     
     for i, ex in enumerate(examples):
+        # Prefer local-language gold for fair multilingual scoring.
+        local_gold = normalize_answer_text(ex.get('answers', ''))
+        translated_gold = normalize_answer_text(ex.get('translated_answer', ''))
+
         print(f"\n--- Example {i+1} ---")
         print(f"Q: {ex['question']}")
-        print(f"Gold: {ex['translated_answer']}")
+        print(f"Gold (local): {local_gold}")
+        print(f"Gold (en): {translated_gold}")
         
         # Run RAG
         result = pipeline.run(ex['question'], return_docs=True)
@@ -63,22 +69,29 @@ def main():
         if 'documents' in result and result['documents']:
             print(f"Top doc: {result['documents'][0]['text'][:100]}...")
         
-        # Check if contains gold
-        if contains_gold(result['answer'], ex['translated_answer']):
+        # Match against either local or translated gold.
+        if contains_gold(result['answer'], local_gold) or contains_gold(result['answer'], translated_gold):
             print("Contains gold answer")
         else:
             print("Does NOT contain gold answer")
         
         predictions.append(result['answer'])
-        golds.append(ex['translated_answer'])
+        golds_local.append(local_gold)
+        golds_translated.append(translated_gold)
     
     # 4. Evaluate
    
     
     evaluator = Evaluator()
-    results = evaluator.evaluate(predictions, golds)
-    
-    for metric, value in results.items():
+    results_local = evaluator.evaluate(predictions, golds_local)
+    results_translated = evaluator.evaluate(predictions, golds_translated)
+
+    print("\nMetrics vs local-language gold:")
+    for metric, value in results_local.items():
+        print(f"{metric}: {value:.3f}")
+
+    print("\nMetrics vs translated (English) gold:")
+    for metric, value in results_translated.items():
         print(f"{metric}: {value:.3f}")
     
     print("\nMinimal test completed!")
