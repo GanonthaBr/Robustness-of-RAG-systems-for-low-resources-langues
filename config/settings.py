@@ -24,7 +24,7 @@ PROMPT_TEMPLATES = {
 
 # Retrieval settings
 RETRIEVAL_K = 10
-EMBEDDING_MODEL = "intfloat/multilingual-e5-large-instruct"
+EMBEDDING_MODEL = "intfloat/multilingual-e5-base"
 
 # Generation settings
 LLM_MODEL = "McGill-NLP/AfriqueQwen-8B"  # or -1.5B for testing

@@ -6,6 +6,7 @@ from sentence_transformers import SentenceTransformer
 from typing import List, Dict
 import torch
 from tqdm import tqdm
+from config.settings import EMBEDDING_MODEL
 
 from .retriever import BaseRetriever
 
@@ -13,7 +14,7 @@ from .retriever import BaseRetriever
 class DenseRetriever(BaseRetriever):
     """Dense retriever using multilingual E5 embeddings"""
     
-    def __init__(self, model_name: str = "intfloat/multilingual-e5-large-instruct"):
+    def __init__(self, model_name: str = EMBEDDING_MODEL):
         """
         Args:
             model_name: SentenceTransformer model name
