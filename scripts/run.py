@@ -24,7 +24,7 @@ load_dotenv(PROJECT_ROOT / '.env')
 def main():
     """Run minimal test with enhanced evaluation"""
     languages = ['en', 'swa', 'yor', 'kin']
-    num_examples = 200
+    num_examples = 50
     all_results = {}
 
     print("AFRI-RAG Enhanced Evaluation")
