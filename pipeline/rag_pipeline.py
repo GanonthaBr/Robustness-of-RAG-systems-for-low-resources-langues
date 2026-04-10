@@ -13,12 +13,13 @@ from config.settings import RETRIEVAL_K, MAX_NEW_TOKENS, TEMPERATURE
 class RAGPipeline:
     """Orchestrates the entire RAG pipeline"""
     
-    def __init__(self, language: str, use_retrieval: bool = True, retriever=None):
+    def __init__(self, language: str, use_retrieval: bool = True, retriever=None, embedding_model: str = None):
         """
         Args:
             language: Target language
             use_retrieval: Whether to use retrieval
             retriever: Optional pre-built DenseRetriever (skips corpus load + indexing)
+            embedding_model: Embedding model to use (e.g., 'intfloat/multilingual-e5-base')
         """
         self.language = language
         self.use_retrieval = use_retrieval
@@ -37,7 +38,10 @@ class RAGPipeline:
             else:
                 # Build from scratch
                 self.corpus = WikipediaCorpus(language)
-                self.retriever = DenseRetriever()
+                if embedding_model:
+                    self.retriever = DenseRetriever(model_name=embedding_model)
+                else:
+                    self.retriever = DenseRetriever()
                 self.retriever.index_corpus(self.corpus.get_passages())
     
     def run(self, question: str, k: int = RETRIEVAL_K, 

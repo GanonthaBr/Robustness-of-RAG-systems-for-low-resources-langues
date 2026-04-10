@@ -24,6 +24,14 @@ PROMPT_TEMPLATES = {
 
 # Retrieval settings
 RETRIEVAL_K = 10
+
+# Embedding models for comparison
+EMBEDDING_MODELS = {
+    'e5-base': 'intfloat/multilingual-e5-base',
+    'qwen3': 'Qwen/Qwen3-Embedding-8B',
+}
+
+# Default embedding model
 EMBEDDING_MODEL = "intfloat/multilingual-e5-base"
 
 # Generation settings

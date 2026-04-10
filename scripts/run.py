@@ -3,6 +3,7 @@
 
 import sys
 import os
+import argparse
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -16,21 +17,38 @@ os.chdir(PROJECT_ROOT)
 from data.dataset import AfriQALoader
 from pipeline.rag_pipeline import RAGPipeline
 from evaluation.metrics import Evaluator, RetrieverEvaluator
+from config.settings import EMBEDDING_MODELS
 from utils.helpers import save_json
 
 load_dotenv(PROJECT_ROOT / '.env')
 
 
-def main():
-    """Run minimal test with enhanced evaluation"""
+def main(embedding_model=None):
+    """Run minimal test with enhanced evaluation
+    
+    Args:
+        embedding_model: Embedding model to use ('e5-base' or 'qwen3')
+                        If None, uses default from settings
+    """
     languages = ['swa', 'yor', 'kin']
     num_examples = 10
     all_results = {}
 
+    # Determine which embedding model to use
+    if embedding_model and embedding_model in EMBEDDING_MODELS:
+        model_path = EMBEDDING_MODELS[embedding_model]
+        model_label = embedding_model
+    else:
+        from config.settings import EMBEDDING_MODEL
+        model_path = EMBEDDING_MODEL
+        model_label = 'default'
+        if embedding_model:
+            print(f"Warning: embedding model '{embedding_model}' not found. Using default.")
+
     print("AFRI-RAG Enhanced Evaluation")
     print(f"Languages: {languages}")
     print(f"Examples per language: {num_examples}")
-
+ 
     for language in languages:
         print("\n")
         print(f"Language: {language}")
@@ -40,7 +58,7 @@ def main():
         examples = loader.load(language, split='test', num_samples=num_examples)
 
         # 2) Initialize pipeline
-        pipeline = RAGPipeline(language, use_retrieval=True)
+        pipeline = RAGPipeline(language, use_retrieval=True, embedding_model=model_path)
 
         # 3) Initialize evaluator
         evaluator = Evaluator(language=language)
@@ -119,4 +137,14 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Run AFRI-RAG evaluation with specified embedding model")
+    parser.add_argument(
+        '--embedding-model',
+        type=str,
+        choices=list(EMBEDDING_MODELS.keys()) + [None],
+        default=None,
+        help=f"Embedding model to use. Available: {', '.join(EMBEDDING_MODELS.keys())}. Default: intfloat/multilingual-e5-base"
+    )
+    
+    args = parser.parse_args()
+    main(embedding_model=args.embedding_model)
