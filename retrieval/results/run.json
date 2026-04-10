@@ -1,0 +1,29 @@
+{
+  "swa": {
+    "contains_gold_local": 0.37,
+    "contains_gold_english": 0.25,
+    "abstention_rate": 0.0,
+    "correct_rate": 0.38,
+    "precision_on_answered": 0.38,
+    "num_samples": 100,
+    "num_abstained": 0
+  },
+  "yor": {
+    "contains_gold_local": 0.18,
+    "contains_gold_english": 0.18,
+    "abstention_rate": 0.0,
+    "correct_rate": 0.19,
+    "precision_on_answered": 0.19,
+    "num_samples": 100,
+    "num_abstained": 0
+  },
+  "kin": {
+    "contains_gold_local": 0.44,
+    "contains_gold_english": 0.32,
+    "abstention_rate": 0.0,
+    "correct_rate": 0.46,
+    "precision_on_answered": 0.46,
+    "num_samples": 100,
+    "num_abstained": 0
+  }
+}

@@ -27,7 +27,7 @@ RETRIEVAL_K = 10
 EMBEDDING_MODEL = "intfloat/multilingual-e5-base"
 
 # Generation settings
-LLM_MODEL = "McGill-NLP/AfriqueQwen-8B"  
+LLM_MODEL = "McGill-NLP/AfriqueQwen-8B"  # or -1.5B for testing
 MAX_NEW_TOKENS = 100
 TEMPERATURE = 0.7
 
