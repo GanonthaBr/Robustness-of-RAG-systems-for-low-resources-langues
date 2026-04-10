@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Run LLM-only baseline (no retrieval) for language comparison."""
 
 import argparse
@@ -22,7 +22,7 @@ from utils.helpers import save_json
 load_dotenv(PROJECT_ROOT / ".env")
 
 
-def main(num_examples: int = 10):
+def main(num_examples=10):
     """Run LLM-only experiments across supported African languages."""
     languages = ["swa", "yor", "kin"]
     all_results = {}
