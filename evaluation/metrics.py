@@ -128,8 +128,78 @@ class RetrieverEvaluator:
 class Evaluator:
     """Evaluate RAG outputs against gold answers"""
     
-    def __init__(self):
+    def __init__(self, language: str = 'en'):
+        self.language = language
         self.metrics = {}
+        
+        # Abstention phrases per language
+        self.abstention_phrases = {
+            'en': ['i don\'t know', 'i cannot', 'i cannot find', 'no information', 'not found'],
+            'swa': ['sijui', 'sina habari', 'hakuna', 'tafadhali'],
+            'yor': ['emi ko mọ̀', 'ènìyàn kò mọ̀', 'ko si ìmọ̀'],
+            'kin': ['nta bibeshya', 'sinzira', 'ntacyo ndibishoboka'],
+        }
+    
+    def check_abstention(self, text: str) -> bool:
+        """Check if response contains abstention phrases"""
+        text_lower = text.lower().strip()
+        phrases = self.abstention_phrases.get(self.language, [])
+        return any(phrase in text_lower for phrase in phrases)
+    
+    def evaluate_batch(self, predictions: List[str], golds_local: List[str], golds_en: List[str]) -> Dict:
+        """
+        Evaluate predictions against gold answers (both local and English versions)
+        
+        Args:
+            predictions: List of model predictions
+            golds_local: List of gold answers in native language
+            golds_en: List of gold answers in English (translated)
+            
+        Returns:
+            Dict with evaluation metrics
+        """
+        contains_gold_local = []
+        contains_gold_english = []
+        is_abstained = []
+        answered_count = 0
+        
+        for pred, gold_local, gold_en in zip(predictions, golds_local, golds_en):
+            abstained = self.check_abstention(pred)
+            is_abstained.append(abstained)
+            
+            if not abstained:
+                answered_count += 1
+                contains_gold_local.append(float(contains_gold(pred, gold_local)))
+                contains_gold_english.append(float(contains_gold(pred, gold_en)))
+            else:
+                contains_gold_local.append(0.0)
+                contains_gold_english.append(0.0)
+        
+        abstention_rate = len([x for x in is_abstained if x]) / len(predictions) if predictions else 0.0
+        
+        return {
+            'contains_gold_local': np.mean(contains_gold_local) if contains_gold_local else 0.0,
+            'contains_gold_english': np.mean(contains_gold_english) if contains_gold_english else 0.0,
+            'abstention_rate': abstention_rate,
+            'correct_rate': np.mean(contains_gold_english) if contains_gold_english else 0.0,
+            'precision_on_answered': np.mean(contains_gold_english) if answered_count > 0 else 0.0,
+            'num_samples': len(predictions),
+            'num_abstained': len([x for x in is_abstained if x]),
+        }
+    
+    def print_summary(self, results: Dict):
+        """Print evaluation summary"""
+        print(f"\n{'='*70}")
+        print(f"Evaluation Metrics for {self.language.upper()}:")
+        print(f"{'='*70}")
+        print(f"  Contains Gold (Local): {results.get('contains_gold_local', 0):.2%}")
+        print(f"  Contains Gold (English): {results.get('contains_gold_english', 0):.2%}")
+        print(f"  Correct Rate: {results.get('correct_rate', 0):.2%}")
+        print(f"  Abstention Rate: {results.get('abstention_rate', 0):.2%}")
+        print(f"  Precision on Answered: {results.get('precision_on_answered', 0):.2%}")
+        print(f"  Samples: {results.get('num_samples', 0)}")
+        print(f"  Abstained: {results.get('num_abstained', 0)}")
+        print(f"{'='*70}")
     
     def evaluate(self, predictions: List[str], golds: List[str]) -> Dict:
         """
