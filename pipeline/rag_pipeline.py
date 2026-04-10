@@ -65,7 +65,8 @@ class RAGPipeline:
         # Create prompt
         prompt = self.prompt_manager.create_prompt(
             question=question,
-            documents=documents
+            documents=documents,
+            include_docs=self.use_retrieval
         )
         
         # Generate answer
