@@ -71,7 +71,7 @@ def _run_mode(pipeline, examples, evaluator, capture_docs):
     }
 
 
-def main(num_examples, seed):
+def main(num_examples, seed, output_file=None):
     """Run RAG vs LLM-only comparison using fixed E5 retriever for RAG mode."""
     languages = ["swa", "yor", "kin"]
     e5_model = EMBEDDING_MODELS.get("e5-base", "intfloat/multilingual-e5-base")
@@ -172,15 +172,23 @@ def main(num_examples, seed):
             )
         )
 
-    output_path = PROJECT_ROOT / "results/rag_vs_llm_only_e5_100.json"
+    if output_file:
+        output_path = Path(output_file)
+        if not output_path.is_absolute():
+            output_path = PROJECT_ROOT / output_path
+    else:
+        output_path = PROJECT_ROOT / "results/rag_vs_llm_only_e5_100.json"
+
     save_json(results, str(output_path))
     print("\nSaved combined results: {}".format(output_path))
+    return results
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run RAG and LLM-only together on same samples")
     parser.add_argument("--num-examples", type=int, default=100, help="Examples per language")
     parser.add_argument("--seed", type=int, default=42, help="Deterministic sampling seed")
+    parser.add_argument("--output-file", type=str, default=None, help="Optional output JSON path")
     args = parser.parse_args()
 
-    main(num_examples=args.num_examples, seed=args.seed)
+    main(num_examples=args.num_examples, seed=args.seed, output_file=args.output_file)
