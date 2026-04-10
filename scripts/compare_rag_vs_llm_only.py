@@ -3,6 +3,13 @@
 
 import os
 import sys
+
+if sys.version_info[0] < 3:
+    raise RuntimeError(
+        "compare_rag_vs_llm_only.py requires Python 3. Run with 'python3 compare_rag_vs_llm_only.py' "
+        "or activate your venv before running."
+    )
+
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent

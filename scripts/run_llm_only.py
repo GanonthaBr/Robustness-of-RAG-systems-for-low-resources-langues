@@ -4,6 +4,13 @@
 import argparse
 import os
 import sys
+
+if sys.version_info[0] < 3:
+    raise RuntimeError(
+        "run_llm_only.py requires Python 3. Run with 'python3 run_llm_only.py --num-examples 10' "
+        "or activate your venv before running."
+    )
+
 from pathlib import Path
 
 from dotenv import load_dotenv
