@@ -100,7 +100,19 @@ class RetrieverEvaluator:
         
         for docs in retrieved_docs:
             if docs:
-                scores = [doc['score'] for doc in docs]
+                scores = []
+                for doc in docs:
+                    raw_score = doc.get('score', doc.get('retrieval_score'))
+                    if raw_score is None:
+                        continue
+                    try:
+                        scores.append(float(raw_score))
+                    except (TypeError, ValueError):
+                        continue
+
+                if not scores:
+                    continue
+
                 all_similarities.extend(scores)
                 top1_similarities.append(scores[0])
                 top5_similarities.append(np.mean(scores[:min(5, len(scores))]))

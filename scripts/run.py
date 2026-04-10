@@ -76,11 +76,10 @@ def main(embedding_model=None):
             result = pipeline.run(ex['question'], return_docs=True)
             predictions.append(result['answer'])
             
-            # Capture retrieved documents for retriever evaluation
-            if 'docs' in result and result['docs']:
-                all_retrieved_docs.append(result['docs'])
-            else:
-                all_retrieved_docs.append([])
+            # Capture retrieved documents for retriever evaluation.
+            # pipeline.run(..., return_docs=True) returns them under 'documents'.
+            documents = result.get('documents', [])
+            all_retrieved_docs.append(documents if documents else [])
 
             answers = ex.get('answers', "")
             if isinstance(answers, list):
