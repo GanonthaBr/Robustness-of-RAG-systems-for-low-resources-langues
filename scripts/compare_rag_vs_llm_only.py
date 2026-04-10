@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Compare saved RAG and LLM-only summaries."""
 
 import os
@@ -23,9 +23,9 @@ def main():
     llm_only_path = PROJECT_ROOT / "results/all_languages_llm_only_summary.json"
 
     if not rag_path.exists():
-        raise FileNotFoundError(f"Missing RAG summary: {rag_path}")
+        raise FileNotFoundError("Missing RAG summary: {}".format(rag_path))
     if not llm_only_path.exists():
-        raise FileNotFoundError(f"Missing LLM-only summary: {llm_only_path}")
+        raise FileNotFoundError("Missing LLM-only summary: {}".format(llm_only_path))
 
     rag = load_json(str(rag_path))
     llm_only = load_json(str(llm_only_path))
@@ -36,7 +36,7 @@ def main():
     print("=" * 84)
     print("RAG VS LLM-ONLY COMPARISON")
     print("=" * 84)
-    print(f"{'Language':<10} {'RAG Correct':<12} {'LLM Correct':<12} {'Delta (RAG-LLM)':<16}")
+    print("{:<10} {:<12} {:<12} {:<16}".format("Language", "RAG Correct", "LLM Correct", "Delta (RAG-LLM)"))
     print("-" * 84)
 
     for language in languages:
@@ -59,7 +59,7 @@ def main():
             "llm_only_abstention_rate": safe_get(llm_gen, "abstention_rate"),
         }
 
-        print(f"{language:<10} {rag_correct:<12.1%} {llm_correct:<12.1%} {delta:<16.1%}")
+        print("{:<10} {:<12.1%} {:<12.1%} {:<16.1%}".format(language, rag_correct, llm_correct, delta))
 
     save_json(comparison, str(PROJECT_ROOT / "results/rag_vs_llm_only_comparison.json"))
     print("\nSaved: results/rag_vs_llm_only_comparison.json")

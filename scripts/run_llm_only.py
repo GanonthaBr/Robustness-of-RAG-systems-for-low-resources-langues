@@ -28,12 +28,12 @@ def main(num_examples=10):
     all_results = {}
 
     print("AFRI-RAG LLM-ONLY BASELINE")
-    print(f"Languages: {languages}")
-    print(f"Examples per language: {num_examples}")
+    print("Languages: {}".format(languages))
+    print("Examples per language: {}".format(num_examples))
 
     for language in languages:
         print("\n")
-        print(f"Language: {language}")
+        print("Language: {}".format(language))
 
         loader = AfriQALoader()
         examples = loader.load(language, split="test", num_samples=num_examples)
@@ -47,8 +47,8 @@ def main(num_examples=10):
         golds_en = []
 
         for i, ex in enumerate(examples):
-            print(f"\nExample {i + 1}/{len(examples)}")
-            print(f"Q: {ex['question']}")
+            print("\nExample {}/{}".format(i + 1, len(examples)))
+            print("Q: {}".format(ex['question']))
 
             result = pipeline.run(ex["question"], return_docs=False)
             predictions.append(result["answer"])
@@ -85,7 +85,7 @@ def main(num_examples=10):
             },
         }
 
-        save_json(results, str(PROJECT_ROOT / f"results/{language}_llm_only_results.json"))
+        save_json(results, str(PROJECT_ROOT / "results/{}_llm_only_results.json".format(language)))
 
     print("\n")
     print("=" * 70)
@@ -93,12 +93,14 @@ def main(num_examples=10):
     print("=" * 70)
     for language, lang_results in all_results.items():
         gen_metrics = lang_results.get("generation_metrics", {})
-        print(f"\n{language.upper()}:")
+        print("\n{}:".format(language.upper()))
         print(
-            f"  Generation: correct={gen_metrics.get('correct_rate', 0):.1%}, "
-            f"local={gen_metrics.get('contains_gold_local', 0):.1%}, "
-            f"en={gen_metrics.get('contains_gold_english', 0):.1%}, "
-            f"abstain={gen_metrics.get('abstention_rate', 0):.1%}"
+            "  Generation: correct={:.1%}, local={:.1%}, en={:.1%}, abstain={:.1%}".format(
+                gen_metrics.get('correct_rate', 0),
+                gen_metrics.get('contains_gold_local', 0),
+                gen_metrics.get('contains_gold_english', 0),
+                gen_metrics.get('abstention_rate', 0),
+            )
         )
 
     save_json(all_results, str(PROJECT_ROOT / "results/all_languages_llm_only_summary.json"))
