@@ -24,6 +24,11 @@ PROMPT_TEMPLATES = {
 
 # Retrieval settings
 RETRIEVAL_K = 10
+RAG_K_BY_LANGUAGE = {
+    'swa': 10,
+    'yor': 3,
+    'kin': 5,
+}
 
 # Embedding models for comparison
 EMBEDDING_MODELS = {

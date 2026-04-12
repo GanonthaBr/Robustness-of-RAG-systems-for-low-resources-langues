@@ -21,6 +21,7 @@ if str(PROJECT_ROOT) not in sys.path:
 os.chdir(PROJECT_ROOT)
 
 from scripts.run_rag_vs_llm_once import main as run_once
+from config.settings import RAG_K_BY_LANGUAGE
 from utils.helpers import save_json
 
 
@@ -44,23 +45,35 @@ def _collect_lang_metric(seed_results, language, path):
     return values
 
 
-def main(num_examples, seeds):
+def main(num_examples, seeds, use_language_k=False):
     languages = ["swa", "yor", "kin"]
     all_seed_results = []
+    k_by_language = RAG_K_BY_LANGUAGE if use_language_k else None
 
     print("=" * 84)
     print("MULTI-SEED RAG VS LLM-ONLY (E5)")
     print("=" * 84)
     print("Seeds: {}".format(seeds))
     print("Examples per language: {}".format(num_examples))
+    if use_language_k:
+        print("Language-specific k enabled: {}".format(k_by_language))
 
     for seed in seeds:
         print("\n" + "#" * 84)
         print("Running seed {}".format(seed))
         print("#" * 84)
 
-        per_seed_file = "results/rag_vs_llm_only_e5_{}_seed{}.json".format(num_examples, seed)
-        result = run_once(num_examples=num_examples, seed=seed, output_file=per_seed_file)
+        if use_language_k:
+            per_seed_file = "results/rag_vs_llm_only_e5_tuned_{}_seed{}.json".format(num_examples, seed)
+        else:
+            per_seed_file = "results/rag_vs_llm_only_e5_{}_seed{}.json".format(num_examples, seed)
+
+        result = run_once(
+            num_examples=num_examples,
+            seed=seed,
+            output_file=per_seed_file,
+            k_by_language=k_by_language,
+        )
         all_seed_results.append(result)
 
     aggregated = {
@@ -69,6 +82,7 @@ def main(num_examples, seeds):
             "seeds": seeds,
             "num_seeds": len(seeds),
             "rag_embedding": "e5-base",
+            "k_by_language": k_by_language or {lang: 10 for lang in languages},
         },
         "by_language": {},
     }
@@ -134,7 +148,10 @@ def main(num_examples, seeds):
             )
         )
 
-    output_file = PROJECT_ROOT / "results/rag_vs_llm_only_e5_multiseed_summary.json"
+    if use_language_k:
+        output_file = PROJECT_ROOT / "results/rag_vs_llm_only_e5_tuned_multiseed_summary.json"
+    else:
+        output_file = PROJECT_ROOT / "results/rag_vs_llm_only_e5_multiseed_summary.json"
     save_json(aggregated, str(output_file))
     print("\nSaved aggregated results: {}".format(output_file))
 
@@ -149,6 +166,11 @@ if __name__ == "__main__":
         default=[42, 43, 44, 45, 46],
         help="List of deterministic seeds",
     )
+    parser.add_argument(
+        "--use-language-k",
+        action="store_true",
+        help="Use tuned per-language k from config.RAG_K_BY_LANGUAGE",
+    )
     args = parser.parse_args()
 
-    main(num_examples=args.num_examples, seeds=args.seeds)
+    main(num_examples=args.num_examples, seeds=args.seeds, use_language_k=args.use_language_k)

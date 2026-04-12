@@ -22,7 +22,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 os.chdir(PROJECT_ROOT)
 
-from config.settings import EMBEDDING_MODELS
+from config.settings import EMBEDDING_MODELS, RETRIEVAL_K
 from data.dataset import AfriQALoader
 from evaluation.metrics import Evaluator, RetrieverEvaluator
 from pipeline.rag_pipeline import RAGPipeline
@@ -71,7 +71,7 @@ def _run_mode(pipeline, examples, evaluator, capture_docs):
     }
 
 
-def main(num_examples, seed, output_file=None):
+def main(num_examples, seed, output_file=None, k_by_language=None):
     """Run RAG vs LLM-only comparison using fixed E5 retriever for RAG mode."""
     languages = ["swa", "yor", "kin"]
     e5_model = EMBEDDING_MODELS.get("e5-base", "intfloat/multilingual-e5-base")
@@ -83,6 +83,10 @@ def main(num_examples, seed, output_file=None):
     print("Examples per language: {}".format(num_examples))
     print("Sampling seed: {}".format(seed))
     print("RAG embedding: e5-base ({})".format(e5_model))
+    if k_by_language:
+        print("Language-specific k: {}".format(k_by_language))
+    else:
+        print("Global k: {}".format(RETRIEVAL_K))
 
     loader = AfriQALoader()
     results = {
@@ -92,6 +96,7 @@ def main(num_examples, seed, output_file=None):
             "seed": seed,
             "rag_embedding": "e5-base",
             "rag_embedding_model": e5_model,
+            "k_by_language": k_by_language or {lang: RETRIEVAL_K for lang in languages},
         },
         "by_language": {},
     }
@@ -108,7 +113,8 @@ def main(num_examples, seed, output_file=None):
         print("Running RAG mode...")
         rag_pipeline = RAGPipeline(language, use_retrieval=True, embedding_model=e5_model)
         rag_evaluator = Evaluator(language=language)
-        rag_out = _run_mode(rag_pipeline, examples, rag_evaluator, capture_docs=True)
+        rag_k = int((k_by_language or {}).get(language, RETRIEVAL_K))
+        rag_out = _run_mode(rag_pipeline, examples, rag_evaluator, retrieval_k=rag_k, capture_docs=True)
         rag_retriever_metrics = RetrieverEvaluator.evaluate_retrieval(rag_out["retrieved_docs"])
 
         # LLM-only run (no retrieval)
