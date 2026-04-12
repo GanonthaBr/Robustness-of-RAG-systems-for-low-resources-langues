@@ -40,7 +40,7 @@ def _sample_examples(examples, num_examples, seed):
     return [examples[i] for i in indices]
 
 
-def _run_mode(pipeline, examples, evaluator, capture_docs):
+def _run_mode(pipeline, examples, evaluator, capture_docs, retrieval_k=None):
     """Run a single mode (RAG or LLM-only) and return predictions + docs + eval metrics."""
     predictions = []
     golds_local = []
@@ -49,7 +49,10 @@ def _run_mode(pipeline, examples, evaluator, capture_docs):
 
     for i, ex in enumerate(examples):
         print("  Example {}/{}".format(i + 1, len(examples)))
-        result = pipeline.run(ex["question"], return_docs=capture_docs)
+        if retrieval_k is None:
+            result = pipeline.run(ex["question"], return_docs=capture_docs)
+        else:
+            result = pipeline.run(ex["question"], k=int(retrieval_k), return_docs=capture_docs)
         predictions.append(result["answer"])
 
         answers = ex.get("answers", "")
