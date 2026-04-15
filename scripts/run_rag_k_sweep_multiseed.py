@@ -96,6 +96,7 @@ def _evaluate_mode(pipeline, examples, evaluator, retrieval_k=None, capture_docs
 def main(num_examples, seeds, k_values, llm_model='afriqueqwen-8b'):
     languages = ["swa", "yor", "kin"]
     e5_model = EMBEDDING_MODELS.get("e5-base", "intfloat/multilingual-e5-base")
+    llm_tag = str(llm_model).replace("/", "-").replace(":", "-")
 
     print("=" * 88)
     print("RAG K-SWEEP VS LLM-ONLY (MULTI-SEED, E5)")
@@ -163,7 +164,7 @@ def main(num_examples, seeds, k_values, llm_model='afriqueqwen-8b'):
             }
 
         per_seed.append(seed_result)
-        save_json(seed_result, str(PROJECT_ROOT / "results/rag_k_sweep_seed{}.json".format(seed)))
+        save_json(seed_result, str(PROJECT_ROOT / "results/rag_k_sweep_{}_seed{}.json".format(llm_tag, seed)))
 
     aggregated = {
         "metadata": {
@@ -240,9 +241,10 @@ def main(num_examples, seeds, k_values, llm_model='afriqueqwen-8b'):
                 )
             )
 
-    output_file = PROJECT_ROOT / "results/rag_k_sweep_multiseed_summary.json"
+    output_file = PROJECT_ROOT / "results/rag_k_sweep_{}_multiseed_summary.json".format(llm_tag)
     save_json(aggregated, str(output_file))
     print("\nSaved aggregated summary: {}".format(output_file))
+    return str(output_file)
 
 
 if __name__ == "__main__":
@@ -269,6 +271,38 @@ if __name__ == "__main__":
         default='afriqueqwen-8b',
         help="LLM model key from config.LLM_MODELS",
     )
+    parser.add_argument(
+        "--all-llms",
+        action="store_true",
+        help="Run the full experiment for every model listed in config.LLM_MODELS",
+    )
     args = parser.parse_args()
 
-    main(num_examples=args.num_examples, seeds=args.seeds, k_values=args.k_values, llm_model=args.llm_model)
+    if args.all_llms:
+        combined = {
+            "metadata": {
+                "num_examples": args.num_examples,
+                "seeds": args.seeds,
+                "k_values": args.k_values,
+                "llm_models": list(LLM_MODELS.keys()),
+            },
+            "outputs": {},
+        }
+
+        for llm_key in LLM_MODELS.keys():
+            print("\n" + "=" * 96)
+            print("RUNNING MODEL: {}".format(llm_key))
+            print("=" * 96)
+            out_path = main(
+                num_examples=args.num_examples,
+                seeds=args.seeds,
+                k_values=args.k_values,
+                llm_model=llm_key,
+            )
+            combined["outputs"][llm_key] = out_path
+
+        combined_file = PROJECT_ROOT / "results/rag_k_sweep_all_llms_multiseed_index.json"
+        save_json(combined, str(combined_file))
+        print("\nSaved all-LLM index: {}".format(combined_file))
+    else:
+        main(num_examples=args.num_examples, seeds=args.seeds, k_values=args.k_values, llm_model=args.llm_model)

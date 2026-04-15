@@ -50,6 +50,7 @@ def main(num_examples, seeds, use_language_k=False, llm_model='afriqueqwen-8b'):
     languages = ["swa", "yor", "kin"]
     all_seed_results = []
     k_by_language = RAG_K_BY_LANGUAGE if use_language_k else None
+    llm_tag = str(llm_model).replace("/", "-").replace(":", "-")
 
     print("=" * 84)
     print("MULTI-SEED RAG VS LLM-ONLY (E5)")
@@ -66,9 +67,9 @@ def main(num_examples, seeds, use_language_k=False, llm_model='afriqueqwen-8b'):
         print("#" * 84)
 
         if use_language_k:
-            per_seed_file = "results/rag_vs_llm_only_e5_tuned_{}_seed{}.json".format(num_examples, seed)
+            per_seed_file = "results/rag_vs_llm_only_e5_tuned_{}_{}_seed{}.json".format(num_examples, llm_tag, seed)
         else:
-            per_seed_file = "results/rag_vs_llm_only_e5_{}_seed{}.json".format(num_examples, seed)
+            per_seed_file = "results/rag_vs_llm_only_e5_{}_{}_seed{}.json".format(num_examples, llm_tag, seed)
 
         result = run_once(
             num_examples=num_examples,
@@ -153,9 +154,9 @@ def main(num_examples, seeds, use_language_k=False, llm_model='afriqueqwen-8b'):
         )
 
     if use_language_k:
-        output_file = PROJECT_ROOT / "results/rag_vs_llm_only_e5_tuned_multiseed_summary.json"
+        output_file = PROJECT_ROOT / "results/rag_vs_llm_only_e5_tuned_{}_multiseed_summary.json".format(llm_tag)
     else:
-        output_file = PROJECT_ROOT / "results/rag_vs_llm_only_e5_multiseed_summary.json"
+        output_file = PROJECT_ROOT / "results/rag_vs_llm_only_e5_{}_multiseed_summary.json".format(llm_tag)
     save_json(aggregated, str(output_file))
     print("\nSaved aggregated results: {}".format(output_file))
 

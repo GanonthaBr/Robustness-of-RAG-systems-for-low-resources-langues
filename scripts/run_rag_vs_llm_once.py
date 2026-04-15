@@ -187,12 +187,14 @@ def main(num_examples, seed, output_file=None, k_by_language=None, llm_model='af
             )
         )
 
+    llm_tag = str(llm_model).replace("/", "-").replace(":", "-")
+
     if output_file:
         output_path = Path(output_file)
         if not output_path.is_absolute():
             output_path = PROJECT_ROOT / output_path
     else:
-        output_path = PROJECT_ROOT / "results/rag_vs_llm_only_e5_100.json"
+        output_path = PROJECT_ROOT / "results/rag_vs_llm_only_e5_100_{}.json".format(llm_tag)
 
     save_json(results, str(output_path))
     print("\nSaved combined results: {}".format(output_path))
