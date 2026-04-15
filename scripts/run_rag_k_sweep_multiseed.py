@@ -23,7 +23,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 os.chdir(PROJECT_ROOT)
 
-from config.settings import EMBEDDING_MODELS
+from config.settings import EMBEDDING_MODELS, LLM_MODELS
 from data.dataset import AfriQALoader
 from evaluation.metrics import Evaluator, RetrieverEvaluator
 from pipeline.rag_pipeline import RAGPipeline
@@ -88,7 +88,7 @@ def _evaluate_mode(pipeline, examples, evaluator, retrieval_k=None, capture_docs
     }
 
 
-def main(num_examples, seeds, k_values):
+def main(num_examples, seeds, k_values, llm_model='afriqueqwen-8b'):
     languages = ["swa", "yor", "kin"]
     e5_model = EMBEDDING_MODELS.get("e5-base", "intfloat/multilingual-e5-base")
 
@@ -100,6 +100,7 @@ def main(num_examples, seeds, k_values):
     print("Seeds: {}".format(seeds))
     print("K values: {}".format(k_values))
     print("RAG embedding: e5-base ({})".format(e5_model))
+    print("LLM model: {}".format(llm_model))
 
     loader = AfriQALoader()
     per_seed = []
@@ -122,12 +123,12 @@ def main(num_examples, seeds, k_values):
             all_examples = loader.load(language, split="test", num_samples=None)
             examples = _sample_examples(all_examples, num_examples, seed)
 
-            llm_pipeline = RAGPipeline(language, use_retrieval=False)
+            llm_pipeline = RAGPipeline(language, use_retrieval=False, llm_model=llm_model)
             llm_eval = Evaluator(language=language)
             print("  Running LLM-only baseline...")
             llm_metrics = _evaluate_mode(llm_pipeline, examples, llm_eval, retrieval_k=None, capture_docs=False)
 
-            rag_pipeline = RAGPipeline(language, use_retrieval=True, embedding_model=e5_model)
+            rag_pipeline = RAGPipeline(language, use_retrieval=True, embedding_model=e5_model, llm_model=llm_model)
             rag_eval = Evaluator(language=language)
 
             rag_by_k = {}
@@ -167,6 +168,7 @@ def main(num_examples, seeds, k_values):
             "k_values": k_values,
             "rag_embedding": "e5-base",
             "rag_embedding_model": e5_model,
+            "llm_model": llm_model,
         },
         "by_language": {},
     }
@@ -255,6 +257,13 @@ if __name__ == "__main__":
         default=[3, 5, 10],
         help="RAG retrieval k values to test",
     )
+    parser.add_argument(
+        "--llm-model",
+        type=str,
+        choices=list(LLM_MODELS.keys()),
+        default='afriqueqwen-8b',
+        help="LLM model key from config.LLM_MODELS",
+    )
     args = parser.parse_args()
 
-    main(num_examples=args.num_examples, seeds=args.seeds, k_values=args.k_values)
+    main(num_examples=args.num_examples, seeds=args.seeds, k_values=args.k_values, llm_model=args.llm_model)

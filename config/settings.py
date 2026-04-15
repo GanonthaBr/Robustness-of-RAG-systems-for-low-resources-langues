@@ -40,8 +40,14 @@ EMBEDDING_MODELS = {
 EMBEDDING_MODEL = "intfloat/multilingual-e5-base"
 
 # Generation settings
-LLM_MODEL = "McGill-NLP/AfriqueQwen-8B"  # or -1.5B for testing
-MAX_NEW_TOKENS = 100
+LLM_MODELS = {
+    'afriqueqwen-8b': 'McGill-NLP/AfriqueQwen-8B',
+    'qwen2.5-7b-instruct': 'Qwen/Qwen2.5-7B-Instruct',
+}
+
+# Default LLM model
+LLM_MODEL = "McGill-NLP/AfriqueQwen-8B"
+MAX_NEW_TOKENS = 512
 TEMPERATURE = 0.7
 
 # Dataset settings

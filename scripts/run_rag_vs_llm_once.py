@@ -22,7 +22,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 os.chdir(PROJECT_ROOT)
 
-from config.settings import EMBEDDING_MODELS, RETRIEVAL_K
+from config.settings import EMBEDDING_MODELS, LLM_MODELS, RETRIEVAL_K
 from data.dataset import AfriQALoader
 from evaluation.metrics import Evaluator, RetrieverEvaluator
 from pipeline.rag_pipeline import RAGPipeline
@@ -74,7 +74,7 @@ def _run_mode(pipeline, examples, evaluator, capture_docs, retrieval_k=None):
     }
 
 
-def main(num_examples, seed, output_file=None, k_by_language=None):
+def main(num_examples, seed, output_file=None, k_by_language=None, llm_model='afriqueqwen-8b'):
     """Run RAG vs LLM-only comparison using fixed E5 retriever for RAG mode."""
     languages = ["swa", "yor", "kin"]
     e5_model = EMBEDDING_MODELS.get("e5-base", "intfloat/multilingual-e5-base")
@@ -86,6 +86,7 @@ def main(num_examples, seed, output_file=None, k_by_language=None):
     print("Examples per language: {}".format(num_examples))
     print("Sampling seed: {}".format(seed))
     print("RAG embedding: e5-base ({})".format(e5_model))
+    print("LLM model: {}".format(llm_model))
     if k_by_language:
         print("Language-specific k: {}".format(k_by_language))
     else:
@@ -99,6 +100,7 @@ def main(num_examples, seed, output_file=None, k_by_language=None):
             "seed": seed,
             "rag_embedding": "e5-base",
             "rag_embedding_model": e5_model,
+            "llm_model": llm_model,
             "k_by_language": k_by_language or {lang: RETRIEVAL_K for lang in languages},
         },
         "by_language": {},
@@ -114,7 +116,7 @@ def main(num_examples, seed, output_file=None, k_by_language=None):
 
         # RAG run (with E5 retrieval)
         print("Running RAG mode...")
-        rag_pipeline = RAGPipeline(language, use_retrieval=True, embedding_model=e5_model)
+        rag_pipeline = RAGPipeline(language, use_retrieval=True, embedding_model=e5_model, llm_model=llm_model)
         rag_evaluator = Evaluator(language=language)
         rag_k = int((k_by_language or {}).get(language, RETRIEVAL_K))
         rag_out = _run_mode(rag_pipeline, examples, rag_evaluator, retrieval_k=rag_k, capture_docs=True)
@@ -122,7 +124,7 @@ def main(num_examples, seed, output_file=None, k_by_language=None):
 
         # LLM-only run (no retrieval)
         print("Running LLM-only mode...")
-        llm_pipeline = RAGPipeline(language, use_retrieval=False)
+        llm_pipeline = RAGPipeline(language, use_retrieval=False, llm_model=llm_model)
         llm_evaluator = Evaluator(language=language)
         llm_out = _run_mode(llm_pipeline, examples, llm_evaluator, capture_docs=False)
 
@@ -198,6 +200,13 @@ if __name__ == "__main__":
     parser.add_argument("--num-examples", type=int, default=100, help="Examples per language")
     parser.add_argument("--seed", type=int, default=42, help="Deterministic sampling seed")
     parser.add_argument("--output-file", type=str, default=None, help="Optional output JSON path")
+    parser.add_argument(
+        "--llm-model",
+        type=str,
+        choices=list(LLM_MODELS.keys()),
+        default='afriqueqwen-8b',
+        help="LLM model key from config.LLM_MODELS",
+    )
     args = parser.parse_args()
 
-    main(num_examples=args.num_examples, seed=args.seed, output_file=args.output_file)
+    main(num_examples=args.num_examples, seed=args.seed, output_file=args.output_file, llm_model=args.llm_model)

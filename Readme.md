@@ -6,3 +6,7 @@ The project workflow begins by selecting 200 test queries each for English, Swah
 
 ## Env
 source .venv310/bin/activate
+
+## LLM Comparison Setup
+
+You can compare multiple free/open Hugging Face LLMs by selecting a model key from `LLM_MODELS` in `config/settings.py` and passing it via script flags (for example `--llm-model qwen2.5-7b-instruct`).

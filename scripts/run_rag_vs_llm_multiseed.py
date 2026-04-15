@@ -21,7 +21,7 @@ if str(PROJECT_ROOT) not in sys.path:
 os.chdir(PROJECT_ROOT)
 
 from scripts.run_rag_vs_llm_once import main as run_once
-from config.settings import RAG_K_BY_LANGUAGE
+from config.settings import LLM_MODELS, RAG_K_BY_LANGUAGE
 from utils.helpers import save_json
 
 
@@ -45,7 +45,7 @@ def _collect_lang_metric(seed_results, language, path):
     return values
 
 
-def main(num_examples, seeds, use_language_k=False):
+def main(num_examples, seeds, use_language_k=False, llm_model='afriqueqwen-8b'):
     languages = ["swa", "yor", "kin"]
     all_seed_results = []
     k_by_language = RAG_K_BY_LANGUAGE if use_language_k else None
@@ -55,6 +55,7 @@ def main(num_examples, seeds, use_language_k=False):
     print("=" * 84)
     print("Seeds: {}".format(seeds))
     print("Examples per language: {}".format(num_examples))
+    print("LLM model: {}".format(llm_model))
     if use_language_k:
         print("Language-specific k enabled: {}".format(k_by_language))
 
@@ -73,6 +74,7 @@ def main(num_examples, seeds, use_language_k=False):
             seed=seed,
             output_file=per_seed_file,
             k_by_language=k_by_language,
+            llm_model=llm_model,
         )
         all_seed_results.append(result)
 
@@ -82,6 +84,7 @@ def main(num_examples, seeds, use_language_k=False):
             "seeds": seeds,
             "num_seeds": len(seeds),
             "rag_embedding": "e5-base",
+            "llm_model": llm_model,
             "k_by_language": k_by_language or {lang: 10 for lang in languages},
         },
         "by_language": {},
@@ -171,6 +174,13 @@ if __name__ == "__main__":
         action="store_true",
         help="Use tuned per-language k from config.RAG_K_BY_LANGUAGE",
     )
+    parser.add_argument(
+        "--llm-model",
+        type=str,
+        choices=list(LLM_MODELS.keys()),
+        default='afriqueqwen-8b',
+        help="LLM model key from config.LLM_MODELS",
+    )
     args = parser.parse_args()
 
-    main(num_examples=args.num_examples, seeds=args.seeds, use_language_k=args.use_language_k)
+    main(num_examples=args.num_examples, seeds=args.seeds, use_language_k=args.use_language_k, llm_model=args.llm_model)

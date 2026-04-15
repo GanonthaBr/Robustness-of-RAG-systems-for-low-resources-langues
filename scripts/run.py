@@ -17,13 +17,13 @@ os.chdir(PROJECT_ROOT)
 from data.dataset import AfriQALoader
 from pipeline.rag_pipeline import RAGPipeline
 from evaluation.metrics import Evaluator, RetrieverEvaluator
-from config.settings import EMBEDDING_MODELS
+from config.settings import EMBEDDING_MODELS, LLM_MODELS
 from utils.helpers import save_json
 
 load_dotenv(PROJECT_ROOT / '.env')
 
 
-def main(embedding_model=None):
+def main(embedding_model=None, llm_model='afriqueqwen-8b'):
     """Run minimal test with enhanced evaluation
     
     Args:
@@ -48,6 +48,7 @@ def main(embedding_model=None):
     print("AFRI-RAG Enhanced Evaluation")
     print(f"Languages: {languages}")
     print(f"Examples per language: {num_examples}")
+    print(f"LLM model: {llm_model}")
  
     for language in languages:
         print("\n")
@@ -58,7 +59,7 @@ def main(embedding_model=None):
         examples = loader.load(language, split='test', num_samples=num_examples)
 
         # 2) Initialize pipeline
-        pipeline = RAGPipeline(language, use_retrieval=True, embedding_model=model_path)
+        pipeline = RAGPipeline(language, use_retrieval=True, embedding_model=model_path, llm_model=llm_model)
 
         # 3) Initialize evaluator
         evaluator = Evaluator(language=language)
@@ -144,6 +145,13 @@ if __name__ == "__main__":
         default=None,
         help=f"Embedding model to use. Available: {', '.join(EMBEDDING_MODELS.keys())}. Default: intfloat/multilingual-e5-base"
     )
+    parser.add_argument(
+        '--llm-model',
+        type=str,
+        choices=list(LLM_MODELS.keys()),
+        default='afriqueqwen-8b',
+        help=f"LLM model to use. Available: {', '.join(LLM_MODELS.keys())}."
+    )
     
     args = parser.parse_args()
-    main(embedding_model=args.embedding_model)
+    main(embedding_model=args.embedding_model, llm_model=args.llm_model)
