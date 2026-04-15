@@ -4,7 +4,6 @@
 import argparse
 import os
 import random
-import statistics
 import sys
 
 if sys.version_info[0] < 3:
@@ -12,6 +11,8 @@ if sys.version_info[0] < 3:
         "run_rag_k_sweep_multiseed.py requires Python 3. "
         "Run with 'python3 scripts/run_rag_k_sweep_multiseed.py'."
     )
+
+import statistics
 
 from pathlib import Path
 

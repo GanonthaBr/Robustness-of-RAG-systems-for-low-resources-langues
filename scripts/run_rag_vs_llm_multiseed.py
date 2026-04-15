@@ -3,7 +3,6 @@
 
 import argparse
 import os
-import statistics
 import sys
 
 if sys.version_info[0] < 3:
@@ -11,6 +10,8 @@ if sys.version_info[0] < 3:
         "run_rag_vs_llm_multiseed.py requires Python 3. "
         "Run with 'python3 scripts/run_rag_vs_llm_multiseed.py'."
     )
+
+import statistics
 
 from pathlib import Path
 
