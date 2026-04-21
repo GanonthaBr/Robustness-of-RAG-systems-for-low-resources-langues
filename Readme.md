@@ -21,3 +21,43 @@ This produces:
 
 - `results/llm_comparison_from_k_sweep.json`
 - `results/llm_comparison_from_k_sweep.md`
+
+## Robustness Full Run (Checkpoint + Progress)
+
+Launch one resumable robustness run for all configured LLMs:
+
+```bash
+python3 scripts/run_robustness_multiseed.py --all-llms --num-examples 50 --seeds 42 43 44 --languages swa yor kin
+```
+
+Optional faster run (single model):
+
+```bash
+python3 scripts/run_robustness_multiseed.py --llm-model afriqueqwen-8b --num-examples 50 --seeds 42 43 44
+```
+
+What it writes:
+
+- Per-condition checkpoints: `results/robustness_checkpoints/robustness_<model>_<lang>_seed<seed>_<condition>.json`
+- Resume state file: `results/robustness_checkpoints/robustness_run_state.json`
+- Per-model summary: `results/robustness_<model>_multiseed_summary.json`
+- Global run index: `results/robustness_all_llms_index.json`
+
+Monitoring during run:
+
+- Console progress logs include percent complete, elapsed time, and ETA
+- Resume works by default; use `--no-resume` to force rerun
+
+Post-run processing (after robustness run finishes):
+
+```bash
+python3 scripts/postprocess_robustness_results.py --index-file results/robustness_all_llms_index.json
+python3 scripts/build_final_paper_draft.py --clean-file results/llm_comparison_from_k_sweep.json --robustness-file results/robustness_postrun_summary.json
+```
+
+Post-run outputs:
+
+- `results/robustness_postrun_summary.json`
+- `results/robustness_postrun_long.csv`
+- `results/robustness_postrun_tables.md`
+- `results/final_paper_results_draft.md`
