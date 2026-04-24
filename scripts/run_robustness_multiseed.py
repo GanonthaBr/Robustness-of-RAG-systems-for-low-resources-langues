@@ -496,8 +496,8 @@ if __name__ == "__main__":
         "--seeds",
         type=int,
         nargs="+",
-        default=[42, 43, 44],
-        help="List of deterministic seeds",
+        default=[42],
+        help="List of deterministic seeds (default: [42])",
     )
     parser.add_argument(
         "--languages",

@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "llm_model": "qwen2.5-7b-instruct",
+    "llm_model_path": "Qwen/Qwen2.5-7B-Instruct",
+    "language": "swa",
+    "seed": 42,
+    "num_examples": 50,
+    "condition": "irrelevant_10",
+    "noise_type": "irrelevant",
+    "severity": 10,
+    "best_k": 3,
+    "embedding_model": "intfloat/multilingual-e5-base"
+  },
+  "metrics": {
+    "contains_gold_local": 0.12,
+    "contains_gold_english": 0.14,
+    "abstention_rate": 0.02,
+    "correct_rate": 0.14,
+    "precision_on_answered": 0.14,
+    "num_samples": 50,
+    "num_abstained": 1
+  }
+}
