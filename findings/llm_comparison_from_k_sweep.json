@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "source_index": "results/rag_k_sweep_all_llms_multiseed_index.json",
+    "models": [
+      "afriqueqwen-8b",
+      "qwen2.5-7b-instruct"
+    ]
+  },
+  "model_keys": [
+    "afriqueqwen-8b",
+    "qwen2.5-7b-instruct"
+  ],
+  "languages": [
+    "kin",
+    "swa",
+    "yor"
+  ],
+  "by_language": {
+    "kin": {
+      "afriqueqwen-8b": {
+        "llm_only_mean": 0.124,
+        "best_k": "10",
+        "best_rag_mean": 0.178,
+        "best_delta_mean": 0.054
+      },
+      "qwen2.5-7b-instruct": {
+        "llm_only_mean": 0.018,
+        "best_k": "10",
+        "best_rag_mean": 0.098,
+        "best_delta_mean": 0.08
+      }
+    },
+    "swa": {
+      "afriqueqwen-8b": {
+        "llm_only_mean": 0.162,
+        "best_k": "10",
+        "best_rag_mean": 0.23600000000000002,
+        "best_delta_mean": 0.07400000000000001
+      },
+      "qwen2.5-7b-instruct": {
+        "llm_only_mean": 0.072,
+        "best_k": "3",
+        "best_rag_mean": 0.154,
+        "best_delta_mean": 0.082
+      }
+    },
+    "yor": {
+      "afriqueqwen-8b": {
+        "llm_only_mean": 0.11000000000000001,
+        "best_k": "3",
+        "best_rag_mean": 0.14200000000000002,
+        "best_delta_mean": 0.031999999999999994
+      },
+      "qwen2.5-7b-instruct": {
+        "llm_only_mean": 0.062,
+        "best_k": "3",
+        "best_rag_mean": 0.124,
+        "best_delta_mean": 0.062
+      }
+    }
+  }
+}

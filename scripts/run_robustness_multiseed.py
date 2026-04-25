@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run robustness experiments with checkpointing and progress monitoring."""
+"""Run robustness experiments with checkpointing, progress monitoring, and resource management."""
 
 import argparse
 import copy
@@ -10,6 +10,8 @@ import statistics
 import sys
 import time
 from pathlib import Path
+
+import torch
 
 if sys.version_info[0] < 3:
     raise RuntimeError(
@@ -55,6 +57,10 @@ NOISE_TYPES = [
 SEVERITIES = [10, 30, 50]
 
 
+# ---------------------------------------------------------------------------
+# Progress tracker
+# ---------------------------------------------------------------------------
+
 class ProgressTracker:
     """Track run progress with ETA."""
 
@@ -94,6 +100,10 @@ class ProgressTracker:
         )
 
 
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
 def _model_tag(model_key):
     return str(model_key).replace("/", "-").replace(":", "-")
 
@@ -130,7 +140,6 @@ def _sample_examples(examples, num_examples, seed):
 
 
 def _translation_artifact_text(text):
-    # Deterministic, lightweight synthetic corruption.
     repl = {
         "a": "", "e": "", "i": "", "o": "", "u": "",
         "A": "", "E": "", "I": "", "O": "", "U": "",
@@ -227,6 +236,30 @@ def _build_golds(examples):
     return golds_local, golds_en
 
 
+def _free_gpu_memory():
+    """Explicitly release GPU cache between examples and model switches."""
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+        torch.cuda.synchronize()
+
+
+def _unload_generator(generator):
+    """Unload model from GPU memory before loading next model."""
+    print("Unloading model from GPU...")
+    del generator.model
+    del generator.tokenizer
+    _free_gpu_memory()
+    print("GPU memory freed.")
+    if torch.cuda.is_available():
+        allocated = torch.cuda.memory_allocated() / 1024 ** 3
+        reserved = torch.cuda.memory_reserved() / 1024 ** 3
+        print("  Allocated: {:.2f} GB | Reserved: {:.2f} GB".format(allocated, reserved))
+
+
+# ---------------------------------------------------------------------------
+# Generation
+# ---------------------------------------------------------------------------
+
 def _generate_for_condition(
     generator,
     prompt_manager,
@@ -266,16 +299,29 @@ def _generate_for_condition(
                 include_docs=True,
             )
 
+        # Confidence scoring is disabled during robustness sweep to save VRAM.
         result = generator.generate(
             prompt=prompt,
             max_new_tokens=max_new_tokens,
             temperature=temperature,
+            return_confidence=False,
         )
         predictions.append(result.get("text", ""))
-        progress.update(1, label="{} {} ex {}/{}".format(language, cond_name, i + 1, len(examples)))
+
+        # Free GPU cache after every example to prevent VRAM accumulation.
+        _free_gpu_memory()
+
+        progress.update(
+            1,
+            label="{} {} ex {}/{}".format(language, cond_name, i + 1, len(examples)),
+        )
 
     return predictions
 
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
 
 def main(
     num_examples,
@@ -306,23 +352,32 @@ def main(
     state = _ensure_state(state_path)
     completed = set(state.get("completed_blocks", []))
 
-    total_units = len(llm_models) * len(languages) * len(seeds) * len(conditions) * num_examples
+    total_units = (
+        len(llm_models) * len(languages) * len(seeds) * len(conditions) * num_examples
+    )
     progress = ProgressTracker(total_units=total_units)
 
     print("=" * 96)
     print("ROBUSTNESS MULTI-SEED RUN")
     print("=" * 96)
-    print("Models: {}".format(llm_models))
-    print("Languages: {}".format(languages))
-    print("Seeds: {}".format(seeds))
-    print("Conditions: {}".format([c["name"] for c in conditions]))
-    print("Examples/language: {}".format(num_examples))
-    print("Embedding model: {}".format(embedding_model))
-    print("Max new tokens: {}".format(max_new_tokens))
-    print("Temperature: {}".format(temperature))
-    print("Resume mode: {}".format(resume))
+    print("Models      : {}".format(llm_models))
+    print("Languages   : {}".format(languages))
+    print("Seeds       : {}".format(seeds))
+    print("Conditions  : {}".format([c["name"] for c in conditions]))
+    print("Examples/lang: {}".format(num_examples))
+    print("Embedding   : {}".format(embedding_model))
+    print("Max tokens  : {}".format(max_new_tokens))
+    print("Temperature : {}".format(temperature))
+    print("Resume mode : {}".format(resume))
 
-    # Build retriever cache once per language for speed.
+    if torch.cuda.is_available():
+        print("GPU         : {}".format(torch.cuda.get_device_name(0)))
+        total_vram = torch.cuda.get_device_properties(0).total_memory / 1024 ** 3
+        print("VRAM total  : {:.1f} GB".format(total_vram))
+
+    # ------------------------------------------------------------------
+    # Build retriever cache once per language (shared across all models).
+    # ------------------------------------------------------------------
     retriever_by_language = {}
     passage_pool_by_language = {}
     for language in languages:
@@ -333,19 +388,27 @@ def main(
         retriever.index_corpus(passage_pool)
         retriever_by_language[language] = retriever
         passage_pool_by_language[language] = passage_pool
+        print("  Passages indexed: {}".format(len(passage_pool)))
 
     all_outputs = {}
 
-    for llm_key in llm_models:
+    for llm_idx, llm_key in enumerate(llm_models):
         model_name = _resolve_model_name(llm_key)
         llm_tag = _model_tag(llm_key)
 
         print("\n" + "#" * 96)
-        print("MODEL: {} -> {}".format(llm_key, model_name))
+        print("MODEL {}/{}: {} -> {}".format(llm_idx + 1, len(llm_models), llm_key, model_name))
         print("#" * 96)
 
-        print("Loading generator once for model {}...".format(llm_key))
+        if torch.cuda.is_available():
+            allocated = torch.cuda.memory_allocated() / 1024 ** 3
+            print("GPU memory before load: {:.2f} GB allocated".format(allocated))
+
         generator = AfriqueQwenGenerator(model_name=model_name)
+
+        if torch.cuda.is_available():
+            allocated = torch.cuda.memory_allocated() / 1024 ** 3
+            print("GPU memory after load : {:.2f} GB allocated".format(allocated))
 
         per_model_records = []
 
@@ -356,7 +419,7 @@ def main(
             passage_pool = passage_pool_by_language[language]
             best_k = BEST_K_BY_MODEL.get(llm_key, {}).get(language, 5)
 
-            print("\nLanguage {} | best_k={}".format(language, best_k))
+            print("\nLanguage: {} | best_k={}".format(language, best_k))
 
             all_examples = loader.load(language, split="test", num_samples=None)
 
@@ -365,23 +428,31 @@ def main(
                 examples = _sample_examples(all_examples, num_examples, seed)
                 golds_local, golds_en = _build_golds(examples)
 
-                # Retrieve once per example for all RAG conditions.
+                # Retrieve once per example; reuse across all conditions.
                 retrieved_docs = []
                 for ex in examples:
                     retrieved_docs.append(retriever.retrieve(ex["question"], k=int(best_k)))
 
                 for condition in conditions:
                     cond_name = condition["name"]
-                    block_id = "{}|{}|seed{}|{}".format(llm_key, language, seed, cond_name)
+                    block_id = "{}|{}|seed{}|{}".format(
+                        llm_key, language, seed, cond_name
+                    )
                     block_file = checkpoint_root / (
-                        "robustness_{}_{}_seed{}_{}.json".format(llm_tag, language, seed, cond_name)
+                        "robustness_{}_{}_seed{}_{}.json".format(
+                            llm_tag, language, seed, cond_name
+                        )
                     )
 
                     if resume and block_id in completed and block_file.exists():
                         print("Skipping completed block: {}".format(block_id))
                         data = load_json(str(block_file))
                         per_model_records.append(data)
-                        progress.update(num_examples, label="skipped {}".format(block_id), force=True)
+                        progress.update(
+                            num_examples,
+                            label="skipped {}".format(block_id),
+                            force=True,
+                        )
                         continue
 
                     print("Running {}".format(block_id))
@@ -399,7 +470,9 @@ def main(
                         temperature=temperature,
                     )
 
-                    metrics = evaluator.evaluate_batch(predictions, golds_local, golds_en)
+                    metrics = evaluator.evaluate_batch(
+                        predictions, golds_local, golds_en
+                    )
 
                     record = {
                         "metadata": {
@@ -422,9 +495,13 @@ def main(
                     completed.add(block_id)
                     state["completed_blocks"] = sorted(list(completed))
                     _save_state(state_path, state)
-                    progress.update(0, label="completed {}".format(block_id), force=True)
+                    progress.update(
+                        0, label="completed {}".format(block_id), force=True
+                    )
 
+        # ------------------------------------------------------------------
         # Aggregate model summary
+        # ------------------------------------------------------------------
         model_summary = {
             "metadata": {
                 "llm_model": llm_key,
@@ -447,7 +524,9 @@ def main(
                 cond_records = [
                     r for r in lang_records if r["metadata"]["condition"] == cname
                 ]
-                values = [float(r["metrics"].get("correct_rate", 0.0)) for r in cond_records]
+                values = [
+                    float(r["metrics"].get("correct_rate", 0.0)) for r in cond_records
+                ]
                 by_condition[cname] = {
                     "correct_rate": {
                         "mean": _mean(values),
@@ -456,18 +535,36 @@ def main(
                     }
                 }
 
-            clean_mean = by_condition.get("clean", {}).get("correct_rate", {}).get("mean", 0.0)
+            clean_mean = (
+                by_condition.get("clean", {})
+                .get("correct_rate", {})
+                .get("mean", 0.0)
+            )
             for cname, node in by_condition.items():
                 cmean = node["correct_rate"]["mean"]
                 node["delta_vs_clean_mean"] = float(cmean - clean_mean)
 
             model_summary["by_language"][language] = by_condition
 
-        model_summary_file = output_root / "robustness_{}_multiseed_summary.json".format(llm_tag)
+        model_summary_file = (
+            output_root / "robustness_{}_multiseed_summary.json".format(llm_tag)
+        )
         save_json(model_summary, str(model_summary_file))
         all_outputs[llm_key] = str(model_summary_file)
         print("Saved model robustness summary: {}".format(model_summary_file))
 
+        # ------------------------------------------------------------------
+        # Unload model before loading the next one.
+        # ------------------------------------------------------------------
+        if llm_idx < len(llm_models) - 1:
+            _unload_generator(generator)
+        else:
+            del generator
+            _free_gpu_memory()
+
+    # ------------------------------------------------------------------
+    # Run index
+    # ------------------------------------------------------------------
     run_index = {
         "metadata": {
             "num_examples": num_examples,
@@ -489,9 +586,17 @@ def main(
     progress.update(0, label="all done", force=True)
 
 
+# ---------------------------------------------------------------------------
+# Entry point
+# ---------------------------------------------------------------------------
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Run robustness experiments with checkpointing")
-    parser.add_argument("--num-examples", type=int, default=50, help="Examples per language")
+    parser = argparse.ArgumentParser(
+        description="Run robustness experiments with checkpointing and resource management"
+    )
+    parser.add_argument(
+        "--num-examples", type=int, default=50, help="Examples per language"
+    )
     parser.add_argument(
         "--seeds",
         type=int,
@@ -552,7 +657,9 @@ if __name__ == "__main__":
     else:
         model_keys = [list(LLM_MODELS.keys())[0]]
 
-    emb_model_path = EMBEDDING_MODELS.get(args.embedding_model, EMBEDDING_MODELS["e5-base"])
+    emb_model_path = EMBEDDING_MODELS.get(
+        args.embedding_model, EMBEDDING_MODELS["e5-base"]
+    )
 
     main(
         num_examples=args.num_examples,
