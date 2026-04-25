@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run robustness experiments with checkpointing, progress monitoring, and resource management."""
+"""Run robustness experiments with checkpointing, progress monitoring, and GPU batch inference."""
 
 import argparse
 import copy
@@ -55,6 +55,11 @@ NOISE_TYPES = [
     "translation_artifact",
 ]
 SEVERITIES = [10, 30, 50]
+
+# Batch size for GPU generation.
+# 8 is safe for 4-bit 7-8B models on 48GB VRAM.
+# Reduce to 4 if you hit OOM; increase to 16 if VRAM allows.
+GENERATION_BATCH_SIZE = 8
 
 
 # ---------------------------------------------------------------------------
@@ -136,7 +141,7 @@ def _sample_examples(examples, num_examples, seed):
         return examples
     rng = random.Random(seed)
     indices = rng.sample(range(len(examples)), num_examples)
-    return [examples[i] for i in indices]
+    return [examples[i] for i in sorted(indices)]
 
 
 def _translation_artifact_text(text):
@@ -237,14 +242,14 @@ def _build_golds(examples):
 
 
 def _free_gpu_memory():
-    """Explicitly release GPU cache between examples and model switches."""
+    """Explicitly release GPU cache."""
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
         torch.cuda.synchronize()
 
 
 def _unload_generator(generator):
-    """Unload model from GPU memory before loading next model."""
+    """Unload model from GPU memory before loading the next model."""
     print("Unloading model from GPU...")
     del generator.model
     del generator.tokenizer
@@ -256,8 +261,17 @@ def _unload_generator(generator):
         print("  Allocated: {:.2f} GB | Reserved: {:.2f} GB".format(allocated, reserved))
 
 
+def _print_gpu_stats(label=""):
+    if torch.cuda.is_available():
+        allocated = torch.cuda.memory_allocated() / 1024 ** 3
+        reserved = torch.cuda.memory_reserved() / 1024 ** 3
+        print("GPU {}: allocated={:.2f} GB | reserved={:.2f} GB".format(
+            label, allocated, reserved
+        ))
+
+
 # ---------------------------------------------------------------------------
-# Generation
+# Generation — batch mode for GPU efficiency
 # ---------------------------------------------------------------------------
 
 def _generate_for_condition(
@@ -273,9 +287,15 @@ def _generate_for_condition(
     max_new_tokens,
     temperature,
 ):
-    predictions = []
+    """
+    Build all prompts for this condition then generate in batches.
+    This keeps the GPU fed with multiple sequences simultaneously,
+    raising GPU utilization from ~7% (sequential) to ~60-90% (batched).
+    """
     cond_name = condition["name"]
 
+    # ---- Step 1: build all prompts (CPU, fast) ----
+    prompts = []
     for i, ex in enumerate(examples):
         if cond_name == "llm_only":
             prompt = prompt_manager.create_prompt(
@@ -284,9 +304,8 @@ def _generate_for_condition(
                 include_docs=False,
             )
         else:
-            docs = retrieved_docs[i]
             noisy_docs = _apply_noise(
-                docs=docs,
+                docs=retrieved_docs[i],
                 noise_type=condition["noise_type"],
                 severity=condition["severity"],
                 language=language,
@@ -298,23 +317,24 @@ def _generate_for_condition(
                 documents=noisy_docs,
                 include_docs=True,
             )
+        prompts.append(prompt)
 
-        # Confidence scoring is disabled during robustness sweep to save VRAM.
-        result = generator.generate(
-            prompt=prompt,
-            max_new_tokens=max_new_tokens,
-            temperature=temperature,
-            return_confidence=False,
-        )
-        predictions.append(result.get("text", ""))
+    # ---- Step 2: batch generate (GPU, efficient) ----
+    results = generator.generate_batch(
+        prompts=prompts,
+        max_new_tokens=max_new_tokens,
+        temperature=temperature,
+        batch_size=GENERATION_BATCH_SIZE,
+        return_confidence=False,
+    )
 
-        # Free GPU cache after every example to prevent VRAM accumulation.
-        _free_gpu_memory()
+    predictions = [r.get("text", "") for r in results]
 
-        progress.update(
-            1,
-            label="{} {} ex {}/{}".format(language, cond_name, i + 1, len(examples)),
-        )
+    progress.update(
+        len(examples),
+        label="{} {} ({} examples)".format(language, cond_name, len(examples)),
+        force=True,
+    )
 
     return predictions
 
@@ -332,7 +352,11 @@ def main(
     max_new_tokens,
     temperature,
     resume,
+    batch_size,
 ):
+    global GENERATION_BATCH_SIZE
+    GENERATION_BATCH_SIZE = batch_size
+
     from config.settings import MAX_NEW_TOKENS, TEMPERATURE
 
     if max_new_tokens is None:
@@ -360,20 +384,21 @@ def main(
     print("=" * 96)
     print("ROBUSTNESS MULTI-SEED RUN")
     print("=" * 96)
-    print("Models      : {}".format(llm_models))
-    print("Languages   : {}".format(languages))
-    print("Seeds       : {}".format(seeds))
-    print("Conditions  : {}".format([c["name"] for c in conditions]))
+    print("Models       : {}".format(llm_models))
+    print("Languages    : {}".format(languages))
+    print("Seeds        : {}".format(seeds))
+    print("Conditions   : {}".format([c["name"] for c in conditions]))
     print("Examples/lang: {}".format(num_examples))
-    print("Embedding   : {}".format(embedding_model))
-    print("Max tokens  : {}".format(max_new_tokens))
-    print("Temperature : {}".format(temperature))
-    print("Resume mode : {}".format(resume))
+    print("Embedding    : {}".format(embedding_model))
+    print("Max tokens   : {}".format(max_new_tokens))
+    print("Temperature  : {}".format(temperature))
+    print("Batch size   : {}".format(batch_size))
+    print("Resume mode  : {}".format(resume))
 
     if torch.cuda.is_available():
-        print("GPU         : {}".format(torch.cuda.get_device_name(0)))
+        print("GPU          : {}".format(torch.cuda.get_device_name(0)))
         total_vram = torch.cuda.get_device_properties(0).total_memory / 1024 ** 3
-        print("VRAM total  : {:.1f} GB".format(total_vram))
+        print("VRAM total   : {:.1f} GB".format(total_vram))
 
     # ------------------------------------------------------------------
     # Build retriever cache once per language (shared across all models).
@@ -397,18 +422,14 @@ def main(
         llm_tag = _model_tag(llm_key)
 
         print("\n" + "#" * 96)
-        print("MODEL {}/{}: {} -> {}".format(llm_idx + 1, len(llm_models), llm_key, model_name))
+        print("MODEL {}/{}: {} -> {}".format(
+            llm_idx + 1, len(llm_models), llm_key, model_name
+        ))
         print("#" * 96)
 
-        if torch.cuda.is_available():
-            allocated = torch.cuda.memory_allocated() / 1024 ** 3
-            print("GPU memory before load: {:.2f} GB allocated".format(allocated))
-
+        _print_gpu_stats("before model load")
         generator = AfriqueQwenGenerator(model_name=model_name)
-
-        if torch.cuda.is_available():
-            allocated = torch.cuda.memory_allocated() / 1024 ** 3
-            print("GPU memory after load : {:.2f} GB allocated".format(allocated))
+        _print_gpu_stats("after model load")
 
         per_model_records = []
 
@@ -428,10 +449,12 @@ def main(
                 examples = _sample_examples(all_examples, num_examples, seed)
                 golds_local, golds_en = _build_golds(examples)
 
-                # Retrieve once per example; reuse across all conditions.
+                # Retrieve once per example; reuse across all 14 conditions.
                 retrieved_docs = []
                 for ex in examples:
-                    retrieved_docs.append(retriever.retrieve(ex["question"], k=int(best_k)))
+                    retrieved_docs.append(
+                        retriever.retrieve(ex["question"], k=int(best_k))
+                    )
 
                 for condition in conditions:
                     cond_name = condition["name"]
@@ -486,6 +509,7 @@ def main(
                             "severity": condition["severity"],
                             "best_k": best_k,
                             "embedding_model": embedding_model,
+                            "batch_size": batch_size,
                         },
                         "metrics": metrics,
                     }
@@ -510,6 +534,7 @@ def main(
                 "seeds": seeds,
                 "num_examples": num_examples,
                 "conditions": [c["name"] for c in conditions],
+                "batch_size": batch_size,
             },
             "by_language": {},
         }
@@ -553,9 +578,7 @@ def main(
         all_outputs[llm_key] = str(model_summary_file)
         print("Saved model robustness summary: {}".format(model_summary_file))
 
-        # ------------------------------------------------------------------
         # Unload model before loading the next one.
-        # ------------------------------------------------------------------
         if llm_idx < len(llm_models) - 1:
             _unload_generator(generator)
         else:
@@ -574,6 +597,7 @@ def main(
             "embedding_model": embedding_model,
             "max_new_tokens": max_new_tokens,
             "temperature": temperature,
+            "batch_size": batch_size,
         },
         "outputs": all_outputs,
         "checkpoint_state": str(state_path),
@@ -592,7 +616,7 @@ def main(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Run robustness experiments with checkpointing and resource management"
+        description="Run robustness experiments with GPU batch inference and checkpointing"
     )
     parser.add_argument(
         "--num-examples", type=int, default=50, help="Examples per language"
@@ -647,6 +671,16 @@ if __name__ == "__main__":
         action="store_true",
         help="Disable checkpoint resume behavior",
     )
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=8,
+        help=(
+            "Number of prompts per GPU forward pass. "
+            "Start with 8 (safe for 4-bit 7-8B on 48GB). "
+            "Reduce to 4 if OOM; increase to 16 if VRAM allows."
+        ),
+    )
 
     args = parser.parse_args()
 
@@ -670,4 +704,5 @@ if __name__ == "__main__":
         max_new_tokens=args.max_new_tokens,
         temperature=args.temperature,
         resume=not args.no_resume,
+        batch_size=args.batch_size,
     )
