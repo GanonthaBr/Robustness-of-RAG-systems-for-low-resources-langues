@@ -7,28 +7,46 @@ from data.wikipedia import WikipediaCorpus
 from retrieval.dense_retriever import DenseRetriever
 from generation.afrique_qwen import AfriqueQwenGenerator
 from generation.prompts import PromptManager
-from config.settings import RETRIEVAL_K, MAX_NEW_TOKENS, TEMPERATURE
+from config.settings import RETRIEVAL_K, MAX_NEW_TOKENS, TEMPERATURE, LLM_MODELS, LLM_MODEL
 
 
 class RAGPipeline:
     """Orchestrates the entire RAG pipeline"""
     
-    def __init__(self, language: str, use_retrieval: bool = True, retriever=None, embedding_model: str = None):
+    def __init__(
+        self,
+        language: str,
+        use_retrieval: bool = True,
+        retriever=None,
+        embedding_model: str = None,
+        llm_model: str = None,
+    ):
         """
         Args:
             language: Target language
             use_retrieval: Whether to use retrieval
             retriever: Optional pre-built DenseRetriever (skips corpus load + indexing)
             embedding_model: Embedding model to use (e.g., 'intfloat/multilingual-e5-base')
+            llm_model: LLM key from settings.LLM_MODELS or a direct HF model path
         """
         self.language = language
         self.use_retrieval = use_retrieval
         
         print(f"\nInitializing RAG pipeline for {language}")
+
+        if llm_model and llm_model in LLM_MODELS:
+            resolved_llm = LLM_MODELS[llm_model]
+            print(f"  LLM: {llm_model} -> {resolved_llm}")
+        elif llm_model:
+            resolved_llm = llm_model
+            print(f"  LLM: custom -> {resolved_llm}")
+        else:
+            resolved_llm = LLM_MODEL
+            print(f"  LLM: default -> {resolved_llm}")
         
         # Initialize components
         self.prompt_manager = PromptManager(language)
-        self.generator = AfriqueQwenGenerator()
+        self.generator = AfriqueQwenGenerator(model_name=resolved_llm)
         
         if use_retrieval:
             if retriever is not None:
@@ -65,7 +83,8 @@ class RAGPipeline:
         # Create prompt
         prompt = self.prompt_manager.create_prompt(
             question=question,
-            documents=documents
+            documents=documents,
+            include_docs=self.use_retrieval
         )
         
         # Generate answer

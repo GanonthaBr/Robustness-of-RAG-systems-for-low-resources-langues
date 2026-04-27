@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "llm_model": "afriqueqwen-8b",
+    "llm_model_path": "McGill-NLP/AfriqueQwen-8B",
+    "language": "swa",
+    "seed": 44,
+    "num_examples": 50,
+    "condition": "translation_artifact_30",
+    "noise_type": "translation_artifact",
+    "severity": 30,
+    "best_k": 10,
+    "embedding_model": "intfloat/multilingual-e5-base"
+  },
+  "metrics": {
+    "contains_gold_local": 0.38,
+    "contains_gold_english": 0.38,
+    "abstention_rate": 0.0,
+    "correct_rate": 0.38,
+    "precision_on_answered": 0.38,
+    "num_samples": 50,
+    "num_abstained": 0
+  }
+}

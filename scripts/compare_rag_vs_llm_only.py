@@ -1,0 +1,76 @@
+#!/usr/bin/env python3
+"""Compare saved RAG and LLM-only summaries."""
+
+import os
+import sys
+
+if sys.version_info[0] < 3:
+    raise RuntimeError(
+        "compare_rag_vs_llm_only.py requires Python 3. Run with 'python3 compare_rag_vs_llm_only.py' "
+        "or activate your venv before running."
+    )
+
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+os.chdir(PROJECT_ROOT)
+
+from utils.helpers import load_json, save_json
+
+
+def safe_get(metrics_block, key):
+    return float(metrics_block.get(key, 0.0)) if metrics_block else 0.0
+
+
+def main():
+    rag_path = PROJECT_ROOT / "results/all_languages_enhanced_summary.json"
+    llm_only_path = PROJECT_ROOT / "results/all_languages_llm_only_summary.json"
+
+    if not rag_path.exists():
+        raise FileNotFoundError("Missing RAG summary: {}".format(rag_path))
+    if not llm_only_path.exists():
+        raise FileNotFoundError("Missing LLM-only summary: {}".format(llm_only_path))
+
+    rag = load_json(str(rag_path))
+    llm_only = load_json(str(llm_only_path))
+
+    languages = sorted(set(rag.keys()).intersection(set(llm_only.keys())))
+    comparison = {}
+
+    print("=" * 84)
+    print("RAG VS LLM-ONLY COMPARISON")
+    print("=" * 84)
+    print("{:<10} {:<12} {:<12} {:<16}".format("Language", "RAG Correct", "LLM Correct", "Delta (RAG-LLM)"))
+    print("-" * 84)
+
+    for language in languages:
+        rag_gen = rag[language].get("generation_metrics", rag[language])
+        llm_gen = llm_only[language].get("generation_metrics", llm_only[language])
+
+        rag_correct = safe_get(rag_gen, "correct_rate")
+        llm_correct = safe_get(llm_gen, "correct_rate")
+        delta = rag_correct - llm_correct
+
+        comparison[language] = {
+            "rag_correct_rate": rag_correct,
+            "llm_only_correct_rate": llm_correct,
+            "delta_correct_rate": delta,
+            "rag_contains_gold_local": safe_get(rag_gen, "contains_gold_local"),
+            "llm_only_contains_gold_local": safe_get(llm_gen, "contains_gold_local"),
+            "rag_contains_gold_english": safe_get(rag_gen, "contains_gold_english"),
+            "llm_only_contains_gold_english": safe_get(llm_gen, "contains_gold_english"),
+            "rag_abstention_rate": safe_get(rag_gen, "abstention_rate"),
+            "llm_only_abstention_rate": safe_get(llm_gen, "abstention_rate"),
+        }
+
+        print("{:<10} {:<12.1%} {:<12.1%} {:<16.1%}".format(language, rag_correct, llm_correct, delta))
+
+    save_json(comparison, str(PROJECT_ROOT / "results/rag_vs_llm_only_comparison.json"))
+    print("\nSaved: results/rag_vs_llm_only_comparison.json")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,72 @@
+{
+  "e5-base": {
+    "swa": {
+      "retriever_metrics": {
+        "mean_similarity": 0.8115772210359573,
+        "mean_top1_similarity": 0.8369492936134338,
+        "mean_top5_similarity": 0.8191007213592529,
+        "max_similarity": 0.8923527002334595,
+        "min_similarity": 0.7611073851585388,
+        "num_queries": 50
+      },
+      "num_examples": 50
+    },
+    "yor": {
+      "retriever_metrics": {
+        "mean_similarity": 0.8105449792146683,
+        "mean_top1_similarity": 0.8256403601169586,
+        "mean_top5_similarity": 0.8149445436000825,
+        "max_similarity": 0.8722714185714722,
+        "min_similarity": 0.7829152345657349,
+        "num_queries": 50
+      },
+      "num_examples": 50
+    },
+    "kin": {
+      "retriever_metrics": {
+        "mean_similarity": 0.820106391787529,
+        "mean_top1_similarity": 0.8426242363452912,
+        "mean_top5_similarity": 0.8255010325908662,
+        "max_similarity": 0.8890359401702881,
+        "min_similarity": 0.787189781665802,
+        "num_queries": 50
+      },
+      "num_examples": 50
+    }
+  },
+  "qwen3": {
+    "swa": {
+      "retriever_metrics": {
+        "mean_similarity": 0.49617183321714403,
+        "mean_top1_similarity": 0.5889110618829727,
+        "mean_top5_similarity": 0.5205505018234253,
+        "max_similarity": 0.7557781934738159,
+        "min_similarity": 0.3783572316169739,
+        "num_queries": 50
+      },
+      "num_examples": 50
+    },
+    "yor": {
+      "retriever_metrics": {
+        "mean_similarity": 0.5167247024178505,
+        "mean_top1_similarity": 0.5960340356826782,
+        "mean_top5_similarity": 0.5391709365844727,
+        "max_similarity": 0.8429448008537292,
+        "min_similarity": 0.3692392110824585,
+        "num_queries": 50
+      },
+      "num_examples": 50
+    },
+    "kin": {
+      "retriever_metrics": {
+        "mean_similarity": 0.5370545997023582,
+        "mean_top1_similarity": 0.6421517711877823,
+        "mean_top5_similarity": 0.5646992568969726,
+        "max_similarity": 0.8216286897659302,
+        "min_similarity": 0.38950127363204956,
+        "num_queries": 50
+      },
+      "num_examples": 50
+    }
+  }
+}

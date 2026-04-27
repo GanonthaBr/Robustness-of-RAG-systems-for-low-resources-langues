@@ -11,7 +11,11 @@ if PROJECT_ROOT not in sys.path:
 from data.dataset import AfriQALoader
 from pipeline.rag_pipeline import RAGPipeline
 from evaluation.metrics import Evaluator, contains_gold, normalize_answer_text
-from dotenv import load_dotenv
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    def load_dotenv(*args, **kwargs):
+        return False
 
 # Load environment variables (HF_TOKEN, etc.) from .env
 
