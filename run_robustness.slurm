@@ -4,12 +4,12 @@
 #SBATCH -t 24:00:00
 #SBATCH --gpus=v100-32:1
 #SBATCH -J rag-robustness
-#SBATCH -o /ocean/projects/cis260093p/youruser/robustness-of-rag/slurm-%j.out
-#SBATCH -e /ocean/projects/cis260093p/youruser/robustness-of-rag/slurm-%j.err
+#SBATCH -o /ocean/projects/cis260093p/gpayang/robustness-of-rag/slurm-%j.out
+#SBATCH -e /ocean/projects/cis260093p/gpayang/robustness-of-rag/slurm-%j.err
 
 set -euo pipefail
 
-PROJECT_ROOT="/ocean/projects/cis260093p/youruser/robustness-of-rag"
+PROJECT_ROOT="/ocean/projects/cis260093p/gpayang/robustness-of-rag"
 cd "$PROJECT_ROOT"
 
 # Activate conda
