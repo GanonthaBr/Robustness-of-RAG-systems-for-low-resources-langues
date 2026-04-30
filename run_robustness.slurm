@@ -3,6 +3,7 @@
 #SBATCH -p GPU-shared
 #SBATCH -t 24:00:00
 #SBATCH --gpus=v100-32:1
+#SBATCH --account=cis260093p
 #SBATCH -J rag-robustness
 #SBATCH -o /ocean/projects/cis260093p/gpayang/robustness-of-rag/slurm-%j.out
 #SBATCH -e /ocean/projects/cis260093p/gpayang/robustness-of-rag/slurm-%j.err
