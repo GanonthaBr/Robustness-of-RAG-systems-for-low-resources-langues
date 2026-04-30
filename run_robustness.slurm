@@ -9,15 +9,66 @@
 
 set -euo pipefail
 
+# ---------------------------------------------------------------------------
+# Paths
+# ---------------------------------------------------------------------------
 PROJECT_ROOT="/ocean/projects/cis260093p/gpayang/robustness-of-rag"
+OCEAN_ROOT="/ocean/projects/cis260093p/gpayang"
+
 cd "$PROJECT_ROOT"
 
-# Activate conda
+# ---------------------------------------------------------------------------
+# HuggingFace cache → ocean (avoids filling 25GB /jet home quota)
+# ---------------------------------------------------------------------------
+export HF_HOME="${OCEAN_ROOT}/hf_cache"
+export TRANSFORMERS_CACHE="${OCEAN_ROOT}/hf_cache"
+export HF_DATASETS_CACHE="${OCEAN_ROOT}/hf_cache"
+export HUGGINGFACE_HUB_CACHE="${OCEAN_ROOT}/hf_cache"
+mkdir -p "${OCEAN_ROOT}/hf_cache"
+
+# ---------------------------------------------------------------------------
+# Logs dir
+# ---------------------------------------------------------------------------
+mkdir -p "${PROJECT_ROOT}/logs"
+
+# ---------------------------------------------------------------------------
+# Activate conda environment
+# ---------------------------------------------------------------------------
 source ~/.bashrc
 conda activate rag-robust
 
-# Check CUDA
-python -c "import torch; print('CUDA:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0))"
+echo "============================================================"
+echo "JOB ID       : $SLURM_JOB_ID"
+echo "NODE         : $SLURMD_NODENAME"
+echo "START        : $(date)"
+echo "PROJECT ROOT : $PROJECT_ROOT"
+echo "HF CACHE     : $HF_HOME"
+echo "PYTHON       : $(which python)"
+echo "============================================================"
 
-# Run the robustness script (all LLMs, batch size 8)
-python scripts/run_robustness_multiseed.py --all-llms --batch-size 8
+# ---------------------------------------------------------------------------
+# Verify CUDA is accessible
+# ---------------------------------------------------------------------------
+python -c "
+import torch
+print('CUDA available :', torch.cuda.is_available())
+print('GPU            :', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'N/A')
+total = torch.cuda.get_device_properties(0).total_memory / 1024**3 if torch.cuda.is_available() else 0
+print('VRAM total     : {:.1f} GB'.format(total))
+"
+
+# ---------------------------------------------------------------------------
+# Run robustness experiment
+# ---------------------------------------------------------------------------
+python scripts/run_robustness_multiseed.py \
+    --all-llms \
+    --num-examples 50 \
+    --seeds 42 \
+    --languages swa yor kin \
+    --embedding-model e5-base \
+    --batch-size 8 \
+    2>&1 | tee "${PROJECT_ROOT}/logs/robustness_${SLURM_JOB_ID}.log"
+
+echo "============================================================"
+echo "END : $(date)"
+echo "============================================================"
