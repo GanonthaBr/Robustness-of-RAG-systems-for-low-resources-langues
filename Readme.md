@@ -61,3 +61,35 @@ Post-run outputs:
 - `results/robustness_postrun_long.csv`
 - `results/robustness_postrun_tables.md`
 - `results/final_paper_results_draft.md`
+
+## Abstention Analysis Report
+
+Generate a comprehensive abstention analysis across all models, languages, and noise conditions:
+
+**Local:**
+```bash
+python3 scripts/report_abstention.py
+```
+
+**On VM/HPC:**
+```bash
+bash report_abstention.sh /ocean/projects/cis260093p/gpayang/robustness-of-rag
+```
+
+Optional arguments:
+```bash
+python3 scripts/report_abstention.py \
+    --models afriqueqwen-8b qwen2.5-7b-instruct \
+    --languages swa yor kin \
+    --seeds 42 43 44 \
+    --checkpoint-dir results/robustness_checkpoints \
+    --output-json results/abstention_report.json \
+    --output-md results/abstention_report.md \
+    --output-latex results/abstention_report.tex
+```
+
+Abstention report outputs:
+
+- `results/abstention_report.json` (structured metrics)
+- `results/abstention_report.md` (human-readable summary)
+- `results/abstention_report.tex` (LaTeX table for paper)
