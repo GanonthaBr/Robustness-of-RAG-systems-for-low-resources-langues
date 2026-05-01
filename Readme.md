@@ -62,34 +62,38 @@ Post-run outputs:
 - `results/robustness_postrun_tables.md`
 - `results/final_paper_results_draft.md`
 
-## Abstention Analysis Report
+## Full Abstention Analysis (with Accuracy-Rejection Curves)
 
-Generate a comprehensive abstention analysis across all models, languages, and noise conditions:
+Run complete abstention evaluation: generate predictions, compute confidence scores, and sweep thresholds for Accuracy-Rejection Curves.
 
 **Local:**
 ```bash
-python3 scripts/report_abstention.py
+python3 scripts/evaluate_abstention_full.py --all-llms --num-examples 50 --seeds 42 43 44
 ```
 
 **On VM/HPC:**
 ```bash
-bash report_abstention.sh /ocean/projects/cis260093p/gpayang/robustness-of-rag
+bash evaluate_abstention_full.sh /ocean/projects/cis260093p/gpayang/robustness-of-rag
 ```
 
 Optional arguments:
 ```bash
-python3 scripts/report_abstention.py \
-    --models afriqueqwen-8b qwen2.5-7b-instruct \
-    --languages swa yor kin \
+python3 scripts/evaluate_abstention_full.py \
+    --all-llms \
+    --num-examples 50 \
     --seeds 42 43 44 \
-    --checkpoint-dir results/robustness_checkpoints \
-    --output-json results/abstention_report.json \
-    --output-md results/abstention_report.md \
-    --output-latex results/abstention_report.tex
+    --languages swa yor kin \
+    --embedding-model e5-base \
+    --output-dir results/abstention_analysis
 ```
 
-Abstention report outputs:
+Outputs:
 
-- `results/abstention_report.json` (structured metrics)
-- `results/abstention_report.md` (human-readable summary)
-- `results/abstention_report.tex` (LaTeX table for paper)
+- `results/abstention_analysis/abstention_<model>_<lang>.json` (per-model/language analysis)
+- `results/abstention_analysis/abstention_full_analysis.json` (complete results with curves)
+
+Each result includes:
+- Predictions and confidence scores for all samples
+- Accuracy-Rejection Curves at 21 thresholds (0.0 to 1.0)
+- Rejection rates and accuracy at each threshold
+- Full per-seed results for reproducibility
