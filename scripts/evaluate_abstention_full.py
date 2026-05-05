@@ -7,6 +7,7 @@ import json
 import os
 import random
 import sys
+import time
 from collections import defaultdict
 from pathlib import Path
 
@@ -38,6 +39,43 @@ except ImportError:
         return False
 
 load_dotenv(PROJECT_ROOT / ".env")
+
+class ProgressTracker:
+    """Track run progress with elapsed time and ETA."""
+
+    def __init__(self, total_units):
+        self.total_units = max(1, int(total_units))
+        self.done_units = 0
+        self.start_time = time.time()
+
+    @staticmethod
+    def _fmt(seconds):
+        seconds = max(0, int(seconds))
+        h = seconds // 3600
+        m = (seconds % 3600) // 60
+        s = seconds % 60
+        return "{:02d}:{:02d}:{:02d}".format(h, m, s)
+
+    def update(self, amount=1, label="", force=False):
+        self.done_units += int(amount)
+        if not force and self.done_units % 10 != 0:
+            return
+        elapsed = time.time() - self.start_time
+        rate = self.done_units / elapsed if elapsed > 0 else 0.0
+        eta = (self.total_units - self.done_units) / rate if rate > 0 else 0.0
+        pct = 100.0 * self.done_units / self.total_units
+        print(
+            "[Progress] {:6.2f}%  ({}/{})  elapsed={}  eta={}{}".format(
+                pct,
+                self.done_units,
+                self.total_units,
+                self._fmt(elapsed),
+                self._fmt(eta),
+                "  | {}".format(label) if label else "",
+            ),
+            flush=True,
+        )
+
 
 # Best-k from clean comparison runs
 BEST_K_BY_MODEL = {
@@ -84,7 +122,7 @@ def _get_confidence_from_generation(result):
     return result.get("confidence", 0.0)
 
 
-def _run_inference(generator, prompt_manager, examples, retrieved_docs, language, evaluator):
+def _run_inference(generator, prompt_manager, examples, retrieved_docs, language, evaluator, tracker=None):
     """Run inference and collect predictions with confidence scores."""
     predictions = []
     confidences = []
@@ -92,6 +130,7 @@ def _run_inference(generator, prompt_manager, examples, retrieved_docs, language
     golds_en = []
 
     stop_strings = prompt_manager.get_stop_tokens()
+    n = len(examples)
 
     for i, ex in enumerate(examples):
         prompt = prompt_manager.create_prompt(
@@ -110,6 +149,9 @@ def _run_inference(generator, prompt_manager, examples, retrieved_docs, language
 
         predictions.append(result.get("text", ""))
         confidences.append(_get_confidence_from_generation(result))
+
+        if tracker is not None:
+            tracker.update(label=f"{language} ex {i + 1}/{n}")
 
         answers = ex.get("answers", "")
         if isinstance(answers, list):
@@ -201,6 +243,9 @@ def main(
     output_root = Path(output_dir)
     output_root.mkdir(parents=True, exist_ok=True)
 
+    total_units = len(llm_models) * len(languages) * len(seeds) * num_examples
+    tracker = ProgressTracker(total_units)
+
     print("=" * 96)
     print("FULL ABSTENTION ANALYSIS")
     print("=" * 96)
@@ -210,6 +255,7 @@ def main(
     print(f"Examples/lang: {num_examples}")
     print(f"Embedding    : {embedding_model}")
     print(f"Output dir   : {output_root}")
+    print(f"Total steps  : {total_units}  ({len(llm_models)} models × {len(languages)} langs × {len(seeds)} seeds × {num_examples} examples)")
 
     # Build retrievers
     retriever_by_language = {}
@@ -258,7 +304,16 @@ def main(
 
                 # Run inference
                 inference_results = _run_inference(
-                    generator, prompt_manager, examples, retrieved_docs, language, evaluator
+                    generator, prompt_manager, examples, retrieved_docs, language, evaluator,
+                    tracker=tracker,
+                )
+
+                seed_acc = inference_results["metrics"].get("correct_rate", 0.0)
+                seed_abs = inference_results["metrics"].get("abstention_rate", 0.0)
+                tracker.update(
+                    0,
+                    force=True,
+                    label=f"seed {seed} done | acc={seed_acc:.1%}  abstention={seed_abs:.1%}",
                 )
 
                 # Compute abstention curves
