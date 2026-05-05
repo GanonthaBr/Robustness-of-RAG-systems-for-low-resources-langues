@@ -25,7 +25,7 @@ os.chdir(PROJECT_ROOT)
 from config.settings import EMBEDDING_MODELS, LLM_MODELS
 from data.dataset import AfriQALoader
 from data.wikipedia import WikipediaCorpus
-from evaluation.metrics import Evaluator
+from evaluation.metrics import Evaluator, contains_gold
 from generation.afrique_qwen import AfriqueQwenGenerator
 from generation.prompts import PromptManager
 from retrieval.dense_retriever import DenseRetriever
@@ -91,6 +91,8 @@ def _run_inference(generator, prompt_manager, examples, retrieved_docs, language
     golds_local = []
     golds_en = []
 
+    stop_strings = prompt_manager.get_stop_tokens()
+
     for i, ex in enumerate(examples):
         prompt = prompt_manager.create_prompt(
             question=ex["question"],
@@ -103,6 +105,7 @@ def _run_inference(generator, prompt_manager, examples, retrieved_docs, language
             max_new_tokens=128,
             temperature=0.7,
             return_confidence=True,
+            stop_strings=stop_strings,
         )
 
         predictions.append(result.get("text", ""))
@@ -126,10 +129,11 @@ def _run_inference(generator, prompt_manager, examples, retrieved_docs, language
     }
 
 
-def _compute_abstention_curves(predictions, confidences, golds_local, evaluator):
+def _compute_abstention_curves(predictions, confidences, golds_local, golds_en, evaluator):
     """
     Compute Accuracy-Rejection Curves by sweeping confidence thresholds.
-    Returns metrics at each threshold.
+    A prediction is correct if the gold answer (local or English) is contained
+    in the prediction — consistent with how Evaluator.evaluate_batch() scores.
     """
     confidences_np = np.array(confidences)
     thresholds = np.linspace(0.0, 1.0, 21)  # 0, 0.05, 0.1, ..., 1.0
@@ -137,13 +141,11 @@ def _compute_abstention_curves(predictions, confidences, golds_local, evaluator)
     curves = []
 
     for threshold in thresholds:
-        # Identify which predictions to keep (confidence >= threshold)
         keep_mask = confidences_np >= threshold
-        num_kept = np.sum(keep_mask)
+        num_kept = int(np.sum(keep_mask))
         rejection_rate = 1.0 - (num_kept / len(predictions))
 
         if num_kept == 0:
-            # All examples rejected
             curves.append(
                 {
                     "threshold": float(threshold),
@@ -154,13 +156,17 @@ def _compute_abstention_curves(predictions, confidences, golds_local, evaluator)
                 }
             )
         else:
-            # Evaluate on kept examples
             kept_preds = [p for i, p in enumerate(predictions) if keep_mask[i]]
-            kept_golds = [g for i, g in enumerate(golds_local) if keep_mask[i]]
+            kept_golds_local = [g for i, g in enumerate(golds_local) if keep_mask[i]]
+            kept_golds_en = [g for i, g in enumerate(golds_en) if keep_mask[i]]
 
-            # Simple exact match
+            # A prediction is correct if gold appears in output (local OR English).
+            # This matches Evaluator.evaluate_batch() and handles cases where the
+            # model answers correctly but in a different language than the query.
             num_correct = sum(
-                1 for p, g in zip(kept_preds, kept_golds) if p.strip().lower() == g.strip().lower()
+                1
+                for p, gl, ge in zip(kept_preds, kept_golds_local, kept_golds_en)
+                if contains_gold(p, gl) or (ge and contains_gold(p, ge))
             )
             accuracy = num_correct / num_kept
 
@@ -260,6 +266,7 @@ def main(
                     inference_results["predictions"],
                     inference_results["confidences"],
                     inference_results["golds_local"],
+                    inference_results["golds_en"],
                     evaluator,
                 )
 

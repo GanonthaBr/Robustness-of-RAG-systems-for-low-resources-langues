@@ -96,6 +96,7 @@ class AfriqueQwenGenerator(BaseGenerator):
         max_new_tokens: int = 100,
         temperature: float = 0.7,
         return_confidence: bool = False,
+        stop_strings: Optional[List[str]] = None,
     ) -> Dict:
         """
         Generate text from a single prompt.
@@ -108,6 +109,7 @@ class AfriqueQwenGenerator(BaseGenerator):
             temperature=temperature,
             batch_size=1,
             return_confidence=return_confidence,
+            stop_strings=stop_strings,
         )
         result = results[0]
         result["prompt"] = prompt
@@ -117,6 +119,15 @@ class AfriqueQwenGenerator(BaseGenerator):
     # Batch inference — primary method for robustness sweeps
     # ------------------------------------------------------------------
 
+    @staticmethod
+    def _truncate_at_stop(text: str, stop_strings: List[str]) -> str:
+        """Truncate generated text at the first occurrence of any stop string."""
+        for stop in stop_strings:
+            idx = text.find(stop)
+            if idx != -1:
+                text = text[:idx]
+        return text.strip()
+
     def generate_batch(
         self,
         prompts: List[str],
@@ -124,6 +135,7 @@ class AfriqueQwenGenerator(BaseGenerator):
         temperature: float = 0.7,
         batch_size: int = 8,
         return_confidence: bool = False,
+        stop_strings: Optional[List[str]] = None,
     ) -> List[Dict]:
         """
         Generate text for a list of prompts in batches.
@@ -181,6 +193,8 @@ class AfriqueQwenGenerator(BaseGenerator):
             for seq_idx, seq in enumerate(sequences):
                 generated_ids = seq[input_len:]
                 text = self.tokenizer.decode(generated_ids, skip_special_tokens=True)
+                if stop_strings:
+                    text = self._truncate_at_stop(text, stop_strings)
 
                 confidence = None
                 if return_confidence and scores is not None:
