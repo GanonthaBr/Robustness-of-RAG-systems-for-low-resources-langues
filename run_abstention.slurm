@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -N 1
 #SBATCH -p GPU-shared
-#SBATCH -t 36:00:00
+#SBATCH -t 24:00:00
 #SBATCH --gpus=v100-32:1
 #SBATCH --account=cis260093p
 #SBATCH -J rag-abstention
