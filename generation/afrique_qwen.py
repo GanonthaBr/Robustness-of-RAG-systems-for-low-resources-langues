@@ -121,7 +121,10 @@ class AfriqueQwenGenerator(BaseGenerator):
 
     @staticmethod
     def _truncate_at_stop(text: str, stop_strings: List[str]) -> str:
-        """Truncate generated text at the first occurrence of any stop string."""
+        """Truncate generated text at the first occurrence of any stop string.
+        Leading whitespace is stripped first so a model that opens with '\n\n'
+        does not immediately produce an empty answer."""
+        text = text.lstrip()
         for stop in stop_strings:
             idx = text.find(stop)
             if idx != -1:
