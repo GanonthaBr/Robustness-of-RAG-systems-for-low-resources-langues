@@ -2,13 +2,10 @@
 """Full abstention analysis: generate predictions, evaluate heuristics, plot curves."""
 
 import argparse
-import copy
-import json
 import os
 import random
 import sys
 import time
-from collections import defaultdict
 from pathlib import Path
 
 import numpy as np
@@ -122,7 +119,7 @@ def _get_confidence_from_generation(result):
     return result.get("confidence", 0.0)
 
 
-def _run_inference(generator, prompt_manager, examples, retrieved_docs, language, evaluator, tracker=None):
+def _run_inference(generator, prompt_manager, examples, retrieved_docs, language, evaluator, seed=None, tracker=None):
     """Run inference and collect predictions with confidence scores."""
     predictions = []
     confidences = []
@@ -131,6 +128,12 @@ def _run_inference(generator, prompt_manager, examples, retrieved_docs, language
 
     stop_strings = prompt_manager.get_stop_tokens()
     n = len(examples)
+
+    if seed is not None:
+        import torch as _torch
+        _torch.manual_seed(seed)
+        if _torch.cuda.is_available():
+            _torch.cuda.manual_seed_all(seed)
 
     for i, ex in enumerate(examples):
         prompt = prompt_manager.create_prompt(
@@ -234,14 +237,11 @@ def main(
     output_dir,
 ):
     """Run full abstention evaluation."""
-    from config.settings import MAX_NEW_TOKENS, TEMPERATURE
-
-    max_new_tokens = MAX_NEW_TOKENS
-    temperature = TEMPERATURE
-
     loader = AfriQALoader()
     output_root = Path(output_dir)
     output_root.mkdir(parents=True, exist_ok=True)
+    checkpoint_dir = output_root / "checkpoints"
+    checkpoint_dir.mkdir(parents=True, exist_ok=True)
 
     total_units = len(llm_models) * len(languages) * len(seeds) * num_examples
     tracker = ProgressTracker(total_units)
@@ -257,17 +257,14 @@ def main(
     print(f"Output dir   : {output_root}")
     print(f"Total steps  : {total_units}  ({len(llm_models)} models × {len(languages)} langs × {len(seeds)} seeds × {num_examples} examples)")
 
-    # Build retrievers
+    # Build retrievers once — shared across all models
     retriever_by_language = {}
-    passage_pool_by_language = {}
     for language in languages:
         print(f"\nPreparing retriever for {language}...")
         corpus = WikipediaCorpus(language)
-        passage_pool = corpus.get_passages()
         retriever = DenseRetriever(model_name=embedding_model)
-        retriever.index_corpus(passage_pool)
+        retriever.index_corpus(corpus.get_passages())
         retriever_by_language[language] = retriever
-        passage_pool_by_language[language] = passage_pool
 
     all_results = {}
 
@@ -293,26 +290,36 @@ def main(
             all_results[llm_key]["by_language"][language] = {"by_seed": {}}
 
             for seed in seeds:
+                ckpt_file = checkpoint_dir / f"{llm_tag}_{language}_seed{seed}.json"
+
+                # Resume: skip if checkpoint already exists
+                if ckpt_file.exists():
+                    print(f"  Seed {seed}: loading checkpoint {ckpt_file.name}")
+                    seed_data = load_json(str(ckpt_file))
+                    all_results[llm_key]["by_language"][language]["by_seed"][seed] = seed_data
+                    tracker.update(num_examples, force=True,
+                                   label=f"seed {seed} resumed from checkpoint")
+                    continue
+
                 print(f"  Seed {seed}...")
                 examples = _sample_examples(all_examples, num_examples, seed)
-                golds_local, golds_en = _build_golds(examples)
 
                 # Retrieve docs
-                retrieved_docs = []
-                for ex in examples:
-                    retrieved_docs.append(retriever.retrieve(ex["question"], k=int(best_k)))
+                retrieved_docs = [
+                    retriever.retrieve(ex["question"], k=int(best_k))
+                    for ex in examples
+                ]
 
-                # Run inference
+                # Run inference (seeded for reproducibility)
                 inference_results = _run_inference(
-                    generator, prompt_manager, examples, retrieved_docs, language, evaluator,
-                    tracker=tracker,
+                    generator, prompt_manager, examples, retrieved_docs,
+                    language, evaluator, seed=seed, tracker=tracker,
                 )
 
                 seed_acc = inference_results["metrics"].get("correct_rate", 0.0)
                 seed_abs = inference_results["metrics"].get("abstention_rate", 0.0)
                 tracker.update(
-                    0,
-                    force=True,
+                    0, force=True,
                     label=f"seed {seed} done | acc={seed_acc:.1%}  abstention={seed_abs:.1%}",
                 )
 
@@ -325,14 +332,18 @@ def main(
                     evaluator,
                 )
 
-                all_results[llm_key]["by_language"][language]["by_seed"][seed] = {
+                seed_data = {
                     "num_examples": len(examples),
-                    "num_kept_at_threshold_0": curves[0]["num_answered"],
                     "accuracy_at_threshold_0": curves[0]["accuracy"],
+                    "metrics": inference_results["metrics"],
                     "curves": curves,
                     "predictions": inference_results["predictions"],
                     "confidences": inference_results["confidences"],
                 }
+
+                # Checkpoint immediately so a later crash doesn't lose this seed
+                save_json(seed_data, str(ckpt_file))
+                all_results[llm_key]["by_language"][language]["by_seed"][seed] = seed_data
 
             # Save per-language results
             lang_output = output_root / f"abstention_{llm_tag}_{language}.json"
@@ -340,12 +351,12 @@ def main(
             print(f"  Saved: {lang_output}")
 
         del generator
+        torch.cuda.empty_cache()
 
     # Save complete results
     output_file = output_root / "abstention_full_analysis.json"
     save_json(all_results, str(output_file))
     print(f"\nSaved full analysis: {output_file}")
-
     print("\nAbstention analysis complete!")
 
 

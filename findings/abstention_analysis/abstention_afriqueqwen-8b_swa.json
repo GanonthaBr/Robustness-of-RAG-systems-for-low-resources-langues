@@ -1,0 +1,778 @@
+{
+  "by_seed": {
+    "42": {
+      "num_examples": 50,
+      "num_kept_at_threshold_0": 50,
+      "accuracy_at_threshold_0": 0.02,
+      "curves": [
+        {
+          "threshold": 0.0,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.05,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.1,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.15000000000000002,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.2,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.25,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.30000000000000004,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.35000000000000003,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.4,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.45,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.5,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.55,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.6000000000000001,
+          "rejection_rate": 0.040000000000000036,
+          "accuracy": 0.020833333333333332,
+          "num_answered": 48,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.65,
+          "rejection_rate": 0.36,
+          "accuracy": 0.03125,
+          "num_answered": 32,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.7000000000000001,
+          "rejection_rate": 0.6799999999999999,
+          "accuracy": 0.0,
+          "num_answered": 16,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.75,
+          "rejection_rate": 0.86,
+          "accuracy": 0.0,
+          "num_answered": 7,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.8,
+          "rejection_rate": 0.92,
+          "accuracy": 0.0,
+          "num_answered": 4,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.8500000000000001,
+          "rejection_rate": 0.98,
+          "accuracy": 0.0,
+          "num_answered": 1,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.9,
+          "rejection_rate": 0.98,
+          "accuracy": 0.0,
+          "num_answered": 1,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.9500000000000001,
+          "rejection_rate": 0.98,
+          "accuracy": 0.0,
+          "num_answered": 1,
+          "num_correct": 0
+        },
+        {
+          "threshold": 1.0,
+          "rejection_rate": 1.0,
+          "accuracy": 0.0,
+          "num_answered": 0,
+          "num_correct": 0
+        }
+      ],
+      "predictions": [
+        "Domingo) (NA)",
+        "u kama wadudu wa kumwingiza katika nafsi.",
+        "ς, \"Sophoklês\") (496 – 406 BP) alikuwa mwanamuziki, mtunzi wa opera na mtunzi wa maandishi kutoka nchi ya Ugiriki. Alitajika kwa kazi zake za maandishi ya tawala.",
+        "402) kama mji mkuu wa Serbia. Baada ya hayo watawala mbalimbali waliendelea kuutawala kama mji mkuu wa Ufalme wa Serbia hadi mwaka 1459 alipoutwaa Sultan Murad II wa Osmani.",
+        "Kaskazini. Njano ni mto wa Asia wa pili kwa urefu (baada ya Mto Amur), lakini ni mto wa tatu kwa maji mengi (baada ya Mto Indus na Mto Yangtze). Mto wa Njano unapatikana kaskazini mwa China.",
+        "). Kwa jumla, ameshinda michuano ya kikosi cha WWE mara 13 mara tatu kama WWE Champion, mara nne kama Champion wa Wavy World Wavy, mara tatu kama WWE World Heavyweight Champion, mara mbili kama Champion wa WWE Tag Team, mara mbili kama Champion wa kikosi cha WWE, mara moja kama Champion wa WWE Intercontinental, mara moja kama Champion wa WWE European, mara moja kama Champion wa WWE 24/7, mara moja k",
+        "atika Lower Saxony, Ujerumani. Wakati huo babake Petersen alikuwa mtumishi wa kijeshi. Petersen hakufahamu kama babake alikuwa mtumishi wa kijeshi kwa sababu babake alikuwa amejilinda kwa kutumia jina la \"Kurt Petersen\", na hivyo Petersen alizaliwa kwa jina hilo. Wolfgang alienda katika shule kwa kutumia jina la babake na ikawia vigumu kwa shule kumfah",
+        ", hata ikiwa ni ndizi ndogo. Ndizi zinasambazwa katika ukanda wa joto wenye ukubwa wa ukanda wa joto wenye ukubwa wa kilomita 1,000 kutoka kusini mwa Asia hadi kaskazini mwa Amerika ya Kusini. Mimea ya ndizi hutoa matunda mengi katika msimu mmoja wa robo tatu wa mwaka.",
+        "alikuwa mwanamuziki wa kwanza kutoka Tanzania kuingia katika chati za kimataifa za Billboard. Ni mwanamuziki wa kwanza kutoka Afrika Mashariki kufanya shoo katika ukumbi wa New York City's Carnegie Hall. Saida Karoli ni mtunzi na mwimbaji wa nyimbo za Kihaya. Saida alitambulika kwa kutunga nyimbo za Kihaya kama vile \"Shikamano\" na \"Makunguru\" alizozitumia kwa aj",
+        "ukari-kisukari kumemfanya kuwa maarufu katika mikutano ya muziki wa rap wa Kimarekani, ambayo marapa huimba kisukari-kisukari kwa kujifanya kuwa wanafanya vitendo vya kibahati kama vile kuimba kwa chenga, kuimba kwa kupungua sauti, kuimba kwa kutumia sauti ya chini au ya juu mara mbili mbili n.k.",
+        "ahamu Wanyaturu wengi wao kama ndugu zao kwa sababu ya lugha na mila zao kufanana.",
+        "ũ.",
+        "imbali zilijitokeza kutoka kwa spishi nyingine. Taksonomia ya sasa inatumia nadharia hii.",
+        "odia muziki. Eminem amewahi kuwa mwanamuziki wa kwanza wa rap kutoka Kaskazini mwa Marekani kufanya albamu ambayo imewaingiza watu kama Jay-Z, 50 Cent na Kanye West katika orodha ya wanamuziki maarufu. Eminem ameshirikiana na marapa wakubwa wa Rap kama Biggie Smalls, Dr. Dre, Jay-Z, Rick Ross na 50 Cent. Eminem amewahi kudaiwa kumwaga damu kat",
+        "utangazaji cha redio katika Mkoa wa Arusha. Utafiti wake ulionesha kuwa uwezo wa kutangaza redio kwa jiji la Dar es Salaam utazidiwa uwezo wa kutangaza kwa jiji la Arusha. Kwa sababu hiyo, alishauri kutangaza kutoka Dar es Salaam. Lakini kabla ya kupata uamuzi wa mwisho juu ya eneo ambalo litatangazwa, alifariki dunia kutokana na ajali ya gari",
+        "u lakini alikuwa tayari mkubwa wa umri wa miaka 5. Cixi alikuwa \"mjane wa kaisari\" kwa mara nyingine akashika madaraka katika ikulu ya kifalme akawa mfalme wa nchi bila cheo rasmi.",
+        "akutu, Mariya Kibakutu, Yosefu Mutabazi, Yosefu Kabuye, Mariya Bagonza na Mariya Nantaba\n 27 Julai - Jeanne Barois, mwanasheria kutoka Ufaransa, mwanzilishi wa Chama cha Wanasheria wa Wanawake wa Ufaransa (muasisi wa Chama cha Wanasheria cha Wanawake wa Ufaransa)\n 20 Septemba - William Jennings Bryan, mwanasiasa kutoka Marekani, aliyekuwa mgombea",
+        "bo za Snoop Dogg\nAlbum ya 2001\nDr. Dre Presents the Aftermath\nRapa wa Marekani\nNyimbo za hip hop\nNyimbo za muuzaji wa dawa za kulevya\nNyimbo za kisanii za kisanii\nVideo za 1999\nNyimbo zilizotayarishwa na Mel-Man\nNyimbo zilizotayarishwa na Dr. Dre\nNyimbo za kisanii za Snoop Dogg\nNyimbo zilizotayarishwa na Scott St",
+        "9% ni Wakristo.",
+        ", Albin Michel, 2017\n Les Trois Mousquetaires, Albin Michel, 2018\n Les Lamentations de Baboul, Albin Michel, 2019\n Barbe Bleue (film), 2019\n La Nostalgie heureuse (film), 2019",
+        "wa umri wa miaka 16 kuendelea kuwa katika klabu hiyo na hivyo wakampoteza. Mohamed Zidan akaondoka katika klabu hiyo na akajiunga na klabu ya Zamalek iliyokuwa katika ligi ya kwanza ya Misri, akiwa ni mchezaji mpya wa mwaka wa klabu hiyo ya Zamalek kwa msimu wa 1999-00, Mohamed Zidan akacheza katika klabu hiyo ya Zamalek k",
+        "kubwa ni milima ya Bukhara, karibu na mipaka ya Kazakhstan.",
+        "urusi. Inasemwa na watu zaidi ya milioni 13 katika nchi za Hungaria, Slovakia, Romania, Uswisi, Ufaransa, Italia, Uturuki na Hungary ya Marekani.",
+        "askazini Mashariki ya Ulaya yaani Estonia, Latvia na Lithuania.\n Nchi zinazopakana na Bahari Baltiki.\n Nchi za kaskazini ya Balkani yaani Albania, Bosnia na Herzegovina, Ugiriki, Kosov, Kosovo, Montenegro, Serbia, Uturuki na Masedonia Kaskazini.\n Nchi za eneo la Scandinavia za kaskazini ya siasa ya kikomitisheni ya USSR.\n Nchi za nje za Denmark na Norway.\n Nchi za nje za Ufini na Sweden.\n Visi",
+        "bidhaa zake.",
+        "kujitunukia kanuni akapitisha sheria za Uingereza zinazoelekeza ya kwamba mfalme au malkia wa Uingereza ndiye mwenye mamlaka ya kumwachisha talaka mke wake kwa sababu za kiroho.",
+        "kitovu kikuu cha biashara ya utumwa. Wakati wa vita ya wenyewe kwa wenyewe ya Misri wa 1840 watumwa wengi waliachiliwa huru. Hii ilifanya watumwa kadhaa kuanzisha biashara kati ya Khartoum na Sudan ya ndani. Idadi ya watumwa wa Afrika ilikuwa kubwa sana hadi watu wengine wa Khartoum waligundua kuwa watumwa wengi wa Afrika walikuwa",
+        "mwaka wa 1901 alishinda tuzo ya Amani ya Nobel)\n22 Mei - Charles Darwin, mwanasayansi kutoka Uingereza (alishinda tuzo ya Amani ya Nobel mwaka wa 1902)\n 26 Mei - Louis Pasteur, mwanasayansi kutoka Ufaransa (alishinda tuzo ya Amani ya Nobel mwaka wa 1907)",
+        "wanamuziki kutoka Marekani\n 12 Juni - John Legend, mwimbaji kutoka Marekani\n 24 Juni - Paul D. Miller aka DJ Spooky aka Mwongozo wa mwimbaji wa R&B kutoka Marekani\n 15 Julai - Kumi Ná Ora, mwimbaji kutoka Marekani\n 22 Julai - E'ban, mwigizaji wa filamu kutoka Marekani\n 30 Julai - David Moyo, mwimbaji kutoka Zimbabwe\n 5 Agosti - D'ban",
+        "A Fistful of Dynamite (1968)\n The Tall T (1968)\n The Great Emigations (1968)\n The Mercenary (1968)\n The Great Silence (1968)\n My Name Is Nobody (1963)|My Name Is Nobody (1968)\n The Return of Ringo (1968)\n The Return of the Tall T (1968)\n The Return of Django (1968)\n A Fistful of Dollars (1968)\n The Return of Jango (1969)\n The Return of",
+        "aka ya chini yalishuhudia ustawi wa chini. Matabaka ya juu yalikuwa na elimu na maisha mema. Matabaka ya chini yalikuwa maskini. Wakati huo elimu ilikuwa elimu ya watu wa tabaka ya juu tu na watu wa chini waliokuwa wengi walikuwa wajinga.",
+        "neo la Ulaya (Europian)",
+        "wa vya Asia Kusini\nNchi za Asia Kusini-Mashariki\nNchi za Oceania\nNchi za Asia\nNchi za Asia ya Kusini\nNchi za Oceania",
+        "2008 yalikuwa tani 693,247,000. Muhindi ni nafaka ya kwanza katika dunia kwa ujazo wa mbegu kutokana na kiasi cha kilo kadhaa kwa mbegu moja. Katika maeneo mengi ni nafaka ya kwanza kwa wingi na chakula cha kwanza kwa wakati wa majira ya njaa.",
+        "",
+        "cha kwanza hadi cha tatu, kisha akahamia shule ya sekondari ya Samora iliyokuwa wilayani Kisarawe mwaka wa 1995 na kufanya mtihani wake wa kidato cha nne mwaka wa 1996, ambapo alimaliza kwa daraja la kwanza na kupata alama A kwa masomo ya hesabu, historia, kitamaduni, Kiswahili na Kiingereza. Ameandika vitabu kadhaa ikiwa ni pamoja",
+        "(Kengele ya chuma) aliyoipachika mwaka 1959. 1962 alitoa picha za vijana wake vya riwaya \"Der Butt\" (Mlango), na mwaka wa 1963 aliandika \"Das Tulip\" (Maua ya tulip). 1965 alitoa \"Die Unchasten\" (Watu waliopiga chini sheria za maadili), 1968 \"Schwarzfieber\" (Ugonjwa wa weusi). Kati",
+        "ia wa wizara hiyo. 2007 alitangaza kuacha ajira hiyo ili kujiunga na siasa.",
+        "ways Corporation (Uganda). Kwa habari za reli za kati ya Kenya na Uganda tazama Shirika la Reli la Kenya.'' \nMombasa-Kampala Railway (MK) ilikuwa njia ya reli iliyokuwa na upande mmoja wa reli kati ya Mombasa (Kenya) na Kampala (Uganda). Reli ilikuwa ni ya kihistoria na ilianza kujengwa mwaka 1901 na kufunguliwa mwaka 1910. Reli ilikuwa chini ya m",
+        "Alizaliwa tar. 21 Juni katika mwaka wa 1973 mjini Austin, Texas. Amepata elimu yake katika shule ya sekondari ya Westlake. Kisha alienda katika chuo cha University of Texas. Alianza kazi zake za kuigiza katika mwaka wa 1993 alicheza kama msichana mwenye ujauzito katika filamu ya U Turn. Katika mwaka wa 1995 alipata nafasi ya kucheza katika filamu ya Bul",
+        "wei\n 1947 - David Doria, mwigizaji wa filamu kutoka Italia\n 1947 - Robert L. May, mwandishi wa vitabu kutoka Marekani\n 1950 - Mikiya Uchida, mwanariadha kutoka Japani\n 1954 - Saki, mshairi wa Japani\n 1954 - Mwai Kibaki, Rais wa Kenya\n 1956 - Tora Takashima, mwigizaji wa filamu kutoka Japani",
+        "ira, Isaya wa Kati, Ezekieli wa Kati, Baruki, Ufunuo wa Sema, Barua ya Baruki na Isaya wa Kati.",
+        "historia ya Ulaya",
+        "isha \nBinyavanga Wainaina alizaliwa huko Nairobi. Alisoma katika shule ya sekondari ya Alliance High School.",
+        "iba ya wabunge 15 itapimwa kutoka kwa wabunge wa PNU. Kuna wabunge wa upinzani 134 kutoka chama cha Orange Democratic Movement (ODM) kinachojumuisha ODM na ODM-Kenya. Kuna wabunge 93 wa PNU.",
+        "ama waziri ana msimamo wake mbele ya bunge. Muundo wa umoja au wa muungano unatumika. Kwa mfano katika muundo wa umoja, waziri mkuu ndiye mwenye nafasi kubwa kutokana na kuwa waziri mkuu ndiye mwenye kumwambia kiongoi wa dola nani wa kuwa waziri.\nKatiba zinatofautiana kama mawaziri wote wako tu kwa mapenzi ya waziri mku",
+        "amoja na mji kuliundwa kijiji cha kwanza cha Walowezi Wakristo katika Amerika ya Kusini.",
+        "ataba wa Heligoland na kutangaza vurugu dhidi ya Buganda.",
+        "wa tuzo ya Nobel ya fizikia (1937)\n 1901 - Hirohito, mfalme mkuu wa Japani (1926-1989)\n 1926 - Yoshihito, mfalme mkuu wa Japani (1912-1926)\n 1930 - Peter O'Toole, msanii wa filamu kutoka Uingereza (1998)\n 1934 - Mike Phillips, mchezaji wa kriketi kutoka Uingereza",
+        "ubadili meli kuwa chombo cha kivita kwa kubadili injini ya kusukuma meli kwa injini ya kivita. Injini za diseli zilijengwa upya kutoka vipande vilivyotoka Ujerumani. Kwa sababu ya vita injini mpya ilikuwa nzito kiasi ya kwamba meli haikusukumwa tena. Kwa sababu ya kutokuwa na mtaji wa kutosha ilibidi chombo kuwa kifaa cha kusafirisha"
+      ],
+      "confidences": [
+        0.9532824953494128,
+        0.6150926180151828,
+        0.7686070949489476,
+        0.700998403102858,
+        0.6521376057407906,
+        0.7837569069588426,
+        0.6350902143221901,
+        0.6362910392557524,
+        0.6105446329529514,
+        0.6056766695023725,
+        0.6706310128460018,
+        0.6055881319653054,
+        0.6989402797471485,
+        0.6171028735097934,
+        0.6769899763185094,
+        0.6423218800314316,
+        0.6668425374609797,
+        0.8096665429147833,
+        0.681957081422297,
+        0.7454616399591032,
+        0.689915261882561,
+        0.6126389710289004,
+        0.6101200095017703,
+        0.6429243041975639,
+        0.6999010935355727,
+        0.631290387215472,
+        0.6727248756978952,
+        0.731576918704377,
+        0.699056716420273,
+        0.7786523277154629,
+        0.6880436836127046,
+        0.7116379158978816,
+        0.7315748723392517,
+        0.6495756076133148,
+        0.8111046057019848,
+        0.6953430417270283,
+        0.585764703242603,
+        0.7299729691221728,
+        0.6860332439937338,
+        0.6968837163367425,
+        0.7182647666450066,
+        0.6472704027116833,
+        0.7159524393937318,
+        0.597994807933901,
+        0.6042345650716925,
+        0.7161494896263321,
+        0.6562708031160867,
+        0.6697824260996867,
+        0.8150367869966431,
+        0.6112578787706298
+      ]
+    },
+    "43": {
+      "num_examples": 50,
+      "num_kept_at_threshold_0": 50,
+      "accuracy_at_threshold_0": 0.02,
+      "curves": [
+        {
+          "threshold": 0.0,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.05,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.1,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.15000000000000002,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.2,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.25,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.30000000000000004,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.35000000000000003,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.4,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.45,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.5,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.55,
+          "rejection_rate": 0.020000000000000018,
+          "accuracy": 0.02040816326530612,
+          "num_answered": 49,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.6000000000000001,
+          "rejection_rate": 0.09999999999999998,
+          "accuracy": 0.022222222222222223,
+          "num_answered": 45,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.65,
+          "rejection_rate": 0.4,
+          "accuracy": 0.0,
+          "num_answered": 30,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.7000000000000001,
+          "rejection_rate": 0.6599999999999999,
+          "accuracy": 0.0,
+          "num_answered": 17,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.75,
+          "rejection_rate": 0.78,
+          "accuracy": 0.0,
+          "num_answered": 11,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.8,
+          "rejection_rate": 0.9,
+          "accuracy": 0.0,
+          "num_answered": 5,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.8500000000000001,
+          "rejection_rate": 0.94,
+          "accuracy": 0.0,
+          "num_answered": 3,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.9,
+          "rejection_rate": 0.96,
+          "accuracy": 0.0,
+          "num_answered": 2,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.9500000000000001,
+          "rejection_rate": 0.98,
+          "accuracy": 0.0,
+          "num_answered": 1,
+          "num_correct": 0
+        },
+        {
+          "threshold": 1.0,
+          "rejection_rate": 1.0,
+          "accuracy": 0.0,
+          "num_answered": 0,
+          "num_correct": 0
+        }
+      ],
+      "predictions": [
+        "Kombe la Dunia, aliyecheza fainali zote ishirini na moja, akishikilia rekodi ya kucheza mechi nyingi zaidi katika Kombe la Dunia (1982, 1986 na 1994), akishiriki katika michuano ya Kombe la Dunia mara tatu mfululizo. Mataifa ya Amerika ya Kusini ndiyo yenye ushindi mara nyingi zaidi wa Kombe la Dunia la FIFA, kwa jumla",
+        ")\n Familia ya juu: Typhloboidea\n Familia: Typhlopidae (Afrika, Asia na Australia)\n Familia ya juu: Xenodermoides\n Familia: Typhlonectidae (Afrika)\n Familia: Xenodermatidae (Afrika)\n Familia ya juu: Xenodermoidea\n Familia: Homalonychidae (Marekani, Asia na Australia)\n Familia: Lamprophiidae (Afrika)\n Familia ya juu: Lamproveroidea\n Familia: Lamproverpida",
+        "1998.",
+        "Tanganyika ilikuwa kati ya nchi za mwisho kutumia redio kwa matangazo ya kibiashara. Mwaka 1934, Shirika la Uingereza la Wazalendo wa Afrika Kusini (South African Native Affairs Trust, SANT) ilianzisha kituo cha redio cha marubani wa ndege katika Uwanja wa Ndege wa Dar es Salaam na Radio ya Kijeshi ya Dar es Salaam. Marubani wa ndege walichotangaza habari za",
+        "a eneo la Ziwa Viktoria. Waluhya ni kabila jingine la Kisukuma katika Afrika Mashariki. Wanaishi pia nchini Tanzania. Lugha yao ni Kialuhya.",
+        "Julai - Hiram Bingham, wakili kutoka Marekani\n 9 Oktoba - Hans Bethe, mshindi wa Tuzo ya Nobel ya Fizikia mwaka wa 1969\n 10 Novemba - Mervyn Stern, mwigizaji wa filamu kutoka Marekani\n 2 Desemba - Arthur Schlesinger, mwandishi wa Marekani mwenye tuzo la Pulitzer Prize mwaka wa 1957",
+        ", Mynmar na Thailand.",
+        ").",
+        "irĩ.",
+        "imbali zilianza kutoka kwa spishi moja. Mwaka wa 1947 Carolus Linnaeus alitoa nadharia ya kuzipanga viumbe hai kwa muundo ulioeleweka kulingana na tabia za maumbile yao. Alitenga makundi kadhaa kama vile viumbehai wa aina ya mimea, wanyama, viumbehai wa kudanganya (symbionta), viumbehai wanaofanana kwa namna moja au nyingine kwa v",
+        "ulizi ya historia ya dini hiyo kwa mujibu wa wafuasi wa imani hiyo inaanza na alama ya mwanzo wa historia yake kwa wafuasi wa imani hiyo ilipotokea kwa kwanza mwanzo wa mafunzo ya Mtume Muhammad alipoteremshwa ulimwenguni kwa njia ya Malaika Jibrilu aliyekuwa akiongoza Mtume Muhammad kwa kumfunulia vitabu viwili vya Mwenyezi Mungu ambavyo",
+        "utangazaji cha redio. Thorneycroft alinunua mashine ya kwanza ya kutangaza redio kutoka kampuni ya utangazaji ya BBC, na akapeleka katika makao makuu ya utawala ya Tanganyika mjini London, ili kujaribu kazi ya kutangaza. Hata hivyo, utawala wa kikoloni wa Uingereza ulikataa kuanzisha kituo cha utangazaji cha redio Tanganyika. Sababu kuu ilikuwa ni",
+        "chuki wakati wa maandamano dhidi ya sheria ya kudhibiti uhuru wa kuzaliwa upya wa dini nchini India\n 1948 - Muungano wa nchi za Ulaya Magharibi unaanzishwa\n 1959 - Muungano wa nchi za Ulaya Magharibi unagawiwa kwa Umoja wa Ulaya\n 1967 - Vita ya Chitzena ya tatu inaanza\n 1968 - Wamagharibi wanachukua",
+        "husomwa B. taurus na B. indicus). Ni mbali za kutosha kwa sababu hazizaliani tena.",
+        "ishi kwa miaka miwili, madaraja ya kuenea kwa malaria watagaiwa kutokea kwa kujumuisha data kutoka kwa utafiti wa miaka 50 katika sehemu mbalimbali za Afrika, Asia na Amerika. Kwa kuweka viwango vya kuenea kwa malaria katika maeneo mbalimbali, itawezekana kuweka madaraja ya kuenea kwa malaria katika nchi zinazozunguka eneo hilo na kuziweka",
+        "o!",
+        "kwa tiketi ya Chama cha Mapinduzi (CCM). Aliteuliwa kutumikia kama mbunge wa kwanza wa jimbo la Makunduchi kama mbunge wa kwanza kwa mwaka 1995 akawa mbunge wa jimbo la Mbagala hadi 1999 alipopoteza kiti chake kwa mbunge wa wakati huo wa CCM na aliyezaliwa Zanzibar, Salim Hassan Salim. Kwa mara ya tatu aliteuliwa kama mbunge wa",
+        "jerumani",
+        "(217,992)\n Burnaby (195,118)\n Abbotsford (142,155)",
+        "herufi zao kwa kuziita kwa jina zile za lugha yao ya Kigiriki. Wagiriki walichukua neno \"bet\" la Kifinisia wakalirahisisha kuwa \"beta\" wakimaanisha \"nyumba\" lakini walisoma tu herufi ya mwanzo katika neno hili yaani sauti \"b\". Wagiriki walisoma \"b\" kwa kutamka \"beta\" kwa kubonyeza mkato wa \"b\" kwa kubonye",
+        "mfululizo",
+        "es\n| ngeli = Phaethontiformes\nNdege-mawingu ni ndege wa jenasi Phaethon katika familia Phaethontidae. Ndege hawa ni waungwana wanaotaga mayai kwenye kisiwa cha mbali. \nNdege-mawingu wana jeni kadha za kutambua eneo lao. Wana jeni ya kutambua mwendo wa chembe za magneti kutoka kwa magari ya baharini. Majeni haya yanatumiwa kutambua mwendo",
+        "ikuwa makao ya taifa katika karne ya 18 wakati watawala wa Merina kujenga ukumbi kuhifadhi utukufu wao. Mji huu mji ulianza kuwa muhimu wakati wa ukumbi huo kujengwa. Mji hujulikana kama \"Mji Mkubwa\" kutokana na kuhusika kwa Merina ambao ni watu wa tatu kwa ukubwa wa idara ya jamii ya kisiwa hiki. Wakati wa",
+        "wanamuziki kutoka Marekani\n 28 Mei - David Beckham, mchezaji wa soka kutoka Uingereza\n 9 Juni - Mwimbaji Beyonce Knowles kutoka Marekani\n 16 Juni - R. Kelly, mwimbaji kutoka Marekani\n 18 Juni - Lil Wayne, rapper kutoka Marekani\n 18 Juni - Nelly, rapper kutoka Marekani\n 17 Julai - Wyclef Jean, mwimbaji kutoka Haiti\n 29 Julai - Dolly Parton, mwimb",
+        "Document 6]: Neno \"kilio\" linamaanisha mtu aliyeugua kwa muda mrefu. Leo ni siku za kiroho zaidi na wala si za mwili. Kilio hutaja mtu asiye na furaha kwa sababu mbalimbali. Kilio ni mtu mwenye kuhuzunika.",
+        "miandiko mingine kadiri ya karne ya 14 KK. (kwa maana ya historia ya Kibiblia katika kitabu cha \"Mwanzo\" (Mw. 11,24) ukisema \"Kisha watu wote wakaunganishwa katika lugha moja, wakapanga kujengea jiji na mnara wa kichwa chake kikiwa juu ya mbingu\"). Mwandishi wa zamani wa historia ya Ujerumani, Theodor Mommsen aliandika:",
+        "Before Christmas (2003) - Lisa\n Wrong Turn 2: Dead End (2003) - Jessie\n Wrong Turn 3: The Possession (2003) - Jessie\n The Lost World: Jurassic Park (2005) - Sarah Harding\n The Lost World: Jurassic Park II (2005) - Sarah Harding\n The Lost World: Jurassic Park III (2005) - Sarah Harding\n The Return of JJ (2004) - Jennifer Jones\n Wrong Turn 4 (2006) - Jessie\n Wrong Turn 5: Bloodlines",
+        "jumla, kuna madola 196 ya kubainika, kwa mufano zaidi kwa madola yenye uhuru wa kudumu wa kisiasa. Katika madola haya, nchi 45 kati yao ni visiwa vya madola ya visiwa vidogo vidogo, ambazo zinajumuisha visiwa vidogo zikiwa na idadi ndogo ya watu.",
+        "katika kipindi hiki. Kwa mfano mitindo ya kivita ya Kihimba ilinakiliwa kutoka kwa Wazulu na kuchukuliwa na Wafulani kwa mfano katika eneo la Malawi.",
+        "1991\n1990 - 1989 - 1988 - 1987 - 1986 - 1985 - 1984 - 1983 - 1982 - 1981\n1980 - 1979 - 1978 - 1977 - 1976 - 1975 - 1974 - 1973 - 1972 - 1971\n1970",
+        "ani tarehe kamili ya kuzaliwa kwake lakini historia ya kitaaluma inamuhesabu kuwa alizaliwa mnamo mwaka 780 au 787. Kuhusu kifo chake historia inaeleza alifariki mwaka 847 au 850. Hata kama historia ya kitaaluma inathibitisha kuwa alifariki mwaka 850 hali kadhalika mwandishi wa historia wa Abasiya al-Alfari anaeleza alifariki mwaka 8",
+        "ba 1944) alikuwa mwanasayansi wa Kifaransa aliyekuwa mwanachama wa Taasisi ya Kimataifa ya Afya.",
+        ".",
+        "uni ya rekodi ilioanzishwa mwaka 1972 na Peter Gabriel.",
+        "ufi za silabi. Katika nchi za Kichina kuna lugha kadhaa zinazotumia alfabeti ya Kichina.",
+        "cha kutawala kwake alilipiza kisasi kwa watu aliodhani kuwa waliweka mipango ya kumuondoa madarakani.",
+        "1997 alipochaguliwa kuwa mbunge wa Makueni kusini kwa tikiti ya chama cha United Republican Party (URP). Baada ya kutimuliwa kwa rais Daniel Arap Moi kutoka Ikulu mwaka 2002 aligombea wadhifa wa uwaziri kwa tikiti ya chama cha The National Alliance Party (NAP) chake mwenyewe. Alichaguliwa kuwa waziri wa afya hadi alipojiuzulu kutoka kwa siasa mwaka 2",
+        "ani wa sanaa kutoka Japan\n 25 Aprili - Louis Armstrong\n 29 Mei - John Lennon, mwimbaji kutoka Uingereza\n 20 Juni - Michael Nkulula, rais wa zamani wa Zambia\n 20 Julai - James Earl \"Jimmy\" Carter, rais wa zamani wa Marekani\n 10 Oktoba - Janis Joplin, mwimbaji kutoka Marekani\n 22 Oktoba - Ugonjwa wa Malaria katika zaidi ya watu 100,000 kat",
+        "Gorilla beringei beringei (Mountain gorilla)\n Ngagi waishio msituni, Gorilla beringei gorilla (Lowland/great gorilla)\n Ngagi Kaskazini, Gorilla beringei ugandaensis (Ugandan mountain gorilla)\n Ngagi wa Senegal, Gorilla beringei mugeshi (Cross River gorilla)\n Ngagi Magharibi, Gorilla beringei gorilla beringei (Eastern lowland gorilla)\n Masokwe, Homo\n Masokwe waingiaye kwenye mbuga, Homo sapiens (modern",
+        "nea (Brewer's Blackbird)\n Emberiza cisticola (Crested Lark)\n Emberiza cinnamomea (Crested Lark)\n Emberiza cinnamomea (Brown-eared Bulbul)\n Emberiza djamadari (Temminck's Bunting)\n Emberiza flava (Yellow-breasted Chat)\n Emberiza gularis (Crested Lark)\n Emberiza gularis (Crested Lark)\n Emberiza gularis (Brown-eared Bulbul)\n Emberiza hortensis (Tawny-flanked Prinia)\n Emberiza janscha",
+        "ya Kenya.",
+        "lugha ya Kiafrika katika fasihi ya Kiafrika. Alifikiria kwamba utumizi wa lugha ya Kiafrika katika fasihi ungeleta maendeleo kwa wazungu wa Kiafrika wanaotumia Kiingereza katika fasihi zao.",
+        "wa Laterano (1139)",
+        "epo kwa chembe chembe nyingi za wanyama na mimea. Katika watu potasiamu huwa karibu 0.2% ya uzani wa mwili.",
+        "wimbo wao wa kwanza wa \"Dada Mie\" ambao umechezwa kwa kasi kubwa sana kwenye vituo mbalimbali vya utangazaji katika mwaka wa 2009. wimbo wa mwisho wa kikundi hicho ni \"kabisa\" ambao ni wimbo wa kwanza wa kikundi hicho kutolewa kwenye albamu. kikundi kipya kilichowaacha Nonini katika kikundi cha Homeboyz. Nonini alisema",
+        "kihisia. Tofauti hizo zinajitokeza katika utendaji wa kazi mbalimbali katika jamii.",
+        "ipatia ng'ombe wa kwanza lakini mkulima jirani anamtaka zawadi ya ng'ombe huyo. Hori anayeona ng'ombe wake kama zawadi halisi kutoka Mungu, anamwachia mkulima jirani ndotoni. Yawezekana kuwa ni zawadi halisi kutoka Mungu, lakini mtu anayemwachia zawadi katika ndoto huweza kuzikwa kwenye shimo la ng'ombe wake. Akiamka huziona",
+        "wa Tuzo ya Nobel ya Fizikia (1943)\n 1886 - John F. Kennedy, rais wa 35 wa Marekani (1961-1963)\n 1902 - Joseph A. Mengele, daktari wa kazi za kibinadamu wa Ujerumani katika kambi za kizuizini (1943–45)",
+        "502) anafariki\n 1852 - Kaisari Nicholas I wa Dola la Roma, alifariki kwa ajali ya baridi kali\n 1929 - Otto von Bismarck, mkuu wa serikali ya Ujerumani (1862-1871, 1871-1890)",
+        "Juni - Ghana inapata uhuru kutoka Uingereza\n 1 Julai - Togo inaungana na Jamhuri ya Waafrika Magharibi\n 20 Julai - Uhuru wa Gabon kutoka Ufaransa\n 20 Julai - Uhuru wa Jamhuri ya Kongo kutoka Ubelgiji\n 30 Julai - Katiba ya Jamhuri ya Kongo inaundwa\n 1 Agosti - Uhuru wa Somalia kutoka Uitalia\n 18 Agosti - Uhuru wa Uganda kutoka Uingereza"
+      ],
+      "confidences": [
+        0.7048352715519286,
+        0.8304041748833697,
+        0.6638533748955524,
+        0.6694439866860193,
+        0.7543035496223638,
+        0.7420330054778788,
+        0.6683689272958873,
+        0.6928356210864877,
+        0.6277228338030909,
+        0.6477257850492606,
+        0.647740395143046,
+        0.7028918336654897,
+        0.68657374423492,
+        0.6320166218129089,
+        0.6521819739655257,
+        0.8959569922335504,
+        0.6554214622592553,
+        0.6516393413385231,
+        0.6102236065053148,
+        0.6517234388084034,
+        0.6283065216489376,
+        0.6495788167867431,
+        0.572002525405594,
+        0.7861957726127002,
+        0.5658201296064362,
+        0.5586636758052919,
+        0.8170556345185105,
+        0.5447726870193037,
+        0.6173187540262006,
+        0.9999924548901618,
+        0.6987861921697913,
+        0.7377012229226239,
+        0.6469006636907579,
+        0.6284789642304531,
+        0.6109422085273764,
+        0.5765250430576998,
+        0.7333250738502102,
+        0.6553414131772115,
+        0.7704400680661365,
+        0.780398002714719,
+        0.6483363812312746,
+        0.7195301254259903,
+        0.9352115529763978,
+        0.6724324031461038,
+        0.6346171763161692,
+        0.6477423909127538,
+        0.6179782139010968,
+        0.6940393595468777,
+        0.7505395699990913,
+        0.7893441432606778
+      ]
+    },
+    "44": {
+      "num_examples": 50,
+      "num_kept_at_threshold_0": 50,
+      "accuracy_at_threshold_0": 0.02,
+      "curves": [
+        {
+          "threshold": 0.0,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.05,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.1,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.15000000000000002,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.2,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.25,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.30000000000000004,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.35000000000000003,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.4,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.45,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.5,
+          "rejection_rate": 0.0,
+          "accuracy": 0.02,
+          "num_answered": 50,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.55,
+          "rejection_rate": 0.020000000000000018,
+          "accuracy": 0.02040816326530612,
+          "num_answered": 49,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.6000000000000001,
+          "rejection_rate": 0.12,
+          "accuracy": 0.0,
+          "num_answered": 44,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.65,
+          "rejection_rate": 0.42000000000000004,
+          "accuracy": 0.0,
+          "num_answered": 29,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.7000000000000001,
+          "rejection_rate": 0.72,
+          "accuracy": 0.0,
+          "num_answered": 14,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.75,
+          "rejection_rate": 0.86,
+          "accuracy": 0.0,
+          "num_answered": 7,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.8,
+          "rejection_rate": 0.9,
+          "accuracy": 0.0,
+          "num_answered": 5,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.8500000000000001,
+          "rejection_rate": 0.96,
+          "accuracy": 0.0,
+          "num_answered": 2,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.9,
+          "rejection_rate": 0.98,
+          "accuracy": 0.0,
+          "num_answered": 1,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.9500000000000001,
+          "rejection_rate": 1.0,
+          "accuracy": 0.0,
+          "num_answered": 0,
+          "num_correct": 0
+        },
+        {
+          "threshold": 1.0,
+          "rejection_rate": 1.0,
+          "accuracy": 0.0,
+          "num_answered": 0,
+          "num_correct": 0
+        }
+      ],
+      "predictions": [
+        "-Kongo au \"Mbanza-Kongo\" au \"Sao Salvador\" (Angola) \n Kongo (Angola), neno la kawaida la kutaja wilaya ya kaskazini ya Angola\n Kongo (Angola) > Kongo, wilaya ya Angola.\n Kongo (Angola) > Kongo, mji wa Angola.\n Kongo (Angola) > Kongo, wilaya nyingine ya Angola.\n Kongo (Angola) > Kongo, mji nyingine wa Angola\n Kongo (Angola) > Kongo, wilaya ya tatu ya",
+        "wakati wa kale: maonyesho ya kihistoria mjini Olduvai\" kwenye \"Science in Tanzania\" vol 13, nambari 1, uk. 13–20 Olduvai, Tanzania.",
+        "us, Alexander I, Alexander wa II, Gregory wa I na Cornelius.",
+        ")\n Familia ya juu: Typhlopoidae\n Familia: Typhlopidae (Afrika, Asia, Amerika ya Kusini na Ulaya)\n Familia: Anomalepididae (Afrika)\n Familia: Typhlobolidae (Afrika)\n Familia ya juu: Dipsophoidea\n Familia: Lamprophiidae (Afrika) \n Familia: Typhlopidae (Afrika, Asia, Amerika ya Kusini na Ulaya)\n Familia ya juu: Xenoidea\n Familia: X",
+        "). Alitawala kwa mara ya kwanza kama WWE Champion mwaka 2006, alishikilia kwa muda wa wiki mbili. Cena alikuwa wa kwanza WWE Champion mpya na kwa wakati wote kuwa mshindi wa WWE Champion kutoka kwa michuano ya WWE ya kwanza. Alitawala kwa mara ya kwanza kama Champion wa Dunia wa Wavy World mwaka 2008, na alikuwa wa kwanza kupigana kwenye WrestleMania",
+        "1996. Hata hivyo alishindwa kuendelea elimu ya upili kutokana na kutokuwa na uwezo wa kifedha. Mnamo mwaka 2003 alianza kusoma katika shule ya ualimu ya Mwanza na kuhitimu mwaka 2006 alipokuwa akijishughulisha na biashara ya mtandao wa intaneti kwa jina la 'www.richdollar.com' na 'www.richnetworks.com' ambapo al",
+        ". Kwa ujumla ndizi huwa ndogo kuliko mchele au viazi, na kutokana na hilo ndizi hutumika kama chakula cha watoto. Ndizi zinaweza kuliwa karibu kama zilivyo, zikiwa zimeliwa, au kuchemshwa. Kuna aina mbalimbali za ndizi, kuna ndizi zinazoiva kwa muda mfupi, zililoiva na zilizosheheni mbegu. Kuna ndizi zinazof",
+        "5]: Siku ya Pasaka ni sikukuu kubwa katika dini ya Ukristo. Ni sikukuu ya kwanza kabisa kwa Wokristo wengi duniani. Ni sikukuu ya kudumu ambayo huadhimishwa kwa sala mbalimbali za kidini kuhusiana na Yesu Kristo.",
+        ").",
+        "iũ.",
+        ", na kupata tuzo mbalimbali kwa kazi zake. Amewahi kufanya katika mfululizo wa nyimbo kama njia ya kupambana na sera za utawala wa Rais Richard Nixon. Pia alihusika katika kupiga kura katika uchaguzi wa rais wa Marekani wa mwaka wa 1992. Ameishi katika miji mbalimbali ya Marekani ikiwemo California, New Jersey, New York, na New Brunswick, New Jersey. Amefanya kazi",
+        "[Document 7]: Chamwino ni jina la wilaya katika Mkoa wa Dodoma nchini Tanzania. Wakati wa sensa iliyofanyika mwaka wa 2012, viligundulika kuwa idadi ya wilaya ni kati ya watu 408,777 na 439,856.",
+        "odia muziki, ya Aftermath Entertainment. Eminem amefanya albamu tatu tu tangu ajiunge na AfterMath. Albamu hizo zinajulikana kwa jina zifuatazo: The Marshall Mathers LP, The Slim Shady LP, na The Marshall Mathers LP 2. Albamu hizo zote zina mauzo ya kimataifa zaidi ya milioni tatu zikiwa imesambazwa kwa mashabiki wengi wa Kimarekani. Albamu hizo zikishirikisha nyimbo zifuatazo:",
+        "",
+        "u cha vipindi vya komedi za Kiswahili cha taarabu. Mpaka sasa kimerushwa na kituo cha televisheni cha kwanza nchini Tanzania TBC1",
+        "Maelezo\nDJ Khaled aliwapasha watu kuhusu nyimbo hii mnamo mwezi wa Julai 2007 kwa kutoa \"teaser\" katika mtandao wa Youtube. Nyimbo hii ilipigwa katika kipindi cha mtangazaji wa redio wa Marekani wa kikundi cha The Breakfast Club, katika kipindi chake cha kila wiki cha kila Jumatatu. Kulingana na mtangazaji wa kipindi hichi, nyimbo imetengenezwa",
+        "bo za hip hop\nNyimbo za Snoop Dogg\nNyimbo za 1999\nNyimbo zilizotayarishwa na Dr. Dre\nNyimbo za mashairi ya rap\nNyimbo za kurekodiwa na Aftermath Entertainment\nNyimbo za kurekodiwa na N.W.A\nHiphop za 1999",
+        "neno \"bet\" kwa Kilatini \"beta\". Walibadilisha pia ukanda wa kutazama kwa sababu wao kuandika kwa kuanza kulia kuliko kushoto: hivyo walifanya herufi ya beta kuwa ya kutazama upande wa kulia. Wakabaini alama kwa kutazama kulia tu. Kwa sababu wao waliandika kwa kuandika kwa chini kulia na kushoto wakakataa kutumia michirizo wakaweka",
+        "wa kushona nguo kwa haraka, kwa mfano kwa kutumia mashine za kushona kwa injini au kwa viatu vya kushona kwa mkono.",
+        "kama mwanamuziki wa reggae mwaka wa 1994 alipoimba na Fugees. Hill aliachia albamu yake ya kwanza, The Miseducation of Lauryn Hill, mwaka wa 1998. Albamu ilikuwa kwa wastani wa rekodi milioni 13 duniani kote, na ilikuwa albamu ya kwanza ya Reggae iliyokuwa ya kwanza kuchapishwa na kushindwa kufikia milioni moja ya rekodi zilizochap",
+        "chembe nyekundu za damu) na seli nyeupe za damu. Damu ya binadamu mara nyingi huwa imenyongwa kwa kuwekewa aina mbalimbali za damu zinazopashwa jina kwa jinsia za watu wenye damu hiyo. Kwa mfano, aina ya damu ya mwanaume na ya mwanamke huwa na matumizi ya jinsia wanayozaliwa watoto wao. Aina za damu za binadamu zinatof",
+        "ja au nyingine ya Uhindu. Wahindu wakubwa wanapatikana pia katika sehemu za Afrika ya Mashariki na Asia ya Kati.",
+        "Nobel ya Tiba mwaka wa 1923\n 1959 - Muriel Spark, mwandishi kutoka Uingereza\n 2004 - Bob Gaus, mchezaji wa mpira wa majira wa Marekani\n 2004 - Robert Lewandowski, mwanasiasa wa Marekani",
+        "The War Within (1986)\n The Fly (1986)\n The Long Rain (1986)\n The Right Stuff (1986)\n The First Wives Club (1996)\n The Faculty (1998)\n The Faculty: The Movie (2000)\n The Faculty: The Sequel (2001)\n The Faculty: The Final Chapter (2003)\n The Faculty: The Sequel (2006)\n The Faculty: The Final Chapter (2007)\n The Faculty: The Sequel (2008)\n The Faculty:",
+        "wa mbali, wakishakaribia huwatumia miguu kwenda juu kama ndege. Huo ni uwindaji wa mwendo wa kasi sana. Hata hivyo, ukaribu wao kwa windo wao huwaacha wazi kwa mbuawa wanaokuja, ukaribu wake hufanya kuvuruga nafasi kwa uwindaji.",
+        "aka ya chini yalishidwa kuyafikia maendeleo hayo. Matabaka ya chini yalilalamika juu ya maendeleo haya wakati wa ukoloni wa Uingereza katika nchi zilizo chini ya utawala wake.",
+        "yeji wa Hawaii mwaka 1779 wakati wa safari yake ya tatu.",
+        "ibu zote za wanachama wote.",
+        "amados do povo!\nVamos ao combate que nos aguarda.\nAvante, avante, a cabeça alta!\nE venceremos!",
+        "A kila mwanafunzi alikuwa anamjua Mathayo kama mtu anayetembea na radio na TV kama ilivyokuwa kwa mwanafunzi mwingine kama huyu aliyekuwa anatembea na gari yenye double deck. Mathayo alimaliza chuo kifedha kutoka chuo kikuu cha SUA, alianza kazi ya udaktari wa mifugo mwaka 1998, na wakati huo alikuwa mwanachama wa CCM",
+        "kuzaliwa kwa mwanamuziki kutoka nchini Marekani, anafahamika zaidi kwa jina la kisanii la 'Jay-Z'. Ametoa albamu kadhaa zilizomsaidia kupata umaarufu wake kwenye ulimwengu wa muziki wa Marekani.",
+        "",
+        "cha kwanza na cha pili. Kisha akaenda Shule ya Sekondari ya Iyunga ya mjini Mbeya. Ameacha shule hiyo kwa kufukuzwa kwa sababu ya kuonekana kama msanii.",
+        "jumla dunia ina madola 194.",
+        "ia wa wizara.",
+        "ways.''\n''Reli ya Mombasa kwa Uganda'' ni njia ya reli iliyojengwa kati ya mwaka 1902 na 1930 ambayo iliunganisha bandari ya Mombasa nchini Kenya na Miji ya Jinja, Kasese na Kampala nchini Uganda. Reli ilikuwa ya kihistoria kabla ya kutiwa katika umiliki wa Shirika la Reli la Uganda (Uganda Railways). Reli imeunganisha nchi za Kenya na Uganda kwa njia ya reli. Reli",
+        "ika cha historia ya Kijerumani. Miongoni mwa makala zinazo kama vile juu ya Ujerumani Magharibi (1815 - 1918), Kijerumani Mashariki (1944 - 1945) na koloni za Ujerumani (1885 - 1914).",
+        "min, waziri wa mambo ya nje wa Pakistan\n 24 Novemba - Richard Dreyfus, mwigizaji wa filamu kutoka Marekani",
+        "pelekwa kwenye migogoro ya kivita barani Afrika (1991-1993) na kusimamia mpango wa usalama katika nchi zinazoendelea. Alihudumu kama Katibu Mkuu wa Umoja wa Mataifa 1996-2006. Katibu Mkuu Annan aliteuliwa kwa kura ya wajumbe wa Baraza Kuu la UM. Aliteuliwa kugombea msimu wa mwaka 1996 na ak",
+        "mwaka 1998 BK (Baada ya Kristo).",
+        "cha miaka 10 kutoka 1924 hadi 1934 wauaji waliua watu milioni 10 au zaidi katika nchi zilizokuwa mstari wa mbele wa Urusi.",
+        "992)\n No Man's Land (1992)\n Wayne's World (1992)\n Relic Hunter (1993)\n No Place to Hide (1993)\n Wayne's World 2 (1993)\n Relic Hunter: The Quest Continues (1994)\n Relic Hunter: The Lost Empire (1994)\n Relic Hunter: The Great Escape (1995)\n The Wild West (1996)\n Relic Hunter: The Quest Continues II (1997)\n Relic Hunter: The Quest Continues III (1",
+        "ika filamu za western. Filamu zake maarufu zaidi ni vilevile zinazoonyesha mapigano na katika filamu za western ni vilevile zinazoonyesha vilabu vya karate. Alifariki katika ajali ya helikopta mwaka 1989.",
+        "ati wa enzi ya Wamakabayo, ulioongozwa na mtawala Yuda Maccabee, aliyegeuka mtume wa taifa lake dhidi ya waasi kwa kuwafunza kumcha Mungu.",
+        "ja kwa moja na ni kichocheo cha kuchochea chakula.",
+        "wa Laterano (1139)",
+        "Komori, na Kiswahili. Kiswahili kinazungumzwa na watu wengi zaidi na ni lugha ya kwanza ama ya pili kwa watu wengi kisiwani.",
+        "ia: Yerushalmi) ni mji wa kale wenye historia ndefu. Ni mji mtakatifu kwa Dini ya Ukristo, Uislamu, Uyahudi na Uorthodox.",
+        "ohusiana: Niger (maana)",
+        "uchangisha maboma ya meli ili kuihamisha kwa nchi kavu. Hivyo \"Graf von Goetzen\" ilishushwa kutoka ziwani tarehe 14 Machi 1916 na kupelekwa kwenye kambi ya kijeshi kwa umbali wa kilomita 50 kutoka nchi kavu. Hapa ilifungwa kwenye mazizi ili kuzuia kuharibika kwa nyaya za umeme, kisha ikaelekezwa upande"
+      ],
+      "confidences": [
+        0.6989860416442752,
+        0.638835868467595,
+        0.5889618320907175,
+        0.8496102982649063,
+        0.6271271741752571,
+        0.6445404903370218,
+        0.5866861023958165,
+        0.6381189130306666,
+        0.8635930421405646,
+        0.6894207889126847,
+        0.646303396581061,
+        0.724327817593803,
+        0.6506741419107129,
+        0.6991468496962625,
+        0.6477376994589576,
+        0.6406963768117748,
+        0.766652305267371,
+        0.5656907349271023,
+        0.600515322854335,
+        0.6827101263270379,
+        0.6515560446191557,
+        0.6608439211195218,
+        0.7328484659574315,
+        0.814806229329406,
+        0.5104165472266686,
+        0.6895404393508215,
+        0.7290305959268153,
+        0.6440100911904665,
+        0.6519527687974005,
+        0.6140883833168118,
+        0.7189249884045239,
+        0.729320620346698,
+        0.6094454177145963,
+        0.7171123336265737,
+        0.6810887099602496,
+        0.6862677866338345,
+        0.6692975210153236,
+        0.7950540294314123,
+        0.6844970363836183,
+        0.6450884255955316,
+        0.6835563653021381,
+        0.8025998393186455,
+        0.6863466323352441,
+        0.560279212628302,
+        0.6094978282562806,
+        0.9396503789166673,
+        0.6424382169091416,
+        0.6423439978273109,
+        0.7237083763275223,
+        0.5999182571431447
+      ]
+    }
+  }
+}

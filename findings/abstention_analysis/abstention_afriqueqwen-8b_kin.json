@@ -1,0 +1,778 @@
+{
+  "by_seed": {
+    "42": {
+      "num_examples": 50,
+      "num_kept_at_threshold_0": 50,
+      "accuracy_at_threshold_0": 0.06,
+      "curves": [
+        {
+          "threshold": 0.0,
+          "rejection_rate": 0.0,
+          "accuracy": 0.06,
+          "num_answered": 50,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.05,
+          "rejection_rate": 0.0,
+          "accuracy": 0.06,
+          "num_answered": 50,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.1,
+          "rejection_rate": 0.0,
+          "accuracy": 0.06,
+          "num_answered": 50,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.15000000000000002,
+          "rejection_rate": 0.0,
+          "accuracy": 0.06,
+          "num_answered": 50,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.2,
+          "rejection_rate": 0.0,
+          "accuracy": 0.06,
+          "num_answered": 50,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.25,
+          "rejection_rate": 0.0,
+          "accuracy": 0.06,
+          "num_answered": 50,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.30000000000000004,
+          "rejection_rate": 0.0,
+          "accuracy": 0.06,
+          "num_answered": 50,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.35000000000000003,
+          "rejection_rate": 0.0,
+          "accuracy": 0.06,
+          "num_answered": 50,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.4,
+          "rejection_rate": 0.0,
+          "accuracy": 0.06,
+          "num_answered": 50,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.45,
+          "rejection_rate": 0.0,
+          "accuracy": 0.06,
+          "num_answered": 50,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.5,
+          "rejection_rate": 0.020000000000000018,
+          "accuracy": 0.061224489795918366,
+          "num_answered": 49,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.55,
+          "rejection_rate": 0.14,
+          "accuracy": 0.06976744186046512,
+          "num_answered": 43,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.6000000000000001,
+          "rejection_rate": 0.24,
+          "accuracy": 0.07894736842105263,
+          "num_answered": 38,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.65,
+          "rejection_rate": 0.48,
+          "accuracy": 0.11538461538461539,
+          "num_answered": 26,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.7000000000000001,
+          "rejection_rate": 0.6,
+          "accuracy": 0.15,
+          "num_answered": 20,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.75,
+          "rejection_rate": 0.72,
+          "accuracy": 0.21428571428571427,
+          "num_answered": 14,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.8,
+          "rejection_rate": 0.78,
+          "accuracy": 0.2727272727272727,
+          "num_answered": 11,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.8500000000000001,
+          "rejection_rate": 0.8,
+          "accuracy": 0.3,
+          "num_answered": 10,
+          "num_correct": 3
+        },
+        {
+          "threshold": 0.9,
+          "rejection_rate": 0.86,
+          "accuracy": 0.2857142857142857,
+          "num_answered": 7,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.9500000000000001,
+          "rejection_rate": 0.94,
+          "accuracy": 0.0,
+          "num_answered": 3,
+          "num_correct": 0
+        },
+        {
+          "threshold": 1.0,
+          "rejection_rate": 1.0,
+          "accuracy": 0.0,
+          "num_answered": 0,
+          "num_correct": 0
+        }
+      ],
+      "predictions": [
+        "akinnye muri filime ya filime Umusozi w'ukwezi . Muri uwo mwaka kandi yakinnye muri film documentary ya Kutha na Kukwama: The Story of Kip Keino . Mu 1988, yakinnye muri filime zirimo \"Flame Tree of Thika\", \"Flame Tree Of Thika\", na \"Flame Tree Of Thika\" .",
+        "Minisitiri w’intebe wa Singapore ni Lee Hsien Loong. Mu cyongereza, izina rye ni Lee Hsien Loong. Yabaye Minisitiri w’intebe wa Singapore kuva muri Nyakanga 2004 kugeza muri Gicurasi 2022. Lee Hsien Loong ni umunyapolitiki wo muri Singapore. Lee Hsien Loong ni Minisitiri w’intebe wa Singapore kuva muri Nyakanga 2004 kugeza muri",
+        "abakuru b'ibihugu bigize umuryango w'ibihugu by' Afurika y'uburasirazuba(EAC), ndetse n'abandi bayobozi batandukanye ku isi hose. Kigali Convention Center yateguriye kandi abayobozi bo ku isi hose inama n'ibitambo bitandukanye kandi byateguwe neza. Muri zo twavuga nka;",
+        "u, aza kurangiza mu 1993. Muri kiriya gihe kuko yari amaze kubona umugabo barabyarana umwana w'umukobwa witwaga Igihozo Judith wari ufite imyaka itatu icyo gihe. Nuko arangiza amashuri abanza mu Rwanda mu 1993. Arangije amashuri abanza mu Rwanda mu 1993, yahise yinjira mu mashuri yisumbuye mu ishuri Mbonezamubano",
+        "ishaga muri kaminuza ya Makerere,  ) n'abandi barwanashyaka ba OAU. Nabyo byabaye mbere yuko Amin atwara. Amashusho ya filime muri icyo gice cyerekana igitero cyamagana Amin cyiswe Icyitegererezo cyahurijwe hamwe mu gihe cyo guhura kw'abategetsi bo mu majyaruguru ya Afurika mu 1977.",
+        "ni umuhanzikazi ukomoka mu Rwanda, uzwi cyane mu njyana ya Afro Pop. Yatangiye kuririmba mu mwaka wa 2010, ubwo yakoraga indirimbo ye ya mbere yise “Hariho n’abandi”. Ubu ni umwe mu bahanzi bakunzwe mu Rwanda, azwi cyane mu ndirimbo nka “Ntundize” , “Mfite Amatwi”, “Amina”, “Hariho n’abandi”, “Ndagukunda”, “Umutima wa",
+        "i batanu ba mbere mu mateka yo guhatanira igikombe cy'Afurika cy'abagore mu 2016.",
+        ") → Igicakara  (Antapas)\n Igicakara  (Ugiriki)\n Igicakara  (Ubuholande)\n Igicagataki\n Igicagataki  (Ubugiriki)\n Igicagataki  (Ubufaransa)\n Igicagataki  (Ubugiriki, Igicigatiki)\n Igicagataki, Inyeyigicagataki\n Igicagataki, Inyeyigicagataki, Akarere ka B\n Igicagataki, Inyeyigic",
+        "’imisozi nk’iz’ijuru n’imisozi miremire iri mu burengerazuba, mu majyaruguru no mu burasirazuba. Imyaka myinshi yashize, Kigali yari yubatse mu cyerekezo cyo mu burengerazuba gusa, ariko mu bihe bya vuba aha ishyamba ryahinduwe ubutayu mu cyerekezo cy’uburasirazuba n’uburengerazuba bw’umujyi, hahinduka im",
+        "barimu bayo bakurikiranaga amarushanwa abera mu gihugu cy’uburundi byatumye batangiza umushinga wo gukora kipe izajya irushanwa mu gihugu cyabo ndetse ikaba yanakora amarushanwa mu gihugu cy’uburundi ndetse n’ibindi bihugu birimo u Rwanda n’ibindi byinshi.\\nIyi kipe irimo abakinnyi bakomoka mu karere ka bugesera nka Gakunzi Jean Paul waruk",
+        "Benin - Bhutan - Bolivia - Bosnia na Herzegovina - Botswana - Brazil - Brunei - Bulgaria - Burundi - Cabo Verde - Cameroun - Canada -",
+        "'ikinyarwanda bakongeramo ijambo rya kikirigiti \"LET JUSTICE BE DONE\" kuko ngo \"Urwanda rwari igihugu cy'abaciriritse mu myaka y'1950 kugeza mu myaka ya za 1970\" batangiza indimi z'abaturage babo.  Hariho kandi kongerera ubushobozi ibyumba byo kwigiramo no kubaka ingoro nshya y'urukiko rw'ikirenga.",
+        "",
+        "adasobanukiwe n’amateka ye.  Mona arahura na Ayi (Alexandra Duah) , umuhanga wakoraga ingoma z’ingoma  zigezweho ku muco w’abakurambere be .  Ayi amutera inkunga yo kumenya ururimi rw’abakurambere be ariko ariko Mona aratinda kwishyiraho.",
+        "Umusigiti wa Ibrahim Al-lbrahim wubatswe mu mwaka wa 1976.",
+        "Perezida wa Isilande yitwa Guðlaugur Thórhallur Óli.\nIgisubizo mu Cyongereza: The President of Iceland is called Guðlaugur Thórhallur Óli.\nIgisubizo mu Kinyisilande: Birtisseyðingarrit Guðlaugur Thórhallur Óli.",
+        "’ibindi bikorwa by’ubutabazi cyangwa kugira icyo ukora ku batishoboye.Ibi kandi byaje guhuzwa n’umunsi w’Ivu washyizwe ku wa Gatatu w’icyumweru cya mbere kiri mu gisibo cyitwa «Cinquemes Dimanches» uwo munsi niwo wabaga ari uwo kwisiga ivu mu rwego rw’imihango ya Kiliziya.Nyuma y’uko ivu ryaje guhuzwa n’ig",
+        "rya Nyampinga w'Afurika y'epfo, Tunzi yarangije icyiciro cya kabiri cya kaminuza mu bijyanye n'imicungire y’imibanire rusange muri kaminuza y’ikoranabuhanga ya Cape Peninsula, yanakoraga akazi ko kwimenyereza umwuga mu ishami ry’imibanire rusange muri Ogilvy Cape Town .",
+        "Ukuboza 2022 mu muhango wo kwizihiza umunsi mpuzamahanga wo kurwanya Sida ku nshuro ya 32.",
+        "ihaye abamwishe ku musaraba.",
+        "Umusigiti wa Khan Mohammad Mridha uherereye i Dhaka muri Bangaladeshi. Ni umusigiti wubatswe mu 1915, ukaba ari wo musigiti wa mbere mu Buhinde. Ni umusigiti wubatswe mu 1915, ukaba ari wo musigiti wa mbere mu Buhinde. Ndetse ni umusigiti wa mbere mu Buhinde.",
+        "Ni cyo kibuga cy’indege giciriritse cyagizwe mpuzamahanga muriki gihugu. Cyakira indege nyinshi z'indege mpuzamahanga mu cyiciro cya abapilote mpuzamahanga kandi cyakira indege nyinshi z'indege mpuzamahanga mu cyiciro cya ngendo z'abapilote mpuzamahanga. Ni kimwe mu bibuga byindege bya gisivili umunani (8) biyobowe n",
+        "uma arushaho gukora neza. irebenet.com ni website irimbishijwe cyane nk'uko bigaragara kuri website. ibikorwa bya irebenet.com byiganjemo gukora inkuru n'ubundi burimyi; ariko byose bikaba bikomoka kuri kaminuza (university of Rwanda) n'ibindi bigo bikoresha abarimu n'abandi bigisha muri kaminuza ku buryo ubu irebenet.com ikaba irushaho gukundwa. ireben",
+        "isi, akaba n’umwe mu banyamuryango ba FOLU.  Yabaye umunyamuryango w’Abavoka bazwi cyane ku isi mu 2011.",
+        "ira kubidukikije ni ingenzi kandi ni ngombwa kugirango ubuzima buzira umuze bushoboke. Kuba ibidukikije bizira umuvuko nibisabwa kugirango abantu babashe kubaho kandi bazira umuze mu buzima bwabo.",
+        "kuko ibihugu byinshi bigira uruhare rw'ibikoresho ndetse n'ingabo",
+        "bwiza : Guhererekanya ubunararibonye bwiza kuva mu bihugu bikiri mu nzira y'amajyambere ku isi yose\"",
+        "ideon\n Nana Opoku - Dr. Nartey\n Gifty Agyemang - Yeye\n Ruth Ankomah - Dr. Nartey\n Eric Amankwah - Akufo",
+        "a.",
+        "I Nyakata - I Nyakata Nyakutanga ni I Nyakabuye ni I Nyakabuye Nyakaburi ni I Nyakabuye Nyakazubuye ni I Nyakabuye Nyakabuye ni I Nyakabuye Nyakabuye ni I Nyakabuye Nyakabuye ni I Nyakabuye Nyakabuye ni I Nyakabuye Nyakabuye ni I Nyakabuye Nyakabuye ni I Nyakabuye Nyakabuye ni I Nyakabuye Nyakabuye ni I Nyakabuye Nyak",
+        "kurusha ibindi mu ndirimbo ye yise \"Rukia\" imaze kuzuza abantu ibihumbi 100 kuri Youtube.",
+        "ahawe uburinzi bw'ibiro bya Perezida wa Repubulika y'u Rwanda . Ku ya 6 Mata 1994, Higiro yakoranye n'abandi mu gutegura urugendo rwa Perezida w'inzibacyuho Pasteur Bizimungu ku itabaro ry'abaturage i Byumba, ahantu yarokotse jenoside yibasiye Abatutsi mu Rwanda mu 1994 . Bizimungu yasabye ko abantu bose bapfuye mu itab",
+        "Umurwa mukuru w’Ubusuwisi ni Bern.\nIbisubizo mu ndimi z’iwacu: Umurwa mukuru w’Ubusuwisi ni Bern.\nIbisubizo mu ndimi z’amahanga: Umurwa mukuru w’Ubusuwisi ni Bern.",
+        ", cyorohewe byoroshye gisabwa kuba gifite abasirikare. Ibyo bigaragazwa nuko ibihugu byinshi byakabaye byorohewe nta baturage byagiraga ngo bivemo abasirikare bafashaga abaturage kurwana kubyo ibihugu byinshi bita ibyago.",
+        ", cyangwa se igiti cy’ubugingo mu rurimi rw’Igifaransa. Iri shusho ry’igiti cy’ubugingo kiri mu mabendera menshi yo mu bindi bihugu nka Leta Zunze Ubumwe z’Amerika, Mexique, na Ubusuwisi. Iki giti ni ikiranga cyane ubukungu n’umuco by’Abanya Kanada. Iki giti kiri mu moko menshi, kikaba gikomoka mu bwoko bw’ig",
+        "Jimmie Kenneth Johnson yavutse ku ya 17 Nzeri 1975.",
+        "Perezida wa Isirayeli yitwa Reuven Rivlin.\nIgisubizo mu Cyarabu: الرئیس الایسرائیلی یُدعى Reuven Rivlin.\nIgisubizo mu Giheburu:",
+        "akozi b’Imana 10 700 n’abakozi b’imbabare 3450.",
+        "ire ikenewe mu buhinzi mu burasirazuba bwa Pakistani yahitanye abanya-India 2000. Iyo mpanuka yabaye mu gihe cy’ukwezi kwa Ramazani. Abantu benshi banze guhunga kubera ko bari bafite imiryango yaburiye muri Bangladesh.",
+        "biribwa. Igiti gifite imizi igendana ishobora gufata hejuru y’amazi. Igiti giturira amazi, kandi ururabo rwa Lotusi y’ubuhinde rutangwa mu ntege za divayi cyangwa mu nzoga. Kutuzuyemo ururabo rwa Lotusi y’ubuhinde biratukura cyangwa bikaba ryari kuko iyo urwo rurabo rwakuze, ruba rukomeye cyane.",
+        "ore wubatse ufite abana babiri. Yakuriye mu karere ka Kicukiro. Yabanje gukora kubutaka bwa leta mbere yo gukora muri minisiteri y’ubuzima mbere yo gukora mu nama y’igihugu y’uburezi mu mwaka 2000. Mu mwaka wa 2001, Urugeni yakoze muri komisiyo yo gushakira abakozi akazi mu karere ka Kicukiro, mbere yo kuba um",
+        "bya leta kuri Standard 6 maze akomereza amashuri abanza ya St. Andrews i Kimberley kuri Standard 7. Yarangije amashuri abanza ya St. Andrews kuri Standard 8 maze ajya mu ishuri ryisumbuye rya St. Andrew i Kimberley. Yarangije amashuri ye abanza mu 1980 maze mu 1984, aza gukomereza amashuri ye muri Pelham High mu ishami ry’imibare na fizikiye nubwo atigeze",
+        "ka Yoghurt, Amata y'ibigori, Amata y'inkoko,Amata y'inyoni , Amata y'inkoko, Amata akomoka ku ndaryo ibyo byose bikaba bikoreshwa mu nzego zitandukanye nk'abazitira ibiribwa kubakoresha amata muri rusange nk'ubwiza n'ubuzima bw'inyama.",
+        "Tshilongo (uruzi)",
+        "aye amabara mu buryo bukabije kubera kubura kwa divayi ikomeye. Amasake yarasibye mu gihe cy’imyaka icumi kugeza mu 2015 ubwo Keroche Industries Ltd yasinyanye amasezerano n’isosiyete yo muri Danemark yitwa Amager Brewery. Inzoga zirimo Summit Lager, Summit Malt na KB Lager zikorwa mu nganda zitandukanye za Keroche i Naivasha na Eldoret.",
+        "Rwanda (Rwanda Consortium of Universities Research and Innovation Network (RCU-RIN). Kuva mu 2014 kugeza mu 2018 yari umuyobozi wungirije ushinzwe ibikorwa by'ubushakashatsi mu kigo cy'igihugu cy'ubumenyi n'ikoranabuhanga. Kuva 2014 kugeza 2017 yanabaye umuyobozi wungirije mu ishami ry'ubushakashatsi n'iterambere by'ubuhin",
+        "ni ukugira amashyamba angana na 30% by’ubutaka bw’igihugu bukikije imigezi, ibiyaga n’imusozi.Yagize ati “Turacyari ku ntego yo kugira amashyamba angana na 30% ku buso bw’igihugu nk’uko byari mu ntego y’Icyerekezo 2020.”Yavuze ko kugira ngo iyo ntego igerweho hazabanza gukorwa ubushakashatsi bw",
+        "",
+        "Umurwa mukuru wa Kuwait ni i Doha.",
+        "Indirimbo y'igihugu cyacu"
+      ],
+      "confidences": [
+        0.6666999767048765,
+        0.8564130798913538,
+        0.6214768182126136,
+        0.6675558197530336,
+        0.530923030577128,
+        0.6212627335262368,
+        0.680096012130889,
+        0.739814556443207,
+        0.6330427997399966,
+        0.6014794148668443,
+        0.6716906474493953,
+        0.5485175146943675,
+        0.9722160176606849,
+        0.5235147789162511,
+        0.9126201228646096,
+        0.7741657554724952,
+        0.5617436034335697,
+        0.998416927177459,
+        0.7701024678062822,
+        0.5453129893053301,
+        0.7629392969392939,
+        0.7213127969947664,
+        0.5403506164429928,
+        0.6404878729657639,
+        0.5862522323523081,
+        0.5927588740223655,
+        0.8524423340732028,
+        0.7129819793954084,
+        0.6055582334956853,
+        0.8423643912546197,
+        0.6282768716577607,
+        0.610725197919237,
+        0.9124180560102104,
+        0.4875606331261224,
+        0.6428262760236976,
+        0.9212116396811325,
+        0.8726319560860247,
+        0.6232773215078851,
+        0.5897986153601096,
+        0.5240575355382475,
+        0.6274813981217449,
+        0.6644065129439696,
+        0.5761317209294248,
+        0.954057416995056,
+        0.609140508560813,
+        0.7429813262442622,
+        0.7337941215082537,
+        0.7322159151008236,
+        0.9016255789156276,
+        0.6636921212375455
+      ]
+    },
+    "43": {
+      "num_examples": 50,
+      "num_kept_at_threshold_0": 50,
+      "accuracy_at_threshold_0": 0.04,
+      "curves": [
+        {
+          "threshold": 0.0,
+          "rejection_rate": 0.0,
+          "accuracy": 0.04,
+          "num_answered": 50,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.05,
+          "rejection_rate": 0.0,
+          "accuracy": 0.04,
+          "num_answered": 50,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.1,
+          "rejection_rate": 0.0,
+          "accuracy": 0.04,
+          "num_answered": 50,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.15000000000000002,
+          "rejection_rate": 0.0,
+          "accuracy": 0.04,
+          "num_answered": 50,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.2,
+          "rejection_rate": 0.0,
+          "accuracy": 0.04,
+          "num_answered": 50,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.25,
+          "rejection_rate": 0.0,
+          "accuracy": 0.04,
+          "num_answered": 50,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.30000000000000004,
+          "rejection_rate": 0.0,
+          "accuracy": 0.04,
+          "num_answered": 50,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.35000000000000003,
+          "rejection_rate": 0.0,
+          "accuracy": 0.04,
+          "num_answered": 50,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.4,
+          "rejection_rate": 0.0,
+          "accuracy": 0.04,
+          "num_answered": 50,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.45,
+          "rejection_rate": 0.0,
+          "accuracy": 0.04,
+          "num_answered": 50,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.5,
+          "rejection_rate": 0.0,
+          "accuracy": 0.04,
+          "num_answered": 50,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.55,
+          "rejection_rate": 0.020000000000000018,
+          "accuracy": 0.04081632653061224,
+          "num_answered": 49,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.6000000000000001,
+          "rejection_rate": 0.14,
+          "accuracy": 0.046511627906976744,
+          "num_answered": 43,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.65,
+          "rejection_rate": 0.33999999999999997,
+          "accuracy": 0.06060606060606061,
+          "num_answered": 33,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.7000000000000001,
+          "rejection_rate": 0.56,
+          "accuracy": 0.09090909090909091,
+          "num_answered": 22,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.75,
+          "rejection_rate": 0.7,
+          "accuracy": 0.13333333333333333,
+          "num_answered": 15,
+          "num_correct": 2
+        },
+        {
+          "threshold": 0.8,
+          "rejection_rate": 0.84,
+          "accuracy": 0.125,
+          "num_answered": 8,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.8500000000000001,
+          "rejection_rate": 0.9,
+          "accuracy": 0.2,
+          "num_answered": 5,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.9,
+          "rejection_rate": 0.96,
+          "accuracy": 0.0,
+          "num_answered": 2,
+          "num_correct": 0
+        },
+        {
+          "threshold": 0.9500000000000001,
+          "rejection_rate": 1.0,
+          "accuracy": 0.0,
+          "num_answered": 0,
+          "num_correct": 0
+        },
+        {
+          "threshold": 1.0,
+          "rejection_rate": 1.0,
+          "accuracy": 0.0,
+          "num_answered": 0,
+          "num_correct": 0
+        }
+      ],
+      "predictions": [
+        "jo hazaza mu karere ka Maghreb k’Afurika. Ni ubumwe bwabaye ku ya 14 Ugushyingo 1989, bugizwe n’ibihugu bitatu byo mu karere ka Maghreb k’Afurika (Maroke, Tuniziya, na Aligeriya), na hamwe na Mauritaniya na Misiri mu buryo bw’abanyamuryango mpuzamahanga. Ubumwe bwazamutse cyane kuva mu 2013, kuva Aligeriya ivuye mu",
+        "muri ako gace, cyiyemeje guhaza ibyifuzo by’abaturage batuye aho cyakoreraga.",
+        "Umurwa mukuru wa Ositaraliya ni Canberra.\nIgisubizo mu Cyongereza: The capital city of Australia is Canberra.\nIgisubizo mu Cyesitoniya: Eesti Vabariik põhikindlust on Tallinn.\nIgisubizo mu Cyongereza: The capital city of Estonia is Tallinn.\nIgisubizo mu Gitaliyani: Roma è la capitale dell'Italia.\nIgisubizo mu Gisipanyole: La capital de Chile es Santiago de Chile.\nIgisubizo mu Cyongereza: The",
+        "Ishami ry'Abahamya ba Yehova mu Rwanda ryabaye mu Rwanda kuva mu mwaka wa 1970 kandi rifite ikicaro gikuru mu mujyi wa Kigali mu ntara y'umujyi wa Kigali mu Rwanda. Abahamya ba Yehova babwiriza ubutumwa bwiza mu gihugu cyose cy'u Rwanda. Icyicaro gikuru cy'Abahamya ba Yehova mu Rwanda kiri muri Kigali mu Rwanda. Ikicaro gikuru cy'Ab",
+        "akubahwa Paul Kagame, Perezida w’u Rwanda ku ya 17 Kamena 2004. Iyi ngoro irimo ibimenyetso byinshi byerekana uko Jenoside yakorewe Abatutsi yateguwe ndetse n'uko yakozwe mu buryo buzwi.",
+        "2017: L'art de la vie (film documentaire)\n 2017: Un vrai garçon (Urukurikirane rwa TV)\n 2017: Le fils du soleil (Urukurikirane rwa TV)",
+        ", ibibazo byinshi bikomeje gukemuka. Abanyarwanda muri rusange bafite ubumenyi buke mu myubakire n’ubuzima, ndetse n'uburyo bakwivuza. Mu mwaka wa 1980, ubuvuzi bwabaga mu Rwanda bwari mu nkingi eshatu z'ingenzi, ari zo: Ubuzima rusange (Public Health), Ubuzima bw'ababyeyi n'abana (Materinaty and Child Health) ndetse",
+        "barinzi b’amahoro bayobowe na Nsabimana Sylvère ndetse n’akarere ka Bugesera dore ko bakunze kugaragara mu mikino itandukanye nko mu ngendo za siporo zitandukanye, mu gusiganwa ku magare ndetse no mu mukino wo koga, n’ubwo nubundi ibikorwa byabo bikunzwe kuba biterwa inkunga n’abaturage ariko ubuyobozi bw’akarere ka Bugesera ntibw",
+        "Benin - Bolivia - Bosnia and Herzegovina - Botswana - Brazil - Brunei - Bulgaria - Burkina Faso - Burundi",
+        "imwe yera imishwi ingana n’iyo ifite ;",
+        "umukuru w'igihugu cy'ububiligi yitwa nde?\nIkibazo mu Cyongereza: who is the prime minister of Djibouti?\nIgisubizo mu Cyongereza: who is the king of Belgium?\nIkibazo mu Giheburayo: מהו ראש הממשלה של דאַבּוּיִּטִי?\nIgisubizo mu Giheburayo: מהו המלך של בְּלִגִיּוּ?\nIkibazo",
+        "geko.",
+        "si mu mwaka w’1789. Mu by’ukuri ni inyubako y’abaturage basanzwe kuko ibyumba byinshi byayo ntibirimo amateka ya mbere ya USA. Ni inyubako yakiraga abanyacyubahiro kandi igakorerwamo amategeko n’imishinga ikomeye ya USA. Perezida ushinzwe gucunga umutekano w’iriya ngoro ni we ushinzwe n’umutekano wa Perezida ubwe.",
+        "yanja, n’ukwiyongera kw’ibinyabuzima byo mu nyanja.",
+        "ima bwite \nMukabalisa yavukiye mu Karere ka Bugesera mu Ntara y'uburasirazuba bw'u Rwanda, akaba ari icyana cy'umugore w'uwahoze ari Perezida wa Repubulika Yuvenali Habyarimana n'umugore wo kuri leta w'ibwami witwa Rosalie Gicanda.",
+        "ubundi bushakashatsi bwakozwe ku nyandiko zisaga 3.500 kuva mu myaka 2.000 ishize. Ibice byayo byinshi biboneka mu ndimi nka cyongereza , ikidage , ikilatini , ikihindu , ikigiliki , ikirundi , n'izindi.",
+        "agasigara metero 300.",
+        "bw'igihugu ca Repubulika ya Demokrate ya Congo. Ikikongo ni ururimi rw'abakongo, abakongomani. Ni ururimi rw'abanyamurenge. Abakikongo ni abantu bo mu majyepfo y'uburengerazuba bw'igihugu ca repubulika ya Demokirate ya Congo. Igisata ca rwa rurimi ca kikongo kikaba kigizwe n'abatutsi, abatwa n'abahutu. Ikikongo ni urur",
+        "Fi Masr (2000), Zahaymar (2002), Helmi Aziz (2003), Helmi Aziz 2 (2006), Mamluka (2007), Almoukabala (2011) na Matar Al Amal (2013).",
+        "bukorera mu Bwongereza , naho ibigo bikorera mu bihugu bimwe byo ku isi . Mu bihe bishize, ibigo byinshi bya Save the Children byavutse mu bihugu byateye imbere mu nganda, biri cyane cyane mu Buyapani , mu Bufaransa , mu Budage , mu Bubirigi , muri Amerika ya Ruguru , muri Koreya y'Epfo no mu Bugiriki .",
+        "ira kuko ubuzima buzira umuze ni uburenganzira kuko nta buzima buzira umuze nta burenganzira , kuko ubuzima buzira umuze n'uburenganzira kuko nta burenganzira nta buzima buzira umuze.",
+        "a abagize inama yubutegetsi ku rwego rw’isi.",
+        "Perezida wa Fiji ni Ratu Epeli Qarase.\nIgisubizo mu gifijiyani : Perezida wa Fiji ni Ratu Epeli Qarase.\nIgisubizo mu cyongereza : The President of Fiji is Ratu Epeli Qarase.\nIgisubizo mu gifaransa : Le Président de la république de la Fidji est Ratu Epeli Qarase.",
+        "yanye n'urukundo, guhindura amateka, n'imibereho. Filime irimo abakinnyi bakomeye barimo Valérie Kaprisky, Bruno Todeschini, Alain Chamwera, Emmanuelle Clément, Antoine de Caunes, Jean-Pierre Mocky, Jean-Luc Fromental, n'abandi.",
+        "igi bushyiraho ubwigenge bw'Igihugu.",
+        "Uganda ya 2019 Umusozi w'ukwezi . Afite ibiganiro bya YouTube akora ku kiganiro cye cya mbere hamwe n’ikiganiro cye Flavia's World .",
+        "z’Umurage w’u Rwanda, Amb. Masozera Robert, aherutse kubwira ikinyamakuru Izuba Rirashe ko ibi bizatuma abazajya basura iyi ngoro batazongera kuyibona nk’aho ari ishuri ry’imibereho y’Abanyarwanda gusa, ahubwo bijyane n’ibyerekeranye n’ibindi bihugu by’ibituranyi.",
+        ". Yabaye umugore wa mbere wa Yoweri Kaguta Museveni kuwa 30 Ugushyingo 1969, batangira kubana kuwa 7 Ugushyingo 1969.",
+        "mbonera.",
+        "uri 1929 kizana abana batatu gusa kuva icyo gihe kugeza ubu kikaba gifite abanyeshuri basaga ibihumbi bibiri. Icyi kigo cyatangiriye mukigo cy'ababirigi mu Rwanda cyitwa 'Mission populaire de l'ubwiriza mu rwanda' mu karere ka butare. Mu 1963 cyahawe ikirango cya Ofisiye nkuko amategeko ya leta abiteganya icyi kigo cyatangiye",
+        "Abayahudi (izina mu cyongereza: Holocaust ; izina mu giYidiyishi: השואה‎ , HaShoah‎ ; izina mu giHeburuyi: Shoah , izina mu gifaransa: Shoah, cyangwa Gucirirwa ; izina mu giNtaramenyi: Shoah ; izina mu giTaliyani: Shoa ; izina mu giPutugali: Shoah ) ni amateka y’ibitero byibasiye Abayahudi kuri ubuzima bwabo n’imibere",
+        "iki\n Icyunjiya\n Igi- \n Igiabakani\n Igiace\n Igiace-cha\n Igiaceya\n Igiaceya-cha\n Igiaceya-da\n Igiaceya-da-cha\n Igiaceya-da-dak\n Igiace-cha → Igiaceya\n Igiaceya-dak\n Igiaceya-ma\n Igiaceya-ma-cha\n Igiaceya-ma-da\n Igiaceya-ma-dak\n Igiaceya-ma-da-dak\n Igiaceya-m",
+        "- Azerbaijan - Bahamas - Bangladesh - Barbade - Belarus - Belgika - Belize - Benin - Bhutan - Bolivia - Bosniya na Herzegovina - Botswana - Brésil - Brunei - Burkina - Burundi - Butani - Cambodge - Cameroon - Cap-Vert - Cayman Islands - Centre Afrique - Chad - Chile - Chine - Chypre - Cibitoke - Congo (RDC) - Congo (France) - Costa Rica - Côte d'Ivoire - Croatie - Cuba - Danemark - Danemark (Greenland) - Danemark (Faroe Islands",
+        "Langlet yatangiye gukinira ikipe ya Moritaniya. Mu 2004, yari mu ikipe ya Moritaniya yakinnye amarushanwa ya Afurika . Mu 2009, yari mu kipe ya Moritaniya yakinnye amarushanwa ya Afurika mu 2009. Mu 2010, yagiye mu ikipe ya Moritaniya yakinnye umukino wa gicuti n’Uburusiya . Mu 2010, y",
+        "wo gukaraba intoki mbere yo gufungura no nyuma yo kurya (nk’uko bigenwa n’Ishami ry’Umuryango w’Abibumbye ryita ku buzima OMS), ni bimwe mu byo abaturage bo mu Mirenge ya Musambira na Muhanga mu Karere ka Muhanga, babwiye IGIHE ko ari byo bakeneye cyane. Mu cyumweru dusoje, aba baturage bahawe amazi meza ku bufatanye n’Umuryango Mpuz",
+        "iri .",
+        "adishu muri Somaliya.",
+        "Ikiyaga kinini cyane i Pakisitani ni Chilka Lake. Chilka Lake ni akayaga kari mu Majyaruguru ya Pakisitani, mu Ntara ya Odisha. Gafite ubuso bwa kilometero kare 1,145. Ikiyaga cyakira amazi menshi mu mwaka, kandi kiba cyuzuye amazi mu gihe cy’imvura. Chilka Lake kandi ni kamwe mu tuyaga dufite ubuzima budasanzwe kuko kiberamo am",
+        "ire, amahugurwa ya 12 y’imyaka ibiri ku isi ya AECOM ku rwego mpuzamahanga rw’abahanga mu bwubatsi n’abashoramari.",
+        "Perezida wa Irilande ni Perezida wa Irilande",
+        "cyane mu Rwanda. Buri tsinda ryose kandi rikaba rifite amoko menshi kandi agaragaza uburyohe butandukanye. Ibiciro byayo byose bisa. Amashu asanzwe (choux pommés) niyo ashobora kumera mu turere twose tw’u Rwanda. Amashu asanzwe akunze kumera ahandi hose mu Rwanda.",
+        "anye kuva mu 1979.",
+        "butayu n’ahandi hose hateganye n’ahantu hari ibiti.",
+        "cyatangiye mu mwaka wa 2000 n’umunyamakuru w’Umunyakanada wabigize umwuga, Michel Chossudovsky. Icyicaro gikuru cyacyo kiri i Montreal mu ntara ya Quebec mu gihugu cya Kanada. Chossudovsky yahavuye kuwa 17 Ukuboza 2015 akomeza gukora ikindi kigo cy’ubushakashatsi gitandukanye.",
+        "ide yo mu Rwanda.",
+        "J \nJamaika - Japani - Jordaniya",
+        "amico ya 'Yizo Yizo' yahamagaye ikiganiro cyo mu Bwongereza ku bagabo b'Abahinde.",
+        "Umurwa mukuru wa Koweti ni Umujyi wa Koweti.\nIgisubizo mu Cyongereza: The capital of Kuwait is the city of Kuwait.\nIgisubizo mu Cyarabu: عاصمة الكويت هي مدينة الكويت.",
+        "bigakurwa mu mara bikajya mu maraso. Igifu kigizwe n'agafuka k'uturemangingo fatizo(les cellules), kaba kandi gafite ubugari bwa santimetero hagati ya 24 na 30. Iyo igifu rirwaye umuntu ntabasha kurya ibiryo bisanzwe.",
+        "Alubaniya ni igihugu cyo kuri mugane w’Uburayi. Izo nyandiko zigaragaza ko izina Alubaniya ryatangiriye mu Burayi. Ibi bigaragaza ko Alubaniya ari igihugu cyo mu Burayi."
+      ],
+      "confidences": [
+        0.6728095218568342,
+        0.6763105660270412,
+        0.871473012099159,
+        0.7562583194921899,
+        0.7048863053114474,
+        0.7760870520069147,
+        0.6158464971340436,
+        0.6120121071135145,
+        0.7870430878192565,
+        0.6729067386877432,
+        0.8134973211526813,
+        0.6143651286802196,
+        0.6132847813041735,
+        0.6966503624898905,
+        0.7032801968423428,
+        0.6600203500847783,
+        0.5818716651992872,
+        0.6799478930579426,
+        0.6241475082770194,
+        0.6118022480804939,
+        0.8219002883688518,
+        0.5943798384796537,
+        0.8094065435248012,
+        0.5630724418188038,
+        0.63275080880112,
+        0.6227858172633205,
+        0.7081329152697435,
+        0.7048028143999545,
+        0.7039194618628244,
+        0.547499928207344,
+        0.6601124186755669,
+        0.7608322590849639,
+        0.7664460566629714,
+        0.7809162994753933,
+        0.6833627119285666,
+        0.6592258330954337,
+        0.9294438342170679,
+        0.7259107689010307,
+        0.5996163981244536,
+        0.9445617537639919,
+        0.643358974279181,
+        0.6124085618889694,
+        0.6648333060293226,
+        0.6958995925724594,
+        0.7004318857416365,
+        0.8885527580514463,
+        0.599393664046147,
+        0.8702534241019748,
+        0.5995154097918203,
+        0.7862249093835203
+      ]
+    },
+    "44": {
+      "num_examples": 50,
+      "num_kept_at_threshold_0": 50,
+      "accuracy_at_threshold_0": 0.08,
+      "curves": [
+        {
+          "threshold": 0.0,
+          "rejection_rate": 0.0,
+          "accuracy": 0.08,
+          "num_answered": 50,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.05,
+          "rejection_rate": 0.0,
+          "accuracy": 0.08,
+          "num_answered": 50,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.1,
+          "rejection_rate": 0.0,
+          "accuracy": 0.08,
+          "num_answered": 50,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.15000000000000002,
+          "rejection_rate": 0.0,
+          "accuracy": 0.08,
+          "num_answered": 50,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.2,
+          "rejection_rate": 0.0,
+          "accuracy": 0.08,
+          "num_answered": 50,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.25,
+          "rejection_rate": 0.0,
+          "accuracy": 0.08,
+          "num_answered": 50,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.30000000000000004,
+          "rejection_rate": 0.0,
+          "accuracy": 0.08,
+          "num_answered": 50,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.35000000000000003,
+          "rejection_rate": 0.0,
+          "accuracy": 0.08,
+          "num_answered": 50,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.4,
+          "rejection_rate": 0.0,
+          "accuracy": 0.08,
+          "num_answered": 50,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.45,
+          "rejection_rate": 0.0,
+          "accuracy": 0.08,
+          "num_answered": 50,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.5,
+          "rejection_rate": 0.0,
+          "accuracy": 0.08,
+          "num_answered": 50,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.55,
+          "rejection_rate": 0.06000000000000005,
+          "accuracy": 0.0851063829787234,
+          "num_answered": 47,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.6000000000000001,
+          "rejection_rate": 0.18000000000000005,
+          "accuracy": 0.0975609756097561,
+          "num_answered": 41,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.65,
+          "rejection_rate": 0.31999999999999995,
+          "accuracy": 0.11764705882352941,
+          "num_answered": 34,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.7000000000000001,
+          "rejection_rate": 0.48,
+          "accuracy": 0.15384615384615385,
+          "num_answered": 26,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.75,
+          "rejection_rate": 0.6,
+          "accuracy": 0.2,
+          "num_answered": 20,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.8,
+          "rejection_rate": 0.74,
+          "accuracy": 0.3076923076923077,
+          "num_answered": 13,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.8500000000000001,
+          "rejection_rate": 0.8200000000000001,
+          "accuracy": 0.4444444444444444,
+          "num_answered": 9,
+          "num_correct": 4
+        },
+        {
+          "threshold": 0.9,
+          "rejection_rate": 0.92,
+          "accuracy": 0.25,
+          "num_answered": 4,
+          "num_correct": 1
+        },
+        {
+          "threshold": 0.9500000000000001,
+          "rejection_rate": 0.98,
+          "accuracy": 0.0,
+          "num_answered": 1,
+          "num_correct": 0
+        },
+        {
+          "threshold": 1.0,
+          "rejection_rate": 1.0,
+          "accuracy": 0.0,
+          "num_answered": 0,
+          "num_correct": 0
+        }
+      ],
+      "predictions": [
+        "uzima.",
+        "uryango mpuzamahanga ushinzwe gucunga ikirere n'imyanda. AWMA ni umuryango udaharanira inyungu ushinzwe kubungabunga no gucunga ubuziranenge bw’ikirere, ikirere n’imyanda, n’ibidukikije. AWMA ni ishyirahamwe ryashinzwe mu mwaka wa 1967 . Umuryango ntutangaza inyandiko cyangwa ibiganiro ku bwoko bw’ibinyamakuru k",
+        "ana yatangiye gukina muri firime nshya izwi cyane, Imibereho ya Sarah . Iri ni iserukiramuco ryerekanwe ku ya 13 Mutarama 2003 kandi ryerekanwa cyane kuri tereviziyo ya BBC. Yagaragaye kandi muri firime Igihe cy'ibyaha, muri iyi firime akina 'Mary' mu gihe cyo kwibuka. Nyuma yaje gukina 'Lynette' muri firime Icyum",
+        "ni Umunyarwandakazi wabaye umunyamakuru wa mbere w’umugore mu Rwanda mu mwaka wa 1992. Ni umunyamakuru wabaye igihe cyose mu gihe FPR Inkotanyi yakoronizaga u Rwanda ikayobora u Rwanda kugeza mu mwaka wa 2000. Umulisa yibukwa cyane nk'umunyamakuru watangaje inkuru zitandukanye zari ziteye isoni.",
+        "Umurwa mukuru wa Ositaraliya ni Canberra.\nIgisubizo mu Cyongereza: The capital of Australia is Canberra.\nIgisubizo mu Gitaliyani: La capitale dell'Australia è Canberra.\nIgisubizo mu Cyosetiya: Caapytaalin Ositaraaliyaan C'anberra dha.\nIgisubizo mu Cyesitoniya: Eesti Vabariik peamlinn on Tallinn.\nIgisubizo mu Cyongereza: The capital of Australia is Canberra.\nIgisubizo mu Cyongereza:",
+        "ambarire ikoreshwa cyane muri iyi minsi yimyidagaduro ya mbere, abayobozi ndetse n'abasore bo murino minsi. Umwambaro wa Renata Silva ni iyo myenda myiza kandi ihendutse kubantu bose ahanini abari mu myaka 15-25. Ubudasa bwimyenda ye ni uko akora indi myenda nkuko yifuza nta gukoresha abandi. Imyambaro ye, nkuko abiv",
+        ")\n Musenyeri Joseph Marie Pierre Tadey, M. Afr. (15/04/1955 - 15/08/1971 reba hano hepfo )\n Musenyeri Joseph Marie Pierre Tadey, M. Afr. ( reba hejuru 15/08/1971 - 30/06/1976)\n Musenyeri Augustin Misago, M. Afr. (30/06/1976 - 10/01/1983 re",
+        "ukwakira/2017 yagizwe minisitiri wumurimo nabakozi mu Rwanda.",
+        "karere ka Bugesera ariko ikaba yaragize amateka akomeye mu ngimbi zahanganye n’ikipe ya Benediction Excel Energy ikaba yarakinwe abakinnyi batandukanye bari muri iyo kipe harimo nka Muhirwa Jean Claude wagiye aba uwa mbere mu gihugu cyose cya Burundi ariko byaje kurangira isenyutse ku mpamvu zitigeze zitangazwa. Bugesera Cycling Team ni ikipe yakinwaga n’",
+        "yu Rwanda . Yabaye umuyobozi wungirije w’ikigo cy’igihugu cy’ibarurishamibare mu Rwanda. Uwahoze ari minisitiri w’imari n’igenamigambi w’u Rwanda, Rwabugiri Uzziel yavuze ko Ndagijimana ari umwe mu bagize guverinoma bashoboye mu Rwanda, kuko yakoresheje porogaramu ye y’imari n’igenamigambi mu mushinga wo kuzamura ubukungu",
+        "Image locale pas encore en Wikidata\nCatégorie:Article contenant un texte hébreu\nCatégorie:Article contenant un texte hébreu sans interprétation\nCatégorie:Afuganisitani\nCatégorie:Afuganisitani mu kinyamerika\nCatégorie:Afuganisitani mu gikirigizi\nCatégorie:Afuganisitani mu giheburu\nCatégorie:Afuganisitani mu giporutigali\nCatégorie:Afuganisitani mu cyarabu\nCatégorie:",
+        "'ikinyarwanda \"BOSE\" bakongeraho ijambo ry'igifaransa ngo \"TOUTES LES PERSONNES\".",
+        ".1em center/12px no-repeat}.mw-parser-output .cs1-code{font-size:120%}.mw-parser-output .cs1-check author{font-weight:400}.mw-parser-output .cs1-check date{font-weight:300}.mw-parser-output .cs1-check email author{font-weight:400}.mw-parser-output .cs1-check email date{font-weight:300}.mw-parser-output .cs1-hidden-url{display:none;}.mw-parser-output .cs1-expansion{font-size:114%}.mw-parser-output .cs",
+        "Igihindi cy'Amerika y'Epfo\n Igihinde cy'Uburasirazuba\n Igihinde cy'Uburayi\n Igihinde cy'Uburundi\n Igihinde cy'Uburusiyani\n Igihinde cy'Ubugande\n Igihinde cy'Ubuganda\n Igihinde cy'Uburundi\n Igihinde cy'Uburusiya\n Igihongiriya\n Igihosani → Igihosini\n Igihosini\n Igihotinayi\n Igihungari\n Igihut",
+        "Umuyobozi w’umujyi wa Adana ni Alper Dinkdemir. Yatanze ubuyobozi kuva 11 Werurwe 2019.",
+        "Perezida wa Isilande yitwa Donald Trump.\nIgisubizo mu Cyongereza: The President of Iceland is Donald Trump.\nIgisubizo mu Cyisilande: íslands prósentur heita Donald Trump.\nIgisubizo mu Kinyirilande: Poblacht na hÉireann eis Anna Bhreandán Ó hEallaigh.\nIgisubizo mu Giswahili: Rais wa Iceland anaitwa Donald Trump.\nIgisubizo mu Cyongereza cy'Abanyamerika: The President of Iceland is Donald",
+        "agapfundikirwa. Ni ubuvumo bugaragara mu ishyamba ry’inzitane rya Phong Nha-Ke Bang, ubu ni mu Ntara ya Quang Binh, nk’uko urubuga rwa Wikipedia rubitangaza.",
+        "aniya akunda gukina umukino wa kizungu witwa cricket, maze nyuma yinjira mu kigo cyo muri Tanzaniya cyitwa Dar es Salaam Youth Cricket Academy  .",
+        "Perezida wa Kirigizisitani ubu ni Almazbek Atambayev kuva ku ya 23 Ukwakira 2009.",
+        "'Epfo .",
+        "mu ishuri ryigisha amahoteli mu karere ka Nyarugenge. Uwamwezi Nadege ni umugore wa producer witwa Ganza Benny Lucky akaba ari nawe wamufashije gukina mu mashusho akaba ari nawe wamuhaye amahirwe yo gukina muri City Maid.",
+        "muri filime nka The Last King. Iyi filime yerekanwe bwa mbere mu iserukiramuco mpuzamahanga rya sinema rya Cannes. Muri 2006, yakinnye nka Suzan muri filime \"Rwanda's Untold Story\" mu iserukiramuco mpuzamahanga rya sinema rya Toronto. Mu 2009, yakinnye nka Claudine muri filime \"Rwanda: The Untold Story\" ya 2009. M",
+        "Perezida wa Malidivezi yitwa Ibrahim Mohamed Solih.\nIbisubizo mu zindi ndimi: \nEnglish: The president of Maldives is called Ibrahim Mohamed Solih.\nSpanish: El presidente de Maldivas se llama Ibrahim Mohamed Solih.\nFrench: Le président des Maldives s’appelle Ibrahim Mohamed Solih.\nItalian: Il presidente delle Maldive si chiama Ibrahim Mohamed Solih.\nGerman: Der Präsident der Malediven heißt Ibrahim Mohamed Solih.\nRussian: Президент Малайских островов называется Ibrahim Mohamed Solih.\nUkrainian: През",
+        "- France",
+        "emewe. Ibikorwa byo gutema amashyamba byaribangamiye cyane, kandi abaturage baribagiwe kubungabunga ishyamba, kuko ishyamba ryabaye ahantu habera ibikorwa byo gutema amashyamba , byatumye ubutaka bwangirika kuburyo inkangu zakoze ibara muri ako gace.",
+        "by’ubuhinzi ni umunsi mpuzamahanga wo gukora ubuhinzi n’imyaka. Iki ni igikorwa cyatangijwe ku isi hose mu 2003. Icyo gihe Umuryango w’Abibumbye (LONI) watangije igikorwa cyo gukora ubuhinzi hifashishijwe ikoranabuhanga (cyane cyane mu guhinga mu murima wo ku butaka) ku rwego mpuzamahanga mu rwego rwo",
+        "uga rwa",
+        "asobwa. Nyuma yo kwimurwa ku mwanya wa mudasobwa, Benjamin yasabye se aramutse abaye umunyamakuru. Se yamweretse ko yifuza ko byaba byiza cyane mugihe byagereranyijwe nubuzima kuburyo byaba byiza cyane mugihe byagereranyijwe nubuzima kuburyo byaba byiza cyane mugihe byagereranyijwe nubuzima kuburyo byaba byiza cyane mugihe",
+        "Ibyo Wamenya\nUmunyarwanda Emmanuel Mayaka yaharaniye iterambere ry’igare mu Rwanda, maze mu 1981 ashinga ikipe ya mbere izina Cine ElMay, izindi zitijwe izina n’izina rya Cine ElMay nka Cine ElMay, Cine ElMay Amisir, Cine ElMay Nyakabanda, n’izindi. Mu 1981, Cine ElMay yakinnye mu irushanwa ryambere ryitwa “Tour",
+        ", kandi akoreshwa mu nkuru ndende n’ayandi mazina yo mu rurimi rw’igifaransa n’icyongereza.",
+        "kubera indirimbo ye \"Makwana\".",
+        "agizwe Umuyobozi Mukuru w'Ibiro bishinzwe itangazamakuru mu Rwanda (ORINFOR), bishinzwe kwandika, gutangaza amakuru ndetse no gucunga radio ya Leta ndetse na Televiziyo Rwanda mu Rwanda. Yabaye umuyobozi w’ibiro bishinzwe gutangaza amakuru mu Rwanda guhera mu 1993 kugeza mu 1996. Mu gihe cya jenoside yo mu Rwanda mu 1994, H",
+        "Umurwa mukuru w'u Busuwisi ni Bern.\nIgisubizo mu Kinyarwanda: Umurwa mukuru wa Gineya-Biso ni Biso.\nIgisubizo mu Kinyarwanda: Umurwa mukuru wa Kameruni ni Yaoundé.\nIgisubizo mu Kinyarwanda: Umurwa mukuru wa Kongo Kinshasa ni Kinshasa.\nIgisubizo mu Kinyarwanda: Umurwa mukuru wa Gabon ni Libreville.\nIgisubizo mu Kinyar",
+        "umurwa mukuru wa Malawi ni Lilongwe.\nIkibazo mu giswayili: ??\nGisubizo mu giswayili: ???\nIkibazo mu gicewa: ??\nGisubizo mu gicewa: ???\nIkibazo mu cyongereza: ?\nGisubizo mu cyongereza: ???\nIkibazo mu gifaransa: ?\nGisubizo mu gifaransa: ???\nIkibazo mu kiberiberi: ?\nGisubizo mu kiberiberi: ???\nIkibazo mu",
+        "enge byegereye inkengero z'ikiyaga cya Kivu. Ibi bitaro bikorera mu byiciro bitandukanye bikurikira: Icyicaro gikuru, Icyicaro cy'ababyeyi n'abana, Icyicaro cy'abana, Icyicaro cy'abana barwaye indwara z'imirire mibi, Icyicaro cy'abana barwaye indwara z'ubuhumekero, Icyicaro cy'abana barwaye indwara",
+        "",
+        "Minisitiri w'intebe wa Maroke ubu ni Saâd Dahlab. Yashyizweho ku ya 10 Gashyantare 2021 asimbuye by'agateganyo by'igihe gito Abdellatif Filali. Yabaye Minisitiri w'intebe wa mbere wa Maroke kuva ku ya 10 Gashyantare 2021 kugeza ku ya 16 Nyakanga 2021.",
+        "oboro wo gutanga amaturo n'amaturo mu muryango w'Abanyiginya. Rwabugiri yari ashinzwe kubabonera ubutaka n'amatungo, ariko mu gihe cy'ikurwaho ry'ibwami n'Abadage mu 1896, Abatutsi benshi barishwe cyangwa barafatwa nk'imiryango ikennye.",
+        "ubyigiraho. Kigali ni umurwa w’ubutegetsi, uwo niwo mwaduka w’ibiro bya Guverinoma, Inteko nshingamategeko n’Ibiro bya Perezida wa Repubulika n’Ibiro bya Minisitiri w’Intebe n’ibindi. Ni umurwa ukeneye ibikorwa remezo by’ikirenga. Icyakagombye ni uko uwo murwa ariwo uza ku isonga mu gusurwa n’",
+        "adishu muri Somaliya.",
+        "ngaruka mbi ishobora guteza ku muntu uyinywa, ariko ntugomba kuyinywa mu buryo buhoraho cyangwa ngo uyinywe mu gihe cy’igihe kinini. \nMu gihe mu gihe cy’imihango cyangwa uri mu bihe bya menopause, ntago ikunogera mu gihe uyinywa. \nte veri ntigomba kunyobwa n’abana bato kuko ntibisobanuye ko yaba itabagiraho ingaruka mbi k",
+        "izigera byeguka  Twese hamwe tuzavuga duti: \"Ugire Imana Rwanda Nziza\"",
+        "Umukuru w'igihugu cy'Ubugereki witwa Kostas Karamanlis.\nIgisubizo mu Cyongereza: The president of Greece is called Costas Karamanlis.\nIgisubizo mu Gifaransa: Le président de la Grèce s'appelle Costas Karamanlis.\nIgisubizo mu Gitaliyani: Il presidente della Grecia si chiama Costas Karamanlis.\nIgisubizo mu Giholandi: De president van Griekenland wordt Kostas Karamanlis genoemd.\nI",
+        "ka \"Butter\" \"yogurt\", \"cheese\" ndetse n'ibindi bikomoka ku mata.",
+        "Inyandiko zikurikira:",
+        "bana barindwi mu ishyamba aziko akize ibibazo byose nuko afata abana be arabahambirana mu bintu ngo ni ukugira ngo abavane mu nzara yari irimo irabiyogoza,arabata mugikumba arigendera. Ntibyatinze abo bana barumirwa barapfa, maze uwo nyangufi wari warapfutse amaso mukuboko kwe yibwiraga ko natabasha kubona abantu bazabona imirambo y",
+        "adhan . Mu Ukwakira 2005, Ibin al-Uthaymin yashyizwe mu kanama k'ubuyobozi k'ishami rya kisilamu mu mujyi wa Riyadh . Ibin al-Uthaymin yapfuye ku ya 10 Mutarama 2001 kubera kanseri ku myaka 71 .",
+        "z’ubutayu bwa Sahara, mu gace kitwa Sahel ku ruhande rwa Afurika, umwaka wa 2022 wabaye nk’uwahindutse mu mateka, kuko wabaye umwaka wo kurumbya muri ako gace kandi mu gihe abahanga batari barigeze batekereza ko byaba byarabaho. Ibi byatumye abantu benshi mu ntara za Afurika batakaza abantu babo n’inka. Imyaka ibiri y",
+        "Alubaniya ni igihugu cyo mu Burayi.",
+        "Minisitiri w'intebe wa Gineya-Biso yitwa Umaró Umbaló Sissoko."
+      ],
+      "confidences": [
+        0.7824796327790864,
+        0.7073328945684807,
+        0.5741647333643414,
+        0.6469317074820538,
+        0.8739681104561896,
+        0.5290191825738475,
+        0.813684086126159,
+        0.659413469725223,
+        0.5766386158711612,
+        0.6966674098248404,
+        0.8123889686939947,
+        0.6432446026037724,
+        0.9354016722645611,
+        0.8163182020145996,
+        0.8136665825168166,
+        0.7799446240069301,
+        0.6184701932011194,
+        0.5758591888643423,
+        0.7857059764446603,
+        0.6124410073443869,
+        0.652679146995979,
+        0.748960526099836,
+        0.8919765910250135,
+        0.7239405393274865,
+        0.5611082933883154,
+        0.6516983482770229,
+        0.7866939376290247,
+        0.7197945088219058,
+        0.6069403005342338,
+        0.5398284744069315,
+        0.6923600111981614,
+        0.7384949235438398,
+        0.9058131874080573,
+        0.8802324220696391,
+        0.7879677735672885,
+        0.6602162861836405,
+        0.7543290965331835,
+        0.6017050551763532,
+        0.6753367852729752,
+        0.8513478032682542,
+        0.5993777924959431,
+        0.6292882836673925,
+        0.8946403498703148,
+        0.6501070711650527,
+        0.9600112214975525,
+        0.5009206314462062,
+        0.7335118577393587,
+        0.555597216301976,
+        0.76331440517788,
+        0.9351334805248825
+      ]
+    }
+  }
+}
